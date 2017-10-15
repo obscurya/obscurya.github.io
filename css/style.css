@@ -51,7 +51,7 @@ body {
     margin: auto;
     top: 50%;
     transform: translateY(-50%);
-    background: #6e335e;
+    background: rgba(110, 51, 94, 0.7);
     padding: 60px 40px;
     border-radius: 12px;
     color: #fff;
