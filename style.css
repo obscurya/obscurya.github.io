@@ -14,6 +14,7 @@ body {
     font: 24px sans-serif;
     text-align: center;
     overflow: hidden;
+    background: #000;
 }
 
 .back {
