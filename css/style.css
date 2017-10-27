@@ -28,24 +28,24 @@ body {
     position: absolute;
     width: 100%;
     height: 100%;
-    background-image: url(../back.jpg);
+    background-image: url(../jap.gif);
+    /*background-image: url(../back.jpg);*/
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
-    filter: blur(5px);
+    background-size: 700px;
+    filter: blur(3px);
     transform: scale(1.1);
 }
 
-/*.hello {
+.text {
     position: relative;
     top: 50%;
     transform: translateY(-50%);
     display: inline-block;
-    text-align: left;
-    color: #fff;
-}*/
+    color: rgba(255, 255, 255, 0.3);
+}
 
-.strain {
+/*.strain {
     display: inline-block;
     position: relative;
     margin: auto;
@@ -76,4 +76,4 @@ body {
 .strain .fullname {
     bottom: 0;
     right: 0;
-}
+}*/

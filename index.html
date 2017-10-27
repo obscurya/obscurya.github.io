@@ -11,11 +11,25 @@
 <body>
     <div class="wrapper">
         <div class="back"></div>
-        <div class="strain">
+        <div class="text"><p id="timer"></p></div>
+        <!-- <div class="text"><p>z cdt;bq cdt;bq cdt;bq jxtym drecysq</p></div> -->
+        <!-- <div class="strain">
             <span class="type">Indica</span>
             <span class="name">Ob</span>
             <span class="fullname">Obscurya</span>
-        </div>
+        </div> -->
     </div>
+    <script>
+        var now = new Date().getTime(),
+            date = new Date('Nov 30, 2017 00:00:00'),
+            timer = document.getElementById('timer');
+
+        timer.innerHTML = Math.floor((date - now) / 1000);
+
+        setInterval(function () {
+            now = new Date().getTime();
+            timer.innerHTML = Math.floor((date - now) / 1000);
+        }, 1000);
+    </script>
 </body>
 </html>
