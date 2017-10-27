@@ -30,9 +30,9 @@ body {
     height: 100%;
     background-image: url(../jap.gif);
     /*background-image: url(../back.jpg);*/
-    background-position: center;
+    background-position: top left;
     background-repeat: no-repeat;
-    background-size: 700px;
+    background-size: cover;
     filter: blur(3px);
     transform: scale(1.1);
 }

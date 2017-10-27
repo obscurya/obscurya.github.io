@@ -20,15 +20,18 @@
         </div> -->
     </div>
     <script>
-        var now = new Date().getTime(),
-            date = new Date('Nov 30, 2017 00:00:00'),
+        var date = new Date('Nov 30, 2017 00:00:00'),
             timer = document.getElementById('timer');
 
-        timer.innerHTML = Math.floor((date - now) / 1000);
-
         setInterval(function () {
-            now = new Date().getTime();
-            timer.innerHTML = Math.floor((date - now) / 1000);
+            var now = new Date().getTime(),
+                distance = date - now,
+                days = Math.floor(distance / (1000 * 60 * 60 * 24)),
+                hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+                minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
+                seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            timer.innerHTML = days + ' ' + hours + ' ' + minutes + ' ' + seconds;
         }, 1000);
     </script>
 </body>
