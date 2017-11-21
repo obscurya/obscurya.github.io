@@ -54,7 +54,7 @@
                 minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
                 seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            timer.innerHTML = random(seconds) + '<span>' + days + 'd' + '</span>' + random(hours) + '<span>' + hours + 'h' + '</span>' + random(minutes) + '<span>' + minutes + 'm' + '</span>' + random(seconds) + '<span>' + seconds + 's' + '</span>' + random(days);
+            timer.innerHTML = random(days) + '<span>' + days + 'd' + '</span>' + random(hours) + '<span>' + hours + 'h' + '</span>' + random(minutes) + '<span>' + minutes + 'm' + '</span>' + random(days) + '<span>' + seconds + 's' + '</span>' + random(seconds);
             // timer.innerHTML = random(seconds + 200) + '<span>' + days + 'd' + '</span>' + random(hours + 10) + '<span>' + hours + 'h' + '</span>' + random(minutes + 5) + '<span>' + minutes + 'm' + '</span>' + random(seconds + 100) + '<span>' + seconds + 's' + '</span>' + random(days + 200);
             // timer.innerHTML = days + ' ' + hours + ' ' + minutes + ' ' + seconds;
         }, 1000 / 30);
