@@ -7,6 +7,18 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/fonts.css">
     <title>obscurya</title>
+    <style>
+        #timer {
+            padding: 30px;
+            word-break: break-all;
+            font-family: monospace;
+        }
+
+        #timer span {
+            /*font-weight: bold;*/
+            /*color: rgba(255, 180, 0, 0.5);*/
+        }
+    </style>
 </head>
 <body>
     <div class="wrapper">
@@ -20,6 +32,17 @@
         </div> -->
     </div>
     <script>
+        function random(rnd) {
+            var str = '',
+                possible = '=`&$ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+            for (var i = 0; i < rnd; i++) {
+                str += possible.charAt(Math.floor(Math.random() * possible.length));
+            }
+
+            return str;
+        }
+
         var date = new Date('Nov 30, 2017 00:00:00'),
             timer = document.getElementById('timer');
 
@@ -31,8 +54,10 @@
                 minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
                 seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            timer.innerHTML = days + ' ' + hours + ' ' + minutes + ' ' + seconds;
-        }, 1000);
+            timer.innerHTML = random(seconds) + '<span>' + days + 'd' + '</span>' + random(hours) + '<span>' + hours + 'h' + '</span>' + random(minutes) + '<span>' + minutes + 'm' + '</span>' + random(seconds) + '<span>' + seconds + 's' + '</span>' + random(days);
+            // timer.innerHTML = random(seconds + 200) + '<span>' + days + 'd' + '</span>' + random(hours + 10) + '<span>' + hours + 'h' + '</span>' + random(minutes + 5) + '<span>' + minutes + 'm' + '</span>' + random(seconds + 100) + '<span>' + seconds + 's' + '</span>' + random(days + 200);
+            // timer.innerHTML = days + ' ' + hours + ' ' + minutes + ' ' + seconds;
+        }, 1000 / 30);
     </script>
 </body>
 </html>
