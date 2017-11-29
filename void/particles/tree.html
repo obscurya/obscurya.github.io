@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+
+        var canvas = document.getElementById('canvas'),
+            c = canvas.getContext('2d');
+
+        canvas.width = 500;
+        canvas.height = 800;
+
+        var cw = canvas.width / 2,
+            w = 75,
+            y = 20;
+
+        c.beginPath();
+        c.moveTo(cw, y);
+        y += 100;
+        c.lineTo(cw + w, y);
+        c.lineTo(cw + w / 2, y);
+        y += 200;
+        w += 75;
+        c.lineTo(cw + w, y);
+        c.lineTo(cw + w / 2, y);
+        y += 200;
+        w += 75;
+        c.lineTo(cw + w, y);
+        c.lineTo(cw - w, y);
+        y -= 200;
+        w -= 75;
+        c.lineTo(cw - w / 2, y);
+        c.lineTo(cw - w, y);
+        y -= 200;
+        w -= 75;
+        c.lineTo(cw - w / 2, y);
+        c.lineTo(cw - w, y);
+        c.closePath();
+        c.fillStyle = 'rgb(0, 175, 80)';
+        c.fill();
+
+        c.fillStyle = 'rgb(95, 45, 0)';
+        c.strokeStyle = 'rgb(150, 70, 0)';
+        c.lineWidth = 8;
+        c.beginPath();
+        c.fillRect(cw - 50, 520, 100, 150);
+        c.strokeRect(cw - 50, 520, 100, 150);
+        c.closePath();
+
+        y = 20 + 100 + 13;
+        w = 75 - 13;
+        c.fillStyle = 'rgb(255, 255, 0)';
+        c.beginPath();
+        c.arc(cw + w, y, 13, 0, Math.PI * 2);
+        c.fill();
+        c.closePath();
+        c.beginPath();
+        c.arc(cw - w, y, 13, 0, Math.PI * 2);
+        c.fill();
+        c.closePath();
+        y += 200;
+        w += 75;
+        c.fillStyle = 'rgb(255, 0, 0)';
+        c.beginPath();
+        c.arc(cw + w, y, 13, 0, Math.PI * 2);
+        c.fill();
+        c.closePath();
+        c.beginPath();
+        c.arc(cw - w, y, 13, 0, Math.PI * 2);
+        c.fill();
+        c.closePath();
+        y += 200;
+        w += 75;
+        c.fillStyle = 'rgb(0, 0, 255)';
+        c.beginPath();
+        c.arc(cw + w, y, 13, 0, Math.PI * 2);
+        c.fill();
+        c.closePath();
+        c.beginPath();
+        c.arc(cw - w, y, 13, 0, Math.PI * 2);
+        c.fill();
+        c.closePath();
+    </script>
+</body>
+</html>

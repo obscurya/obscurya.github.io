@@ -4,60 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/fonts.css">
     <title>obscurya</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         #timer {
             padding: 30px;
             word-break: break-all;
-            font-family: monospace;
-        }
-
-        #timer span {
-            /*font-weight: bold;*/
-            /*color: rgba(255, 180, 0, 0.5);*/
+            font: 14px sans-serif;
         }
     </style>
 </head>
 <body>
     <div class="wrapper">
         <div class="back"></div>
-        <div class="text"><p id="timer"></p></div>
-        <!-- <div class="text"><p>z cdt;bq cdt;bq cdt;bq jxtym drecysq</p></div> -->
-        <!-- <div class="strain">
-            <span class="type">Indica</span>
-            <span class="name">Ob</span>
-            <span class="fullname">Obscurya</span>
-        </div> -->
+        <div class="text"><p id="timer">Эй, то, что закончилось, не начинай</p></div>
     </div>
-    <script>
-        function random(rnd) {
-            var str = '',
-                possible = '=`&$ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-
-            for (var i = 0; i < rnd; i++) {
-                str += possible.charAt(Math.floor(Math.random() * possible.length));
-            }
-
-            return str;
-        }
-
-        var date = new Date('Nov 30, 2017 00:00:00'),
-            timer = document.getElementById('timer');
-
-        setInterval(function () {
-            var now = new Date().getTime(),
-                distance = date - now,
-                days = Math.floor(distance / (1000 * 60 * 60 * 24)),
-                hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-                minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
-                seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            timer.innerHTML = random(days) + '<span>' + days + 'd' + '</span>' + random(hours) + '<span>' + hours + 'h' + '</span>' + random(minutes) + '<span>' + minutes + 'm' + '</span>' + random(days) + '<span>' + seconds + 's' + '</span>' + random(seconds);
-            // timer.innerHTML = random(seconds + 200) + '<span>' + days + 'd' + '</span>' + random(hours + 10) + '<span>' + hours + 'h' + '</span>' + random(minutes + 5) + '<span>' + minutes + 'm' + '</span>' + random(seconds + 100) + '<span>' + seconds + 's' + '</span>' + random(days + 200);
-            // timer.innerHTML = days + ' ' + hours + ' ' + minutes + ' ' + seconds;
-        }, 1000 / 30);
-    </script>
 </body>
 </html>
