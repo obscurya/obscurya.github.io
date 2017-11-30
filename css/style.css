@@ -9,6 +9,8 @@ body {
     font: 12px sans-serif;
     /*font: 14px 'Open Sans', sans-serif;*/
     font-weight: 300;
+    /*background-image: url(../images/vertical-waves.png);*/
+    /*background-image: url(../images/topography.png);*/
 }
 
 a {
@@ -16,8 +18,29 @@ a {
     color: #000;
 }
 
+header {
+    width: 100%;
+    height: 480px;
+    background: #000;
+    background-image: url(../images/canvas.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.table {
+    width: 100%;
+    font-size: 0;
+    /*text-align: center;*/
+    padding: 30px;
+}
+
+.table p {
+    font-size: 12px;
+}
+
 .element {
-    margin: 30px;
+    margin: 30px 30px 0px 0px;
     position: relative;
     display: inline-block;
     background: #fff;
@@ -26,6 +49,10 @@ a {
     padding: 20px;
     text-align: center;
     border: 2px solid;
+}
+
+.element:last-child {
+    margin-right: 0px;
 }
 
 .element h1 {
@@ -45,67 +72,15 @@ a {
 }
 
 .element .number1 {
+    font-size: 12px;
     position: absolute;
     top: 20;
     left: 20;
 }
 
 .element .number2 {
+    font-size: 12px;
     position: absolute;
     bottom: 20;
     right: 20;
-}
-
-/*h1, h2, h3 { font-weight: normal; }
-h1 { font-size: 13px; text-transform: uppercase; }
-ul { list-style: none; }
-
-.wrapper {
-    margin: auto;
-    max-width: 500px;
-    text-align: center;
-    background: #fff;
-}
-
-.background {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background-image: url(../images/canvas58.png);
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-header {
-    padding: 50px;
-    color: #000;
-    background: #fff;
-}
-
-header h1 {
-    display: inline-block;
-    vertical-align: middle;
-}
-
-.projects .project {
-    display: block;
-    padding: 30px 0;
-}
-
-.projects .project p {
-    text-transform: uppercase;
-    font-size: 12px;
-    margin-bottom: 10px;
-}
-
-.projects .project a {
-    display: block;
-    padding: 10px 50px;
-    border: solid #ddd;
-    border-width: 0px;
-    color: #777;
-}
-
-.projects a:hover {
-    color: #000;
-}*/
+}ы
