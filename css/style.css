@@ -74,13 +74,13 @@ header {
 .element .number1 {
     font-size: 12px;
     position: absolute;
-    top: 20;
-    left: 20;
+    top: 20px;
+    left: 20px;
 }
 
 .element .number2 {
     font-size: 12px;
     position: absolute;
-    bottom: 20;
-    right: 20;
+    bottom: 20px;
+    right: 20px;
 }ы
