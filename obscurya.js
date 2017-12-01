@@ -36,7 +36,6 @@ function Particle(x, y, r) {
     this.vy = this.y - this.yy;
     this.r = 1;
     // this.r = r;
-    this.g = r * 2;
     // this.color = color(255, 255, 255, random(55, 155));
     this.color = '#fff';
 }
@@ -189,8 +188,16 @@ function draw() {
     requestAnimationFrame(draw);
 }
 
-requestAnimationFrame(draw);
+if (!/Android|webOS|iPhone|iPad|BlackBerry|Windows Phone|Opera Mini|IEMobile|Mobile/i.test(navigator.userAgent)) {
+    canvas.style.display = 'block';
+    document.getElementById('msg').style.display = 'none';
 
-window.onresize = function () {
-    init();
+    draw();
+
+    window.onresize = function () {
+        init();
+    }
+} else {
+    canvas.style.display = 'none';
+    document.getElementById('msg').style.display = 'block';
 }
