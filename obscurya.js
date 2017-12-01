@@ -88,7 +88,7 @@ function init() {
     var particlesNumber = 500;
 
     if (particlesNumber > pixels.length / 2) {
-        particlesNumber = pixels.length / 10;
+        particlesNumber = pixels.length / 4;
         maxd = 10;
     }
 
