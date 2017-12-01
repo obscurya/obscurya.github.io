@@ -92,6 +92,10 @@ function init() {
         maxd = 10;
     }
 
+    if (canvas.width < 800) {
+        maxd = 0;
+    }
+
     for (var i = 0; i < particlesNumber; i++) {
         var k = random(0, pixels.length - 1);
 
@@ -149,17 +153,19 @@ function draw() {
     for (var i = 0; i < particles.length; i++) {
         var p = particles[i];
 
-        for (var j = 0; j < particles.length; j++) {
-            var pp = particles[j];
+        if (maxd !== 0) {
+            for (var j = 0; j < particles.length; j++) {
+                var pp = particles[j];
 
-            if (p !== pp) {
-                var dx = p.xx - pp.xx,
-                    dy = p.yy - pp.yy,
-                    dsqr = dx * dx + dy * dy,
-                    d = Math.sqrt(dsqr);
+                if (p !== pp) {
+                    var dx = p.xx - pp.xx,
+                        dy = p.yy - pp.yy,
+                        dsqr = dx * dx + dy * dy,
+                        d = Math.sqrt(dsqr);
 
-                if (d < maxd) {
-                    drawLine(p.xx, p.yy, pp.xx, pp.yy, d);
+                    if (d < maxd) {
+                        drawLine(p.xx, p.yy, pp.xx, pp.yy, d);
+                    }
                 }
             }
         }
