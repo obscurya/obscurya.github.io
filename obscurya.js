@@ -112,8 +112,6 @@ function init() {
     }
 }
 
-init();
-
 function drawText(str) {
     var fontSize = Math.floor(canvas.width / (ratio * (str.length - str.length / 3)));
 
@@ -193,6 +191,7 @@ if (!/Android|webOS|iPhone|iPad|BlackBerry|Windows Phone|Opera Mini|IEMobile|Mob
     document.getElementById('input-text').style.display = 'block';
     document.getElementById('msg').style.display = 'none';
 
+    init();
     draw();
 
     function create() {
