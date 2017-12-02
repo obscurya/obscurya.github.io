@@ -56,7 +56,7 @@ function init() {
         ratio = Math.floor(canvas.height / canvas.width);
     }
 
-    var text = 'obscurya';
+    var text = document.getElementById('text').value;
 
     maxd = 20;
     // maxd = Math.floor(ratio * text.length * 5);
@@ -190,14 +190,20 @@ function draw() {
 
 if (!/Android|webOS|iPhone|iPad|BlackBerry|Windows Phone|Opera Mini|IEMobile|Mobile/i.test(navigator.userAgent)) {
     canvas.style.display = 'block';
+    document.getElementById('input-text').style.display = 'block';
     document.getElementById('msg').style.display = 'none';
 
     draw();
+
+    function create() {
+        init();
+    }
 
     window.onresize = function () {
         init();
     }
 } else {
     canvas.style.display = 'none';
+    document.getElementById('input-text').style.display = 'none';
     document.getElementById('msg').style.display = 'block';
 }

@@ -12,6 +12,66 @@
     <style>
         body {
             font-size: 0;
+            position: relative;
+        }
+
+        .text {
+            position: absolute;
+            z-index: 999;
+            top: 30px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .text table {
+            display: inline-block;
+            border-collapse: collapse;
+            background: rgba(255, 255, 255, 0.05);
+            transition: 0.3s;
+        }
+
+        .text table tr td {
+            border: 1px solid #222;
+            transition: 0.3s;
+        }
+
+        .text table:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transition: 0.3s;
+        }
+
+        .text table:hover tr td {
+            border: 1px solid #333;
+            transition: 0.3s;
+        }
+
+        #text, button {
+            font: 14px sans-serif;
+            padding: 10px;
+            border-style: solid;
+            border-color: none;
+            border-width: 0px;
+            background: none;
+            color: rgba(255, 255, 255, 0.1);
+            transition: 0.3s;
+        }
+
+        #text:hover, button:hover {
+            color: rgba(255, 255, 255, 0.3);
+            transition: 0.3s;
+        }
+
+        button:hover {
+            cursor: pointer;
+        }
+
+        #text:focus, button:focus {
+            outline: none;
+        }
+
+        #text:focus {
+            color: rgba(255, 255, 255, 0.3);
+            transition: 0.3s;
         }
 
         #msg {
@@ -23,6 +83,14 @@
 </head>
 <body>
     <canvas id="canvas"></canvas>
+    <div id="input-text" class="text">
+        <table>
+            <tr>
+                <td><input id="text" type="text" value="obscurya"></td>
+                <td><button onclick="create();">Create</button></td>
+            </tr>
+        </table>
+    </div>
     <div id="msg">Привет, приятель. Зайди на сайт с компьютера, чтобы насладиться всеми возможностями WebGL.</div>
     <!-- <header><img src="images/canvas.png"></header> -->
     <!-- <div class="wrapper">
