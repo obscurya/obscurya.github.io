@@ -14,7 +14,7 @@ function clear() {
     c.fillStyle = '#999';
     c.textAlign = 'left';
     c.font = '12px sans-serif';
-    c.fillText('AndreyHunter v0.0.3', 20, canvas.height - 20);
+    c.fillText('AndreyHunter v0.0.4', 20, canvas.height - 20);
     c.closePath();
 }
 
@@ -84,11 +84,23 @@ img.onload = function () {
         x += vx;
         y += vy;
 
-        if (x <= 0 || x + img.width >= canvas.width) {
+        if (x <= 0) {
+            x = 0;
             vx = -vx;
         }
 
-        if (y <= 0 || y + img.height >= canvas.height) {
+        if (x + img.width >= canvas.width) {
+            x = canvas.width - img.width;
+            vx = -vx;
+        }
+
+        if (y <= 0) {
+            y = 0;
+            vy = -vy;
+        }
+
+        if (y + img.height >= canvas.height) {
+            y = canvas.height - img.height;
             vy = -vy;
         }
 
