@@ -14,7 +14,7 @@ function clear() {
     c.fillStyle = '#999';
     c.textAlign = 'left';
     c.font = '12px sans-serif';
-    c.fillText('AndreyHunter v0.0.2', 20, canvas.height - 20);
+    c.fillText('AndreyHunter v0.0.3', 20, canvas.height - 20);
     c.closePath();
 }
 
@@ -39,14 +39,23 @@ img.onload = function () {
         score = 0,
         hit = false,
         hitColor = '#000',
+        hitText = '',
+        hitTextAlpha = 1,
+        hitTextSize = 64,
         hitCounter = 0,
         hitX = 0,
         hitY = 0,
         hitR = 0,
         hitAlpha = 1;
 
+    var goodBoy = ['Красава', 'Красавчик', 'Лучший', 'Крэйзи', 'Батька', 'Хедшот', 'Двоечка', 'Четко в жбан', 'Базаришь', 'Дыщ', 'Класс', 'Жесть'],
+        badBoy = ['Лох', 'Лошара', 'Ну такое', 'Мда', 'Ой все', 'Ну дебил'];
+
     canvas.onmousedown = function (e) {
         hit = true;
+        hitColor = '#000';
+        hitTextAlpha = 1;
+        hitTextSize = 64;
         hitCounter = 0;
         hitX = e.x;
         hitY = e.y;
@@ -55,11 +64,13 @@ img.onload = function () {
 
         if (e.x >= x && e.x <= x + img.width && e.y >= y && e.y <= y + img.height) {
             hitColor = 'rgba(0, 255, 0, ';
+            hitText = goodBoy[random(0, goodBoy.length - 1)];
             vx = random(5, 15) * randomSign();
             vy = random(5, 15) * randomSign();
             score++;
         } else {
             hitColor = 'rgba(255, 0, 0, ';
+            hitText = badBoy[random(0, badBoy.length - 1)];
             score--;
         }
     }
@@ -90,12 +101,25 @@ img.onload = function () {
             c.fill();
             c.closePath();
 
+            c.beginPath();
+            c.fillStyle = 'rgba(255, 255, 255, ' + hitTextAlpha + ')';
+            c.textAlign = 'center';
+            c.textBaseline = 'middle';
+            c.font = 'bold ' + hitTextSize + 'px sans-serif';
+            c.fillText(hitText.toUpperCase(), canvas.width / 2, canvas.height / 2);
+            c.closePath();
+
             hitR += 5;
             hitAlpha -= 0.1;
+            hitTextAlpha -= 0.1;
+            hitTextSize += 5;
 
             hitCounter++;
 
             if (hitCounter > 10) {
+                hitColor = '#000';
+                hitText = '';
+                hitTextSize = 64;
                 hitAlpha = 1;
                 hitR = 0;
                 hitCounter = 0;
@@ -105,7 +129,7 @@ img.onload = function () {
 
         c.beginPath();
         c.fillStyle = '#fff';
-        c.font = '64px sans-serif';
+        c.font = '32px sans-serif';
         c.textAlign = 'center';
         c.textBaseline = 'middle';
         c.fillText(score, canvas.width / 2, 64);
