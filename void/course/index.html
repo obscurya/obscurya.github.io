@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Course Project</title>
+
+    <link rel="stylesheet" href="css/main.css">
+
+    <script src="js/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+    <header>
+        <button onclick="createData(10);">Сгенерировать данные</button>
+        <button onclick="saveData(data, 'data.json', 'application/json');">Сохранить данные</button>
+        <button onclick="loadData();">Загрузить JSON</button>
+        <button onclick="loadAllOrders();">Посмотреть все заказы</button>
+    </header>
+    <div class="main">
+        <!-- <button onclick="loadAllOrders();">Посмотреть все заказы</button> -->
+        <div id="output">
+            <div id="h"></div>
+            <div id="divCanvas"></div>
+            <div id="table"></div>
+            <pre id="json"></pre>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font: 14px sans-serif;
+}
+
+h1 {
+    /* margin-top: 30px; */
+    font-weight: normal;
+    font-size: 24px;
+    text-align: center;
+}
+
+#divCanvas {
+    text-align: center;
+}
+
+canvas {
+    margin-top: 30px;
+    border: 1px solid #CFD8DC;
+}
+
+header {
+    width: 100%;
+    background: #ECEFF1;
+    font-size: 0;
+}
+
+header button {
+    font: 14px sans-serif;
+    background: none;
+    border: none;
+    padding: 5px 10px;
+}
+
+header button:hover {
+    cursor: pointer;
+    background: #CFD8DC;
+}
+
+.main {
+    padding: 30px;
+}
+
+.main button {
+    font: 14px sans-serif;
+    padding: 10px 15px;
+    background: #ECEFF1;
+    border: 1px solid #B0BEC5;
+}
+
+.main button:hover {
+    cursor: pointer;
+    background: #CFD8DC;
+}
+
+#table {
+    width: 100%;
+    margin-top: 30px;
+    /* overflow-x: auto; */
+    /* border: 1px solid #eee; */
+}
+
+table {
+    font-size: 12px;
+    /* display: block; */
+    width: 100%;
+    border-collapse: collapse;
+    /* white-space: nowrap; */
+}
+
+table tr td {
+    border: 1px solid #B0BEC5;
+    padding: 5px 10px;
+}
+
+table tr td p {
+    /* margin-bottom: 10px; */
+}
+
+table tr td p:last-child {
+    /* margin-bottom: 0px; */
+}
+
+table tr:first-child {
+    background: #ECEFF1;
+}
+
+table tr:hover {
+    background: #ECEFF1;
+}
+
+#json {
+    margin-top: 30px;
+    background: #ECEFF1;
+    padding: 10px;
+}
