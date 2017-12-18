@@ -71,7 +71,7 @@ table {
     /* display: block; */
     width: 100%;
     border-collapse: collapse;
-    /* white-space: nowrap; */
+    white-space: nowrap;
 }
 
 table tr td {
