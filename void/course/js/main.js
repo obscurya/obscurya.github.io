@@ -97,12 +97,13 @@ function createData(length) {
         this.ratio = ratio;
     }
 
-    function Package(id, name, description, dimension, priceForCm) {
+    function Package(id, name, description, dimension, priceForCm, purchase) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.dimension = dimension;
         this.priceForCm = priceForCm;
+        this.purchase = purchase;
     }
 
     function Car(id, name, body, priceForRepair, color) {
@@ -196,9 +197,10 @@ function createData(length) {
                 name = packages[i].name,
                 description = packages[i].description,
                 dimension = packages[i].dimension,
-                priceForCm = packages[i].priceForCm;
+                priceForCm = packages[i].priceForCm,
+                purchase = packages[i].purchase;
 
-            data.packages.push(new Package(id, name, description, dimension, priceForCm));
+            data.packages.push(new Package(id, name, description, dimension, priceForCm, purchase));
         }
 
         for (var i = 0; i < cars.length; i++) {
@@ -264,7 +266,7 @@ function createData(length) {
     });
 }
 
-// loadAllOrders();
+loadAllOrders();
 
 function loadAllOrders() {
     clearOutput();
@@ -400,9 +402,12 @@ function loadAllOrders() {
         c.closePath();
 
         var str = '',
-            orders = data.orders;
+            orders = data.orders,
+            sumYear = 0;
 
         for (var y = 2017; y > 2014; y--) {
+            sumYear = 0;
+
             str += '<h2>' + y + '</h2>';
             str += '<table>';
             str += '<tr><td>id</td><td>Заказчик</td><td>Цена, руб.</td><td>Груз</td><td>Упаковка</td><td>Размеры, см</td><td>Вес, кг</td><td>Пункт назначения</td><td>Машина</td><td>Водитель</td><td>Сопровождение</td><td>Дата открытия заказа</td><td>Дата закрытия заказа</td></tr>';
@@ -411,6 +416,8 @@ function loadAllOrders() {
 
                 if (d.getFullYear() == y) {
                     var order = orders[i];
+
+                    sumYear += order.price;
 
                     str += '<tr>';
                     str += '<td>' + order.id + '</td>';
@@ -434,15 +441,16 @@ function loadAllOrders() {
                 }
             }
             str += '</table>';
+            str += '<p id="sum">Выгода за год: ' + sumYear.toFixed(2) + '</p>';
         }
 
         table.innerHTML = str;
     });
 }
 
-analysis();
+// analysis(2017);
 
-function analysis() {
+function analysis(year) {
     clearOutput();
 
     data = {};
@@ -450,7 +458,7 @@ function analysis() {
     $.getJSON(path + 'data.json', function (json) {
         data = json;
 
-        h.innerHTML = '<h1>Анализ ресурсов</h1><h2>Затраченные ресурсы на обслуживание транспорта в 2017 году</h2>';
+        h.innerHTML = '<h1>Анализ ресурсов</h1><h2>Затраченные ресурсы на обслуживание транспорта в ' + year + ' году</h2>';
         divCanvas.innerHTML = '<canvas id="canvas"></canvas>';
 
         var canvas = document.getElementById('canvas'),
@@ -472,7 +480,7 @@ function analysis() {
         for (var i = 0; i < data.orders.length; i++) {
             var d = new Date(data.orders[i].startDate);
 
-            if (d.getFullYear() == 2017) {
+            if (d.getFullYear() == year) {
                 array.push(data.orders[i]);
             }
         }
@@ -480,6 +488,11 @@ function analysis() {
         function Car(id, usageCar) {
             this.id = id;
             this.usageCar = usageCar;
+        }
+
+        function Package(id, size) {
+            this.id = id;
+            this.size = size;
         }
 
         var cars = [];
@@ -566,21 +579,77 @@ function analysis() {
         var str = '';
 
         str += '<table>';
-        str += '<tr><td>Цвет</td><td>Транспорт</td><td>Обслуживание</td></tr>';
+        str += '<tr><td>Цвет</td><td>Транспорт</td><td>Стоимость, руб.</td></tr>';
         for (var i = 0; i < cars.length; i++) {
             str += '<tr>';
 
             var car = data.cars[cars[i].id],
                 price = 0;
 
-            str += '<td style="background: ' + car.color + ';"></td>';
+            str += '<td><div style="width: 100%; height: 10px; background: ' + car.color + ';"></div></td>';
             str += '<td>' + car.name + '</td>';
 
             for (var j = 0; j < cars[i].usageCar.length; j++) {
                 price += cars[i].usageCar[j] * car.priceForRepair;
             }
 
-            str += '<td>' + price + '</td>';
+            str += '<td>' + price.toFixed(2) + '</td>';
+            str += '</tr>';
+        }
+        str += '</table>';
+
+        var packages = [],
+            size = [];
+
+        for (var j = 0; j < data.packages.length; j++) {
+            size = [];
+
+            for (var i = 0; i < array.length; i++) {
+                var packageId = array[i].packageId;
+
+                if (packageId == j) {
+                    size.push(array[i].size);
+                }
+            }
+
+            packages.push(new Package(j, size));
+        }
+
+        str += '<table>';
+        str += '<tr><td>Упаковка</td><td>Средний размер, см</td><td>Стоимость, руб.</td></tr>';
+        for (var i = 0; i < packages.length; i++) {
+            str += '<tr>';
+
+            var p = data.packages[i],
+                sizeAvg = [],
+                s = 0,
+                price = 0;
+
+            str += '<td>' + p.name + '</td>';
+
+            for (var j = 0; j < p.dimension; j++) {
+                var ss = 0;
+
+                for (var jj = 0; jj < packages[i].size.length; jj++) {
+                    ss += packages[i].size[jj][s];
+                }
+
+                if (packages[i].size.length == 0) {
+                    sizeAvg.push(0);
+                } else {
+                    sizeAvg.push(Math.floor(ss / packages[i].size.length));
+                }
+
+                price += ss;
+
+                s++;
+            }
+
+            price *= p.purchase;
+
+            str += '<td>' + sizeAvg + '</td>';
+            str += '<td>' + price.toFixed(2) + '</td>';
+
             str += '</tr>';
         }
         str += '</table>';

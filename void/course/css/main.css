@@ -71,11 +71,12 @@ h2 {
 }
 
 table {
+    margin: 30px 0;
     border: 1px solid #eee;
     /* table-layout: fixed; */
     font-size: 12px;
     display: block;
-    /* width: 100%; */
+    width: 100%;
     border-collapse: collapse;
     white-space: nowrap;
     overflow-x: auto;
@@ -106,4 +107,8 @@ table tr:hover {
     margin-top: 30px;
     background: #ECEFF1;
     /* padding: 10px; */
+}
+
+#sum {
+    text-align: left;
 }

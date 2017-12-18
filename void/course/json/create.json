@@ -90,36 +90,39 @@
             "name": "Конверт",
             "description": "Длина, ширина",
             "dimension": 2,
-            "priceForCm": 1
+            "priceForCm": 1,
+            "purchase": 0.5
         },
         {
             "name": "Рулон",
             "description": "Длина",
             "dimension": 1,
-            "priceForCm": 2
+            "priceForCm": 2,
+            "purchase": 1
         },
         {
             "name": "Коробка",
             "description": "Длина, ширина, высота",
             "dimension": 3,
-            "priceForCm": 3
+            "priceForCm": 3,
+            "purchase": 1.5
         }
     ],
     "cars": [
         {
             "name": "ГАЗ 2705",
             "body": "Грузовой фургон",
-            "priceForRepair": 5000
+            "priceForRepair": 500
         },
         {
             "name": "Форд - ТРАНЗИТ",
             "body": "Грузовой фургон",
-            "priceForRepair": 7000
+            "priceForRepair": 1000
         },
         {
             "name": "ИМЯ-М 19282",
             "body": "Бронированный фургон",
-            "priceForRepair": 10000
+            "priceForRepair": 1200
         }
     ]
 }
