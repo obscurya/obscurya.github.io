@@ -104,5 +104,22 @@
             "dimension": 3,
             "priceForCm": 3
         }
+    ],
+    "cars": [
+        {
+            "name": "ГАЗ 2705",
+            "body": "Грузовой фургон",
+            "priceForRepair": 5000
+        },
+        {
+            "name": "Форд - ТРАНЗИТ",
+            "body": "Грузовой фургон",
+            "priceForRepair": 7000
+        },
+        {
+            "name": "ИМЯ-М 19282",
+            "body": "Бронированный фургон",
+            "priceForRepair": 10000
+        }
     ]
 }

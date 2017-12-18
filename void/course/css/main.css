@@ -59,11 +59,12 @@ header button:hover {
 }
 
 #table {
+    text-align: center;
     width: 100%;
     margin-top: 30px;
 }
 
-#table h2 {
+h2 {
     text-align: center;
     font-weight: normal;
     margin: 20px 0px;
@@ -74,7 +75,7 @@ table {
     /* table-layout: fixed; */
     font-size: 12px;
     display: block;
-    width: 100%;
+    /* width: 100%; */
     border-collapse: collapse;
     white-space: nowrap;
     overflow-x: auto;
@@ -104,5 +105,5 @@ table tr:hover {
 #json {
     margin-top: 30px;
     background: #ECEFF1;
-    padding: 10px;
+    /* padding: 10px; */
 }

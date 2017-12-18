@@ -27,6 +27,10 @@ function randomDate(startDate, endDate) {
     return Date.parse(date);
 }
 
+function randomColor(alpha) {
+    return 'rgba(' + random(0, 255) + ', ' + random(0, 255) + ', ' + random(0, 255) + ',' + alpha + ')';
+}
+
 function calculatePrice(data, cargoId, weight, cityId, couriersNumber, packageId, size) {
     var ratio = data.cargoes[cargoId].ratio,
         distance = data.cities[cityId].distance,
@@ -101,7 +105,15 @@ function createData(length) {
         this.priceForCm = priceForCm;
     }
 
-    function Order(id, customerId, cargoId, packageId, cityId, couriersId, driverId, size, weight, price, startDate, endDate) {
+    function Car(id, name, body, priceForRepair, color) {
+        this.id = id;
+        this.name = name;
+        this.body = body;
+        this.priceForRepair = priceForRepair;
+        this.color = color;
+    }
+
+    function Order(id, customerId, cargoId, packageId, cityId, couriersId, driverId, carId, size, weight, price, startDate, endDate) {
         this.id = id;
         this.customerId = customerId;
         this.cargoId = cargoId;
@@ -109,6 +121,7 @@ function createData(length) {
         this.cityId = cityId;
         this.couriersId = couriersId;
         this.driverId = driverId;
+        this.carId = carId;
         this.size = size;
         this.weight = weight;
         this.price = price;
@@ -124,6 +137,7 @@ function createData(length) {
     data.drivers = [];
     data.cargoes = [];
     data.packages = [];
+    data.cars = [];
     data.orders = [];
 
     $.getJSON(path + 'create.json', function (json) {
@@ -133,8 +147,9 @@ function createData(length) {
             drivers = json.drivers,
             cargoes = json.cargoes,
             packages = json.packages;
+            cars = json.cars;
 
-        for (var i = 0; i < length; i++) {
+        for (var i = 0; i < json.names.length; i++) {
             var id = i,
                 name = names[random(0, names.length - 1)],
                 age = random(18, 70);
@@ -186,7 +201,17 @@ function createData(length) {
             data.packages.push(new Package(id, name, description, dimension, priceForCm));
         }
 
-        for (var i = 0; i < length * 10; i++) {
+        for (var i = 0; i < cars.length; i++) {
+            var id = i,
+                name = cars[i].name,
+                body = cars[i].body,
+                priceForRepair = cars[i].priceForRepair,
+                color = randomColor(0.5);
+
+            data.cars.push(new Car(id, name, body, priceForRepair, color));
+        }
+
+        for (var i = 0; i < length; i++) {
             var id = i,
                 customerId = data.customers[random(0, data.customers.length - 1)].id,
                 cargoId = data.cargoes[random(0, data.cargoes.length - 1)].id,
@@ -194,6 +219,7 @@ function createData(length) {
                 cityId = data.cities[random(1, data.cities.length - 1)].id,
                 couriersId = [],
                 driverId = data.drivers[random(0, data.drivers.length - 1)].id,
+                carId = data.cars[random(0, data.cars.length - 1)].id,
                 startDate = randomDate(new Date(2015, 0, 1), new Date()),
                 endDate = randomDate(new Date(startDate), new Date(startDate + 5 * 24 * 60 * 60 * 1000)),
                 size = [],
@@ -231,14 +257,14 @@ function createData(length) {
 
             price = calculatePrice(data, cargoId, weight, cityId, couriersId.length, packageId, size);
 
-            data.orders.push(new Order(id, customerId, cargoId, packageId, cityId, couriersId, driverId, size, weight, price, startDate, endDate));
+            data.orders.push(new Order(id, customerId, cargoId, packageId, cityId, couriersId, driverId, carId, size, weight, price, startDate, endDate));
         }
 
         saveData(data, 'data.json', 'text/plain');
     });
 }
 
-loadAllOrders();
+// loadAllOrders();
 
 function loadAllOrders() {
     clearOutput();
@@ -327,14 +353,14 @@ function loadAllOrders() {
             c.stroke();
             c.closePath();
 
-            c.beginPath();
-            c.fillStyle = '#000';
-            c.textAlign = 'left';
-            c.textBaseline = 'middle';
-            c.font = '14px sans-serif';
-            c.fillText(data.cities[i].name + ' = ' + money[j].toFixed(2) + ' рублей (' + (money[j] / profit * 100).toFixed(2) + '%)', 10, (j + 1) * 20);
-            // c.fillText(data.cities[i].name + ' = ' + sums[j] + ' отправлений (' + (sums[j] / data.orders.length * 100).toFixed(2) + '%)', 10, (j + 1) * 20);
-            c.closePath();
+            // c.beginPath();
+            // c.fillStyle = '#000';
+            // c.textAlign = 'left';
+            // c.textBaseline = 'middle';
+            // c.font = '14px sans-serif';
+            // c.fillText(data.cities[i].name + ' = ' + money[j].toFixed(2) + ' рублей (' + (money[j] / profit * 100).toFixed(2) + '%)', 10, (j + 1) * 20);
+            // // c.fillText(data.cities[i].name + ' = ' + sums[j] + ' отправлений (' + (sums[j] / data.orders.length * 100).toFixed(2) + '%)', 10, (j + 1) * 20);
+            // c.closePath();
 
             j++;
         }
@@ -343,7 +369,6 @@ function loadAllOrders() {
             var city = data.cities[i],
                 radius = lineWidthMax,
                 left = 0;
-                // radius = city.name.length * 5;
 
             if (i === 0) {
                 c.font = '16px sans-serif';
@@ -352,13 +377,6 @@ function loadAllOrders() {
             } else {
                 c.font = '12px sans-serif';
             }
-
-            // if (i === 0) {
-            //     c.font = '16px sans-serif';
-            //     radius = city.name.length * 6;
-            // } else {
-            //     c.font = '11px sans-serif';
-            // }
 
             c.beginPath();
             c.fillStyle = 'rgba(255, 255, 255, 1)';
@@ -387,7 +405,7 @@ function loadAllOrders() {
         for (var y = 2017; y > 2014; y--) {
             str += '<h2>' + y + '</h2>';
             str += '<table>';
-            str += '<tr><td>id</td><td>Заказчик</td><td>Цена, руб.</td><td>Груз</td><td>Упаковка</td><td>Размеры, см</td><td>Вес, кг</td><td>Пункт назначения</td><td>Водитель</td><td>Сопровождение</td><td>Дата открытия заказа</td><td>Дата закрытия заказа</td></tr>';
+            str += '<tr><td>id</td><td>Заказчик</td><td>Цена, руб.</td><td>Груз</td><td>Упаковка</td><td>Размеры, см</td><td>Вес, кг</td><td>Пункт назначения</td><td>Машина</td><td>Водитель</td><td>Сопровождение</td><td>Дата открытия заказа</td><td>Дата закрытия заказа</td></tr>';
             for (var i = 0; i < orders.length; i++) {
                 var d = new Date(orders[i].startDate);
 
@@ -403,6 +421,7 @@ function loadAllOrders() {
                     str += '<td>' + order.size + '</td>';
                     str += '<td>' + order.weight.toFixed(3) + '</td>';
                     str += '<td>' + data.cities[order.cityId].name + '</td>';
+                    str += '<td>' + data.cars[order.carId].name + '</td>';
                     str += '<td>' + data.drivers[order.driverId].name + '</td>';
                     str += '<td>';
                     for (var j = 0; j < order.couriersId.length; j++) {
@@ -418,6 +437,154 @@ function loadAllOrders() {
         }
 
         table.innerHTML = str;
-        // preJSON.innerHTML = JSON.stringify(data.orders, null, 4);
     });
+}
+
+analysis();
+
+function analysis() {
+    clearOutput();
+
+    data = {};
+
+    $.getJSON(path + 'data.json', function (json) {
+        data = json;
+
+        h.innerHTML = '<h1>Анализ ресурсов</h1><h2>Затраченные ресурсы на обслуживание транспорта в 2017 году</h2>';
+        divCanvas.innerHTML = '<canvas id="canvas"></canvas>';
+
+        var canvas = document.getElementById('canvas'),
+            c = canvas.getContext('2d');
+
+        canvas.width = 640;
+        canvas.height = 360;
+
+        c.clearRect(0, 0, canvas.width, canvas.height);
+
+        c.fillStyle = '#fff';
+
+        c.fillRect(0, 0, canvas.width, canvas.height);
+
+        var usage = 0,
+            usageMax = 0,
+            array = [];
+
+        for (var i = 0; i < data.orders.length; i++) {
+            var d = new Date(data.orders[i].startDate);
+
+            if (d.getFullYear() == 2017) {
+                array.push(data.orders[i]);
+            }
+        }
+
+        function Car(id, usageCar) {
+            this.id = id;
+            this.usageCar = usageCar;
+        }
+
+        var cars = [];
+
+        for (var j = 0; j < data.cars.length; j++) {
+            var usageCar = [];
+
+            for (var m = 0; m < 12; m++) {
+                usage = 0;
+
+                for (var i = 0; i < array.length; i++) {
+                    var d = new Date(array[i].startDate),
+                        carId = array[i].carId;
+
+                    if (d.getMonth() == m && carId == j) {
+                        usage++;
+                    }
+                }
+
+                usageCar.push(usage);
+
+                if (usage > usageMax) {
+                    usageMax = usage;
+                }
+            }
+
+            cars.push(new Car(j, usageCar));
+        }
+
+        var step = canvas.width / 11,
+            m = 0;
+
+        for (var i = 0; i <= canvas.height; i += canvas.height / usageMax) {
+            c.beginPath();
+            c.strokeStyle = '#CFD8DC';
+            c.lineWidth = 1;
+            c.moveTo(0, i);
+            c.lineTo(canvas.width, i);
+            c.stroke();
+            c.closePath();
+        }
+
+        for (var x = 0; x <= canvas.width; x += step) {
+            c.beginPath();
+            c.strokeStyle = '#CFD8DC';
+            c.lineWidth = 1;
+            c.moveTo(x, 0);
+            c.lineTo(x, canvas.height);
+            c.stroke();
+            c.closePath();
+        }
+
+        for (var j = 0; j < data.cars.length; j++) {
+            var color = data.cars[j].color;
+
+            m = 0;
+
+            c.beginPath();
+            c.strokeStyle = color;
+            c.lineWidth = 5;
+            c.moveTo(-canvas.width, canvas.height / 2);
+            for (var x = 0; x <= canvas.width; x += step) {
+                usage = 0;
+
+                for (var i = 0; i < array.length; i++) {
+                    var d = new Date(array[i].startDate),
+                        carId = array[i].carId;
+
+                    if (d.getMonth() == m && carId == j) {
+                        usage++;
+                    }
+                }
+
+                usage = ((usageMax - usage) / (usageMax - 0)) * canvas.height;
+
+                c.lineTo(x, usage);
+
+                m++;
+            }
+            c.stroke();
+            c.closePath();
+        }
+
+        var str = '';
+
+        str += '<table>';
+        str += '<tr><td>Цвет</td><td>Транспорт</td><td>Обслуживание</td></tr>';
+        for (var i = 0; i < cars.length; i++) {
+            str += '<tr>';
+
+            var car = data.cars[cars[i].id],
+                price = 0;
+
+            str += '<td style="background: ' + car.color + ';"></td>';
+            str += '<td>' + car.name + '</td>';
+
+            for (var j = 0; j < cars[i].usageCar.length; j++) {
+                price += cars[i].usageCar[j] * car.priceForRepair;
+            }
+
+            str += '<td>' + price + '</td>';
+            str += '</tr>';
+        }
+        str += '</table>';
+
+        table.innerHTML = str;
+    })
 }
