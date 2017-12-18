@@ -68,16 +68,24 @@ function createData(length) {
         this.y = y;
     }
 
-    function Courier(id, name) {
+    function Courier(id, name, phone) {
+        this.id = id;
+        this.name = name;
+        this.phone = phone;
+    }
+
+    function Cargo(id, name) {
         this.id = id;
         this.name = name;
     }
 
-    function Order(id, customerId, cityId, couriersId, startDate, endDate) {
+    function Order(id, customerId, cargoId, cityId, couriersId, driverId, startDate, endDate) {
         this.id = id;
         this.customerId = customerId;
+        this.cargoId = cargoId;
         this.cityId = cityId;
         this.couriersId = couriersId;
+        this.driverId = driverId;
         this.startDate = startDate;
         this.endDate = endDate;
     }
@@ -87,12 +95,16 @@ function createData(length) {
     data.customers = [];
     data.cities = [];
     data.couriers = [];
+    data.drivers = [];
+    data.cargoes = [];
     data.orders = [];
 
     $.getJSON(path + 'create.json', function (json) {
         var names = json.names,
             cities = json.cities,
-            couriers = json.couriers;
+            couriers = json.couriers,
+            drivers = json.drivers,
+            cargoes = json.cargoes;
 
         for (var i = 0; i < length; i++) {
             var id = i,
@@ -113,17 +125,35 @@ function createData(length) {
 
         for (var i = 0; i < couriers.length; i++) {
             var id = i,
-                name = couriers[i];
+                name = couriers[i],
+                phone = random(10000000000, 99999999999);
 
-            data.couriers.push(new Courier(id, name));
+            data.couriers.push(new Courier(id, name, phone));
+        }
+
+        for (var i = 0; i < drivers.length; i++) {
+            var id = i,
+                name = drivers[i],
+                phone = random(10000000000, 99999999999);
+
+            data.drivers.push(new Courier(id, name, phone));
+        }
+
+        for (var i = 0; i < cargoes.length; i++) {
+            var id = i,
+                name = cargoes[i];
+
+            data.cargoes.push(new Cargo(id, name));
         }
 
         for (var i = 0; i < length * 10; i++) {
             var id = i,
                 customerId = data.customers[random(0, data.customers.length - 1)].id,
+                cargoId = data.cargoes[random(0, data.cargoes.length - 1)].id,
                 cityId = data.cities[random(1, data.cities.length - 1)].id,
                 couriersId = [],
-                startDate = randomDate(new Date(2016, 0, 1), new Date()),
+                driverId = data.drivers[random(0, data.drivers.length - 1)].id,
+                startDate = randomDate(new Date(2015, 0, 1), new Date()),
                 endDate = randomDate(new Date(startDate), new Date(startDate + 5 * 24 * 60 * 60 * 1000));
 
             for (var j = 0; j < random(1, data.couriers.length / 2); j++) {
@@ -136,7 +166,7 @@ function createData(length) {
                 couriersId.push(courierId);
             }
 
-            data.orders.push(new Order(id, customerId, cityId, couriersId, startDate, endDate));
+            data.orders.push(new Order(id, customerId, cargoId, cityId, couriersId, driverId, startDate, endDate));
         }
 
         saveData(data, 'data.json', 'text/plain');
@@ -170,16 +200,16 @@ function loadAllOrders() {
 
         c.fillRect(0, 0, canvas.width, canvas.height);
 
-        c.fillStyle = '#FFF9C4';
+        c.fillStyle = '#ECEFF1';
         c.lineWidth = 2;
-        c.strokeStyle = '#FFF176';
+        c.strokeStyle = '#B0BEC5';
 
         c.beginPath();
         c.moveTo(0.1 * canvas.width, 0.6 * canvas.height);
         c.lineTo(0.2 * canvas.width, 0.4 * canvas.height);
         c.lineTo(0.6 * canvas.width, 0.1 * canvas.height);
         c.lineTo(0.85 * canvas.width, 0.15 * canvas.height);
-        c.lineTo(0.9 * canvas.width, 0.5 * canvas.height);
+        c.lineTo(0.95 * canvas.width, 0.5 * canvas.height);
         c.lineTo(0.8 * canvas.width, 0.7 * canvas.height);
         c.lineTo(0.6 * canvas.width, 0.8 * canvas.height);
         c.closePath();
@@ -238,22 +268,25 @@ function loadAllOrders() {
 
         for (var i = 0; i < data.cities.length; i++) {
             var city = data.cities[i],
-                size = 14,
-                radius = 20;
+                radius = city.name.length * 5;
 
             if (i === 0) {
-                radius = 30;
-                size = 18;
+                c.font = '16px sans-serif';
+                radius = city.name.length * 6;
+            } else {
+                c.font = '11px sans-serif';
             }
 
             c.beginPath();
-            c.fillStyle = 'rgba(255, 255, 255, 0.7)';
+            c.fillStyle = 'rgba(255, 255, 255, 1)';
+            c.lineWidth = 1;
+            c.strokeStyle = 'rgb(55, 85, 155)';
             // c.fillStyle = '#FFF9C4';
             c.arc(city.x * canvas.width, city.y * canvas.height, radius, 0, Math.PI * 2);
             c.fill();
+            c.stroke();
             c.textAlign = 'center';
             c.textBaseline = 'middle';
-            c.font = size + 'px sans-serif';
             c.fillStyle = '#000';
             c.fillText(city.name, city.x * canvas.width, city.y * canvas.height);
             c.closePath();
@@ -269,7 +302,7 @@ function loadAllOrders() {
             orders = data.orders;
 
         str += '<table>';
-        str += '<tr><td>id</td><td>Заказчик</td><td>Пункт назначения</td><td>Сопровождение</td><td>Дата открытия заказа</td><td>Дата закрытия заказа</td></tr>';
+        str += '<tr><td>id</td><td>Заказчик</td><td>Груз</td><td>Пункт назначения</td><td>Водитель</td><td>Сопровождение</td><td>Дата открытия заказа</td><td>Дата закрытия заказа</td></tr>';
         for (var i = 0; i < orders.length; i++) {
         // for (var i = 0; i < 5; i++) {
             var order = orders[i];
@@ -277,12 +310,12 @@ function loadAllOrders() {
             str += '<tr>';
             str += '<td>' + order.id + '</td>';
             str += '<td>' + data.customers[order.customerId].name + '</td>';
+            str += '<td>' + data.cargoes[order.cargoId].name + '</td>';
             str += '<td>' + data.cities[order.cityId].name + '</td>';
+            str += '<td>' + data.drivers[order.driverId].name + '</td>';
             str += '<td>';
             for (var j = 0; j < order.couriersId.length; j++) {
-                var courier = data.couriers[order.couriersId[j]];
-
-                str += '<p>' + courier.name + '</p>';
+                str += '<p>' + data.couriers[order.couriersId[j]].name + '</p>';
             }
             str += '</td>';
             str += '<td>' + new Date(order.startDate).toLocaleString() + '</td>';

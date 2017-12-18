@@ -13,13 +13,12 @@
 </head>
 <body>
     <header>
-        <button onclick="createData(10);">Сгенерировать данные</button>
-        <button onclick="saveData(data, 'data.json', 'application/json');">Сохранить данные</button>
-        <button onclick="loadData();">Загрузить JSON</button>
         <button onclick="loadAllOrders();">Посмотреть все заказы</button>
+        <button onclick="saveData(data, 'data.json', 'application/json');">Сохранить данные</button>
+        <button onclick="createData(10);">Сгенерировать данные</button>
+        <button onclick="loadData();">Загрузить JSON</button>
     </header>
     <div class="main">
-        <!-- <button onclick="loadAllOrders();">Посмотреть все заказы</button> -->
         <div id="output">
             <div id="h"></div>
             <div id="divCanvas"></div>
