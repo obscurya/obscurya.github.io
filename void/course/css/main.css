@@ -61,17 +61,23 @@ header button:hover {
 #table {
     width: 100%;
     margin-top: 30px;
-    /* overflow-x: auto; */
-    /* border: 1px solid #eee; */
+}
+
+#table h2 {
+    text-align: center;
+    font-weight: normal;
+    margin: 20px 0px;
 }
 
 table {
+    border: 1px solid #eee;
     /* table-layout: fixed; */
     font-size: 12px;
-    /* display: block; */
+    display: block;
     width: 100%;
     border-collapse: collapse;
     white-space: nowrap;
+    overflow-x: auto;
 }
 
 table tr td {

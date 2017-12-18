@@ -384,32 +384,38 @@ function loadAllOrders() {
         var str = '',
             orders = data.orders;
 
-        str += '<table>';
-        str += '<tr><td>id</td><td>Заказчик</td><td>Цена, руб.</td><td>Груз</td><td>Упаковка</td><td>Размеры, см</td><td>Вес, кг</td><td>Пункт назначения</td><td>Водитель</td><td>Сопровождение</td><td>Дата открытия заказа</td><td>Дата закрытия заказа</td></tr>';
-        for (var i = 0; i < orders.length; i++) {
-        // for (var i = 0; i < 5; i++) {
-            var order = orders[i];
+        for (var y = 2017; y > 2014; y--) {
+            str += '<h2>' + y + '</h2>';
+            str += '<table>';
+            str += '<tr><td>id</td><td>Заказчик</td><td>Цена, руб.</td><td>Груз</td><td>Упаковка</td><td>Размеры, см</td><td>Вес, кг</td><td>Пункт назначения</td><td>Водитель</td><td>Сопровождение</td><td>Дата открытия заказа</td><td>Дата закрытия заказа</td></tr>';
+            for (var i = 0; i < orders.length; i++) {
+                var d = new Date(orders[i].startDate);
 
-            str += '<tr>';
-            str += '<td>' + order.id + '</td>';
-            str += '<td>' + data.customers[order.customerId].name + '</td>';
-            str += '<td>' + order.price.toFixed(2) + '</td>';
-            str += '<td>' + data.cargoes[order.cargoId].name + '</td>';
-            str += '<td>' + data.packages[order.packageId].name + '</td>';
-            str += '<td>' + order.size + '</td>';
-            str += '<td>' + order.weight.toFixed(3) + '</td>';
-            str += '<td>' + data.cities[order.cityId].name + '</td>';
-            str += '<td>' + data.drivers[order.driverId].name + '</td>';
-            str += '<td>';
-            for (var j = 0; j < order.couriersId.length; j++) {
-                str += '<p>' + data.couriers[order.couriersId[j]].name + '</p>';
+                if (d.getFullYear() == y) {
+                    var order = orders[i];
+
+                    str += '<tr>';
+                    str += '<td>' + order.id + '</td>';
+                    str += '<td>' + data.customers[order.customerId].name + '</td>';
+                    str += '<td>' + order.price.toFixed(2) + '</td>';
+                    str += '<td>' + data.cargoes[order.cargoId].name + '</td>';
+                    str += '<td>' + data.packages[order.packageId].name + '</td>';
+                    str += '<td>' + order.size + '</td>';
+                    str += '<td>' + order.weight.toFixed(3) + '</td>';
+                    str += '<td>' + data.cities[order.cityId].name + '</td>';
+                    str += '<td>' + data.drivers[order.driverId].name + '</td>';
+                    str += '<td>';
+                    for (var j = 0; j < order.couriersId.length; j++) {
+                        str += '<p>' + data.couriers[order.couriersId[j]].name + '</p>';
+                    }
+                    str += '</td>';
+                    str += '<td>' + new Date(order.startDate).toLocaleString() + '</td>';
+                    str += '<td>' + new Date(order.endDate).toLocaleString() + '</td>';
+                    str += '</tr>';
+                }
             }
-            str += '</td>';
-            str += '<td>' + new Date(order.startDate).toLocaleString() + '</td>';
-            str += '<td>' + new Date(order.endDate).toLocaleString() + '</td>';
-            str += '</tr>';
+            str += '</table>';
         }
-        str += '</table>';
 
         table.innerHTML = str;
         // preJSON.innerHTML = JSON.stringify(data.orders, null, 4);
