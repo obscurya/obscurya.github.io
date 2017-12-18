@@ -458,7 +458,7 @@ function analysis(year) {
     $.getJSON(path + 'data.json', function (json) {
         data = json;
 
-        h.innerHTML = '<h1>Анализ ресурсов</h1><h2>Затраченные ресурсы на обслуживание транспорта в ' + year + ' году</h2>';
+        h.innerHTML = '<h1>Анализ ресурсов за ' + year + ' год</h1>';
         divCanvas.innerHTML = '<canvas id="canvas"></canvas>';
 
         var canvas = document.getElementById('canvas'),
@@ -578,6 +578,7 @@ function analysis(year) {
 
         var str = '';
 
+        str += '<h2>Затраченные ресурсы на обслуживание транспорта</h2>';
         str += '<table>';
         str += '<tr><td>Цвет</td><td>Транспорт</td><td>Стоимость, руб.</td></tr>';
         for (var i = 0; i < cars.length; i++) {
@@ -615,6 +616,7 @@ function analysis(year) {
             packages.push(new Package(j, size));
         }
 
+        str += '<h2>Затраченные ресурсы на упаковочные материалы</h2>';
         str += '<table>';
         str += '<tr><td>Упаковка</td><td>Средний размер, см</td><td>Стоимость, руб.</td></tr>';
         for (var i = 0; i < packages.length; i++) {
