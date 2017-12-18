@@ -27,6 +27,13 @@ function randomDate(startDate, endDate) {
     return Date.parse(date);
 }
 
+function calculatePrice(data, cargoId, weight, cityId, couriersNumber) {
+    var ratio = data.cargoes[cargoId].ratio,
+        distance = data.cities[cityId].distance;
+
+    return ratio * 10 + weight * 100 + distance * 2 + couriersNumber * 10;
+}
+
 // сохранение всех данных
 function saveData(data, fileName, type) {
     data = JSON.stringify(data, null, 4);
@@ -61,11 +68,12 @@ function createData(length) {
         this.age = age;
     }
 
-    function City(id, name, x, y) {
+    function City(id, name, x, y, distance) {
         this.id = id;
         this.name = name;
         this.x = x;
         this.y = y;
+        this.distance = distance;
     }
 
     function Courier(id, name, phone) {
@@ -74,18 +82,21 @@ function createData(length) {
         this.phone = phone;
     }
 
-    function Cargo(id, name) {
+    function Cargo(id, name, ratio) {
         this.id = id;
         this.name = name;
+        this.ratio = ratio;
     }
 
-    function Order(id, customerId, cargoId, cityId, couriersId, driverId, startDate, endDate) {
+    function Order(id, customerId, cargoId, cityId, couriersId, driverId, weight, price, startDate, endDate) {
         this.id = id;
         this.customerId = customerId;
         this.cargoId = cargoId;
         this.cityId = cityId;
         this.couriersId = couriersId;
         this.driverId = driverId;
+        this.weight = weight;
+        this.price = price;
         this.startDate = startDate;
         this.endDate = endDate;
     }
@@ -118,9 +129,10 @@ function createData(length) {
             var id = i,
                 name = cities[i].name,
                 x = cities[i].x,
-                y = cities[i].y;
+                y = cities[i].y,
+                distance = cities[i].distance;
 
-            data.cities.push(new City(id, name, x, y));
+            data.cities.push(new City(id, name, x, y, distance));
         }
 
         for (var i = 0; i < couriers.length; i++) {
@@ -141,20 +153,31 @@ function createData(length) {
 
         for (var i = 0; i < cargoes.length; i++) {
             var id = i,
-                name = cargoes[i];
+                name = cargoes[i].name,
+                ratio = cargoes[i].ratio;
 
-            data.cargoes.push(new Cargo(id, name));
+            data.cargoes.push(new Cargo(id, name, ratio));
         }
 
         for (var i = 0; i < length * 10; i++) {
             var id = i,
                 customerId = data.customers[random(0, data.customers.length - 1)].id,
                 cargoId = data.cargoes[random(0, data.cargoes.length - 1)].id,
+                weight = 0,
                 cityId = data.cities[random(1, data.cities.length - 1)].id,
                 couriersId = [],
                 driverId = data.drivers[random(0, data.drivers.length - 1)].id,
                 startDate = randomDate(new Date(2015, 0, 1), new Date()),
-                endDate = randomDate(new Date(startDate), new Date(startDate + 5 * 24 * 60 * 60 * 1000));
+                endDate = randomDate(new Date(startDate), new Date(startDate + 5 * 24 * 60 * 60 * 1000)),
+                price = 0;
+
+            if (cargoId == 0) {
+                weight = random(1, 250) / 1000;
+            } else if (cargoId == 1) {
+                weight = random(1, 5000) / 1000;
+            } else {
+                weight = random(500, 25000) / 1000;
+            }
 
             for (var j = 0; j < random(1, data.couriers.length / 2); j++) {
                 var courierId = data.couriers[random(0, data.couriers.length - 1)].id;
@@ -166,7 +189,9 @@ function createData(length) {
                 couriersId.push(courierId);
             }
 
-            data.orders.push(new Order(id, customerId, cargoId, cityId, couriersId, driverId, startDate, endDate));
+            price = calculatePrice(data, cargoId, weight, cityId, couriersId.length);
+
+            data.orders.push(new Order(id, customerId, cargoId, cityId, couriersId, driverId, weight, price, startDate, endDate));
         }
 
         saveData(data, 'data.json', 'text/plain');
@@ -185,7 +210,7 @@ function loadAllOrders() {
 
         var lineWidthMax = 10;
 
-        h.innerHTML = '<h1>Просмотр всех заказов</h1>';
+        h.innerHTML = '<h1>Таблица заказов</h1>';
         divCanvas.innerHTML = '<canvas id="canvas"></canvas>';
 
         var canvas = document.getElementById('canvas'),
@@ -218,14 +243,18 @@ function loadAllOrders() {
 
         var sums = [],
             sumMax = 0,
-            sumMin = data.orders.length;
+            sumMin = data.orders.length,
+            money = [],
+            profit = 0;
 
         for (var i = 1; i < data.cities.length; i++) {
-            var sum = 0;
+            var sum = 0,
+                m = 0;
 
             for (var j = 0; j < data.orders.length; j++) {
                 if (data.orders[j].cityId === i) {
                     sum++;
+                    m += data.orders[j].price;
                 }
             }
 
@@ -237,7 +266,10 @@ function loadAllOrders() {
                 sumMin = sum;
             }
 
+            profit += m;
+
             sums.push(sum);
+            money.push(m);
         }
 
         var j = 0;
@@ -260,7 +292,8 @@ function loadAllOrders() {
             c.textAlign = 'left';
             c.textBaseline = 'middle';
             c.font = '14px sans-serif';
-            c.fillText(data.cities[i].name + ' = ' + sums[j] + ' отправлений (' + (sums[j] / data.orders.length * 100).toFixed(2) + '%)', 10, (j + 1) * 20);
+            c.fillText(data.cities[i].name + ' = ' + money[j].toFixed(2) + ' рублей (' + (money[j] / profit * 100).toFixed(2) + '%)', 10, (j + 1) * 20);
+            // c.fillText(data.cities[i].name + ' = ' + sums[j] + ' отправлений (' + (sums[j] / data.orders.length * 100).toFixed(2) + '%)', 10, (j + 1) * 20);
             c.closePath();
 
             j++;
@@ -268,14 +301,24 @@ function loadAllOrders() {
 
         for (var i = 0; i < data.cities.length; i++) {
             var city = data.cities[i],
-                radius = city.name.length * 5;
+                radius = lineWidthMax,
+                left = 0;
+                // radius = city.name.length * 5;
 
             if (i === 0) {
                 c.font = '16px sans-serif';
-                radius = city.name.length * 6;
+                radius *= 1.5;
+                left = 45;
             } else {
-                c.font = '11px sans-serif';
+                c.font = '12px sans-serif';
             }
+
+            // if (i === 0) {
+            //     c.font = '16px sans-serif';
+            //     radius = city.name.length * 6;
+            // } else {
+            //     c.font = '11px sans-serif';
+            // }
 
             c.beginPath();
             c.fillStyle = 'rgba(255, 255, 255, 1)';
@@ -288,7 +331,7 @@ function loadAllOrders() {
             c.textAlign = 'center';
             c.textBaseline = 'middle';
             c.fillStyle = '#000';
-            c.fillText(city.name, city.x * canvas.width, city.y * canvas.height);
+            c.fillText(city.name, city.x * canvas.width - left, city.y * canvas.height - (lineWidthMax * 2.5));
             c.closePath();
         }
 
@@ -302,7 +345,7 @@ function loadAllOrders() {
             orders = data.orders;
 
         str += '<table>';
-        str += '<tr><td>id</td><td>Заказчик</td><td>Груз</td><td>Пункт назначения</td><td>Водитель</td><td>Сопровождение</td><td>Дата открытия заказа</td><td>Дата закрытия заказа</td></tr>';
+        str += '<tr><td>id</td><td>Заказчик</td><td>Цена</td><td>Груз</td><td>Вес</td><td>Пункт назначения</td><td>Водитель</td><td>Сопровождение</td><td>Дата открытия заказа</td><td>Дата закрытия заказа</td></tr>';
         for (var i = 0; i < orders.length; i++) {
         // for (var i = 0; i < 5; i++) {
             var order = orders[i];
@@ -310,7 +353,9 @@ function loadAllOrders() {
             str += '<tr>';
             str += '<td>' + order.id + '</td>';
             str += '<td>' + data.customers[order.customerId].name + '</td>';
+            str += '<td>' + order.price.toFixed(2) + '</td>';
             str += '<td>' + data.cargoes[order.cargoId].name + '</td>';
+            str += '<td>' + order.weight.toFixed(3) + '</td>';
             str += '<td>' + data.cities[order.cityId].name + '</td>';
             str += '<td>' + data.drivers[order.driverId].name + '</td>';
             str += '<td>';

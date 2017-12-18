@@ -66,6 +66,7 @@ header button:hover {
 }
 
 table {
+    /* table-layout: fixed; */
     font-size: 12px;
     /* display: block; */
     width: 100%;

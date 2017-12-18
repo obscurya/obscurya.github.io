@@ -2,53 +2,53 @@
     "customers": [
         {
             "id": 0,
-            "name": "Белозёрова Алина Никитевна",
-            "age": 34
+            "name": "Антонова Синклитикия Аркадьевна",
+            "age": 69
         },
         {
             "id": 1,
-            "name": "Морозов Глеб Агафонович",
+            "name": "Белозёрова Алина Никитевна",
             "age": 31
         },
         {
             "id": 2,
-            "name": "Колесников Игорь Геласьевич",
-            "age": 60
-        },
-        {
-            "id": 3,
-            "name": "Антонова Синклитикия Аркадьевна",
-            "age": 51
-        },
-        {
-            "id": 4,
-            "name": "Иванов Иван Юрьевич",
+            "name": "Колесников Антонин Фролович",
             "age": 70
         },
         {
+            "id": 3,
+            "name": "Колесников Антонин Фролович",
+            "age": 28
+        },
+        {
+            "id": 4,
+            "name": "Васильев Всеволод Вячеславович",
+            "age": 23
+        },
+        {
             "id": 5,
-            "name": "Мишин Василий Мэлорович",
-            "age": 65
+            "name": "Рябов Улеб Иванович",
+            "age": 50
         },
         {
             "id": 6,
-            "name": "Морозов Глеб Агафонович",
-            "age": 60
+            "name": "Шашкова Кира Еремеевна",
+            "age": 67
         },
         {
             "id": 7,
-            "name": "Васильев Всеволод Вячеславович",
-            "age": 33
+            "name": "Маслова Дарья Ефимовна",
+            "age": 42
         },
         {
             "id": 8,
-            "name": "Антонова Синклитикия Аркадьевна",
-            "age": 29
+            "name": "Наумов Митрофан Германович",
+            "age": 20
         },
         {
             "id": 9,
             "name": "Колесников Антонин Фролович",
-            "age": 28
+            "age": 21
         }
     ],
     "cities": [
@@ -56,226 +56,250 @@
             "id": 0,
             "name": "Иваново",
             "x": 0.5,
-            "y": 0.5
+            "y": 0.5,
+            "distance": 0
         },
         {
             "id": 1,
             "name": "Шуя",
             "x": 0.6,
-            "y": 0.6
+            "y": 0.6,
+            "distance": 31.2
         },
         {
             "id": 2,
             "name": "Фурманов",
             "x": 0.52,
-            "y": 0.3
+            "y": 0.3,
+            "distance": 34.8
         },
         {
             "id": 3,
             "name": "Вичуга",
             "x": 0.67,
-            "y": 0.22
+            "y": 0.22,
+            "distance": 72.5
         },
         {
             "id": 4,
             "name": "Кинешма",
             "x": 0.8,
-            "y": 0.25
+            "y": 0.25,
+            "distance": 104.2
         }
     ],
     "couriers": [
         {
             "id": 0,
             "name": "Мамонтов Улеб Ростиславович",
-            "phone": 75085328585
+            "phone": 43307039164
         },
         {
             "id": 1,
             "name": "Тарасов Богдан Анатольевич",
-            "phone": 90401088528
+            "phone": 14623294009
         },
         {
             "id": 2,
             "name": "Андреев Митрофан Павлович",
-            "phone": 91549627542
+            "phone": 32793147156
         },
         {
             "id": 3,
             "name": "Фокин Игнатий Максимович",
-            "phone": 20262011756
+            "phone": 23993878646
         },
         {
             "id": 4,
             "name": "Аксёнов Лукьян Игнатьевич",
-            "phone": 50119020584
+            "phone": 63654699129
         },
         {
             "id": 5,
             "name": "Мишин Артём Фролович",
-            "phone": 55293511131
+            "phone": 32780365129
         },
         {
             "id": 6,
             "name": "Потапов Улеб Ефимович",
-            "phone": 43860289002
+            "phone": 51640519298
         }
     ],
     "drivers": [
         {
             "id": 0,
             "name": "Евсеев Илья Мстиславович",
-            "phone": 86743013382
+            "phone": 74814395558
         },
         {
             "id": 1,
             "name": "Дроздов Евсей Лукьянович",
-            "phone": 25925870178
+            "phone": 77160405667
         },
         {
             "id": 2,
             "name": "Филиппов Владлен Фёдорович",
-            "phone": 72841049707
+            "phone": 23343645389
         }
     ],
     "cargoes": [
         {
             "id": 0,
-            "name": "Наличные деньги"
+            "name": "Наличные деньги",
+            "ratio": 2
         },
         {
             "id": 1,
-            "name": "Ценные бумаги"
+            "name": "Ценные бумаги",
+            "ratio": 1
         },
         {
             "id": 2,
-            "name": "Предметы искусства"
+            "name": "Предметы искусства",
+            "ratio": 4
         },
         {
             "id": 3,
-            "name": "Ювелирные изделия и драгоценности"
+            "name": "Ювелирные изделия и драгоценности",
+            "ratio": 3
         }
     ],
     "orders": [
         {
             "id": 0,
-            "customerId": 8,
-            "cargoId": 1,
-            "cityId": 2,
-            "couriersId": [
-                1,
-                4
-            ],
-            "driverId": 1,
-            "startDate": 1493608586000,
-            "endDate": 1493679988000
-        },
-        {
-            "id": 1,
-            "customerId": 2,
-            "cargoId": 3,
-            "cityId": 2,
-            "couriersId": [
-                6,
-                1,
-                2
-            ],
-            "driverId": 2,
-            "startDate": 1451984622000,
-            "endDate": 1452304238000
-        },
-        {
-            "id": 2,
-            "customerId": 3,
-            "cargoId": 3,
-            "cityId": 4,
-            "couriersId": [
-                5,
-                4,
-                0
-            ],
-            "driverId": 1,
-            "startDate": 1428317732000,
-            "endDate": 1428631626000
-        },
-        {
-            "id": 3,
-            "customerId": 6,
-            "cargoId": 3,
-            "cityId": 1,
-            "couriersId": [
-                0,
-                5
-            ],
-            "driverId": 1,
-            "startDate": 1471537932000,
-            "endDate": 1471831154000
-        },
-        {
-            "id": 4,
-            "customerId": 1,
+            "customerId": 0,
             "cargoId": 2,
             "cityId": 2,
             "couriersId": [
+                6,
                 4,
-                3
-            ],
-            "driverId": 1,
-            "startDate": 1426135035000,
-            "endDate": 1426294520000
-        },
-        {
-            "id": 5,
-            "customerId": 4,
-            "cargoId": 0,
-            "cityId": 4,
-            "couriersId": [
                 0,
                 1
             ],
-            "driverId": 0,
-            "startDate": 1469254544000,
-            "endDate": 1469615845000
+            "driverId": 1,
+            "weight": 15.646,
+            "price": 1714.2,
+            "startDate": 1445891415000,
+            "endDate": 1446018391000
         },
         {
-            "id": 6,
-            "customerId": 3,
+            "id": 1,
+            "customerId": 9,
             "cargoId": 2,
+            "cityId": 1,
+            "couriersId": [
+                1,
+                3
+            ],
+            "driverId": 0,
+            "weight": 5.14,
+            "price": 636.4,
+            "startDate": 1485504550000,
+            "endDate": 1485645638000
+        },
+        {
+            "id": 2,
+            "customerId": 5,
+            "cargoId": 2,
+            "cityId": 2,
+            "couriersId": [
+                6
+            ],
+            "driverId": 2,
+            "weight": 11.033,
+            "price": 1222.8999999999999,
+            "startDate": 1420593319000,
+            "endDate": 1421002743000
+        },
+        {
+            "id": 3,
+            "customerId": 5,
+            "cargoId": 0,
             "cityId": 4,
             "couriersId": [
-                6,
+                5,
+                1,
+                3,
+                0
+            ],
+            "driverId": 1,
+            "weight": 0.056,
+            "price": 274,
+            "startDate": 1480005822000,
+            "endDate": 1480339431000
+        },
+        {
+            "id": 4,
+            "customerId": 3,
+            "cargoId": 1,
+            "cityId": 1,
+            "couriersId": [
+                1
+            ],
+            "driverId": 1,
+            "weight": 3.815,
+            "price": 463.9,
+            "startDate": 1507985893000,
+            "endDate": 1508357736000
+        },
+        {
+            "id": 5,
+            "customerId": 9,
+            "cargoId": 1,
+            "cityId": 2,
+            "couriersId": [
                 2,
                 5
             ],
-            "driverId": 0,
-            "startDate": 1422102545000,
-            "endDate": 1422285038000
+            "driverId": 2,
+            "weight": 2.991,
+            "price": 398.70000000000005,
+            "startDate": 1455734725000,
+            "endDate": 1456166541000
+        },
+        {
+            "id": 6,
+            "customerId": 7,
+            "cargoId": 1,
+            "cityId": 2,
+            "couriersId": [
+                5,
+                4
+            ],
+            "driverId": 1,
+            "weight": 3.703,
+            "price": 469.9,
+            "startDate": 1422285589000,
+            "endDate": 1422456894000
         },
         {
             "id": 7,
-            "customerId": 3,
-            "cargoId": 3,
+            "customerId": 7,
+            "cargoId": 2,
             "cityId": 2,
             "couriersId": [
-                4,
-                5
+                1
             ],
             "driverId": 2,
-            "startDate": 1423112239000,
-            "endDate": 1423364535000
+            "weight": 3.801,
+            "price": 499.70000000000005,
+            "startDate": 1435985841000,
+            "endDate": 1436409031000
         },
         {
             "id": 8,
-            "customerId": 0,
-            "cargoId": 3,
-            "cityId": 4,
+            "customerId": 9,
+            "cargoId": 1,
+            "cityId": 2,
             "couriersId": [
-                1,
-                3,
-                6
+                6,
+                5
             ],
-            "driverId": 1,
-            "startDate": 1454320548000,
-            "endDate": 1454643379000
+            "driverId": 2,
+            "weight": 0.24,
+            "price": 123.6,
+            "startDate": 1471137988000,
+            "endDate": 1471189608000
         },
         {
             "id": 9,
@@ -283,767 +307,877 @@
             "cargoId": 2,
             "cityId": 2,
             "couriersId": [
-                1,
-                5
+                0,
+                6
             ],
-            "driverId": 0,
-            "startDate": 1420348461000,
-            "endDate": 1420691307000
+            "driverId": 2,
+            "weight": 1.563,
+            "price": 285.9,
+            "startDate": 1499439853000,
+            "endDate": 1499751713000
         },
         {
             "id": 10,
-            "customerId": 6,
+            "customerId": 7,
             "cargoId": 1,
-            "cityId": 3,
+            "cityId": 2,
             "couriersId": [
-                1,
                 0,
-                2
+                5,
+                6
             ],
-            "driverId": 2,
-            "startDate": 1500677482000,
-            "endDate": 1500754726000
+            "driverId": 0,
+            "weight": 1.608,
+            "price": 270.4,
+            "startDate": 1495005159000,
+            "endDate": 1495318507000
         },
         {
             "id": 11,
-            "customerId": 3,
-            "cargoId": 1,
+            "customerId": 4,
+            "cargoId": 0,
             "cityId": 3,
+            "couriersId": [
+                6,
+                5
+            ],
+            "driverId": 2,
+            "weight": 0.184,
+            "price": 203.4,
+            "startDate": 1486901890000,
+            "endDate": 1487054684000
+        },
+        {
+            "id": 12,
+            "customerId": 8,
+            "cargoId": 3,
+            "cityId": 3,
+            "couriersId": [
+                5,
+                3,
+                2
+            ],
+            "driverId": 1,
+            "weight": 13.019,
+            "price": 1506.9,
+            "startDate": 1502500737000,
+            "endDate": 1502847687000
+        },
+        {
+            "id": 13,
+            "customerId": 2,
+            "cargoId": 1,
+            "cityId": 2,
+            "couriersId": [
+                6,
+                4
+            ],
+            "driverId": 2,
+            "weight": 3.426,
+            "price": 442.20000000000005,
+            "startDate": 1501426733000,
+            "endDate": 1501493175000
+        },
+        {
+            "id": 14,
+            "customerId": 2,
+            "cargoId": 0,
+            "cityId": 3,
+            "couriersId": [
+                0
+            ],
+            "driverId": 2,
+            "weight": 0.099,
+            "price": 184.9,
+            "startDate": 1478330728000,
+            "endDate": 1478659836000
+        },
+        {
+            "id": 15,
+            "customerId": 8,
+            "cargoId": 2,
+            "cityId": 1,
             "couriersId": [
                 0,
                 2
             ],
             "driverId": 1,
-            "startDate": 1422053636000,
-            "endDate": 1422297068000
-        },
-        {
-            "id": 12,
-            "customerId": 7,
-            "cargoId": 0,
-            "cityId": 1,
-            "couriersId": [
-                3,
-                2,
-                5
-            ],
-            "driverId": 0,
-            "startDate": 1422940255000,
-            "endDate": 1423369558000
-        },
-        {
-            "id": 13,
-            "customerId": 4,
-            "cargoId": 0,
-            "cityId": 1,
-            "couriersId": [
-                1,
-                3
-            ],
-            "driverId": 0,
-            "startDate": 1458599009000,
-            "endDate": 1458892073000
-        },
-        {
-            "id": 14,
-            "customerId": 5,
-            "cargoId": 0,
-            "cityId": 2,
-            "couriersId": [
-                6,
-                1
-            ],
-            "driverId": 2,
-            "startDate": 1482659136000,
-            "endDate": 1483018074000
-        },
-        {
-            "id": 15,
-            "customerId": 0,
-            "cargoId": 3,
-            "cityId": 1,
-            "couriersId": [
-                1,
-                6
-            ],
-            "driverId": 0,
-            "startDate": 1433968694000,
-            "endDate": 1434281492000
+            "weight": 22.14,
+            "price": 2336.4,
+            "startDate": 1429732869000,
+            "endDate": 1430156735000
         },
         {
             "id": 16,
             "customerId": 4,
             "cargoId": 2,
-            "cityId": 2,
-            "couriersId": [
-                5,
-                4
-            ],
-            "driverId": 2,
-            "startDate": 1420414765000,
-            "endDate": 1420458009000
-        },
-        {
-            "id": 17,
-            "customerId": 8,
-            "cargoId": 1,
-            "cityId": 2,
-            "couriersId": [
-                1,
-                4
-            ],
-            "driverId": 2,
-            "startDate": 1469388743000,
-            "endDate": 1469660958000
-        },
-        {
-            "id": 18,
-            "customerId": 9,
-            "cargoId": 0,
-            "cityId": 3,
-            "couriersId": [
-                4,
-                1
-            ],
-            "driverId": 1,
-            "startDate": 1481457119000,
-            "endDate": 1481546913000
-        },
-        {
-            "id": 19,
-            "customerId": 2,
-            "cargoId": 1,
             "cityId": 1,
             "couriersId": [
                 2,
-                5,
-                3
-            ],
-            "driverId": 0,
-            "startDate": 1466744031000,
-            "endDate": 1467088735000
-        },
-        {
-            "id": 20,
-            "customerId": 8,
-            "cargoId": 0,
-            "cityId": 2,
-            "couriersId": [
-                3,
-                0,
-                2
-            ],
-            "driverId": 1,
-            "startDate": 1454644170000,
-            "endDate": 1454844201000
-        },
-        {
-            "id": 21,
-            "customerId": 5,
-            "cargoId": 2,
-            "cityId": 3,
-            "couriersId": [
-                2
-            ],
-            "driverId": 1,
-            "startDate": 1467102270000,
-            "endDate": 1467429839000
-        },
-        {
-            "id": 22,
-            "customerId": 1,
-            "cargoId": 2,
-            "cityId": 4,
-            "couriersId": [
-                2,
-                3
-            ],
-            "driverId": 2,
-            "startDate": 1506809890000,
-            "endDate": 1507158161000
-        },
-        {
-            "id": 23,
-            "customerId": 1,
-            "cargoId": 1,
-            "cityId": 3,
-            "couriersId": [
-                2,
-                3,
-                1,
                 5
             ],
-            "driverId": 0,
-            "startDate": 1492156812000,
-            "endDate": 1492328056000
+            "driverId": 2,
+            "weight": 22.383,
+            "price": 2360.7,
+            "startDate": 1495246575000,
+            "endDate": 1495353953000
         },
         {
-            "id": 24,
-            "customerId": 7,
-            "cargoId": 3,
-            "cityId": 2,
+            "id": 17,
+            "customerId": 2,
+            "cargoId": 2,
+            "cityId": 3,
             "couriersId": [
-                3,
-                6
+                5,
+                1
             ],
             "driverId": 0,
-            "startDate": 1443695038000,
-            "endDate": 1443795232000
+            "weight": 7.688,
+            "price": 973.8,
+            "startDate": 1430260216000,
+            "endDate": 1430398291000
         },
         {
-            "id": 25,
-            "customerId": 8,
-            "cargoId": 1,
-            "cityId": 2,
-            "couriersId": [
-                6
-            ],
-            "driverId": 1,
-            "startDate": 1508896536000,
-            "endDate": 1509163086000
-        },
-        {
-            "id": 26,
+            "id": 18,
             "customerId": 0,
             "cargoId": 2,
             "cityId": 2,
             "couriersId": [
+                6,
+                3,
                 1,
-                5,
-                0,
-                3
+                2
             ],
             "driverId": 1,
-            "startDate": 1504055865000,
-            "endDate": 1504485874000
+            "weight": 13.771,
+            "price": 1526.7,
+            "startDate": 1463690014000,
+            "endDate": 1463988554000
+        },
+        {
+            "id": 19,
+            "customerId": 8,
+            "cargoId": 0,
+            "cityId": 1,
+            "couriersId": [
+                3,
+                4
+            ],
+            "driverId": 0,
+            "weight": 0.019,
+            "price": 104.3,
+            "startDate": 1440047802000,
+            "endDate": 1440292798000
+        },
+        {
+            "id": 20,
+            "customerId": 5,
+            "cargoId": 3,
+            "cityId": 1,
+            "couriersId": [
+                2,
+                1
+            ],
+            "driverId": 0,
+            "weight": 15.901,
+            "price": 1702.5,
+            "startDate": 1429986418000,
+            "endDate": 1430267680000
+        },
+        {
+            "id": 21,
+            "customerId": 3,
+            "cargoId": 1,
+            "cityId": 3,
+            "couriersId": [
+                2,
+                5,
+                4
+            ],
+            "driverId": 2,
+            "weight": 4.346,
+            "price": 619.6,
+            "startDate": 1495437911000,
+            "endDate": 1495746626000
+        },
+        {
+            "id": 22,
+            "customerId": 6,
+            "cargoId": 3,
+            "cityId": 1,
+            "couriersId": [
+                2,
+                3,
+                5
+            ],
+            "driverId": 0,
+            "weight": 11.887,
+            "price": 1311.1000000000001,
+            "startDate": 1466094736000,
+            "endDate": 1466104661000
+        },
+        {
+            "id": 23,
+            "customerId": 9,
+            "cargoId": 0,
+            "cityId": 4,
+            "couriersId": [
+                1,
+                2
+            ],
+            "driverId": 1,
+            "weight": 0.109,
+            "price": 259.3,
+            "startDate": 1463017762000,
+            "endDate": 1463046143000
+        },
+        {
+            "id": 24,
+            "customerId": 9,
+            "cargoId": 0,
+            "cityId": 3,
+            "couriersId": [
+                5
+            ],
+            "driverId": 2,
+            "weight": 0.225,
+            "price": 197.5,
+            "startDate": 1486490187000,
+            "endDate": 1486602778000
+        },
+        {
+            "id": 25,
+            "customerId": 9,
+            "cargoId": 3,
+            "cityId": 2,
+            "couriersId": [
+                1
+            ],
+            "driverId": 0,
+            "weight": 5.686,
+            "price": 678.2,
+            "startDate": 1440361543000,
+            "endDate": 1440582589000
+        },
+        {
+            "id": 26,
+            "customerId": 2,
+            "cargoId": 0,
+            "cityId": 3,
+            "couriersId": [
+                4,
+                6,
+                3
+            ],
+            "driverId": 0,
+            "weight": 0.192,
+            "price": 214.2,
+            "startDate": 1438370165000,
+            "endDate": 1438631452000
         },
         {
             "id": 27,
             "customerId": 9,
-            "cargoId": 3,
+            "cargoId": 2,
             "cityId": 4,
             "couriersId": [
-                1,
-                2,
-                6
+                6,
+                2
             ],
-            "driverId": 1,
-            "startDate": 1429623289000,
-            "endDate": 1429779008000
+            "driverId": 0,
+            "weight": 8.814,
+            "price": 1149.8,
+            "startDate": 1441241105000,
+            "endDate": 1441341841000
         },
         {
             "id": 28,
-            "customerId": 5,
-            "cargoId": 3,
-            "cityId": 3,
+            "customerId": 0,
+            "cargoId": 1,
+            "cityId": 2,
             "couriersId": [
-                4,
-                1,
-                2
+                1
             ],
-            "driverId": 1,
-            "startDate": 1507481366000,
-            "endDate": 1507684692000
+            "driverId": 2,
+            "weight": 3.038,
+            "price": 393.4,
+            "startDate": 1445970483000,
+            "endDate": 1445985586000
         },
         {
             "id": 29,
-            "customerId": 3,
-            "cargoId": 3,
-            "cityId": 2,
+            "customerId": 0,
+            "cargoId": 1,
+            "cityId": 4,
             "couriersId": [
-                3,
-                6
+                2,
+                0,
+                5,
+                1
             ],
             "driverId": 0,
-            "startDate": 1505052896000,
-            "endDate": 1505235965000
+            "weight": 4.258,
+            "price": 684.2,
+            "startDate": 1490584360000,
+            "endDate": 1490819963000
         },
         {
             "id": 30,
-            "customerId": 1,
+            "customerId": 7,
             "cargoId": 1,
-            "cityId": 1,
+            "cityId": 4,
             "couriersId": [
-                6,
-                5,
-                0
+                1,
+                3
             ],
-            "driverId": 0,
-            "startDate": 1427387343000,
-            "endDate": 1427616353000
+            "driverId": 2,
+            "weight": 0.018,
+            "price": 240.20000000000002,
+            "startDate": 1452591162000,
+            "endDate": 1452921804000
         },
         {
             "id": 31,
-            "customerId": 0,
+            "customerId": 1,
             "cargoId": 0,
-            "cityId": 1,
+            "cityId": 3,
             "couriersId": [
                 2,
-                4,
-                6
+                0
             ],
-            "driverId": 0,
-            "startDate": 1495023115000,
-            "endDate": 1495249885000
+            "driverId": 1,
+            "weight": 0.023,
+            "price": 187.3,
+            "startDate": 1492078031000,
+            "endDate": 1492402559000
         },
         {
             "id": 32,
-            "customerId": 2,
-            "cargoId": 3,
+            "customerId": 8,
+            "cargoId": 0,
             "cityId": 1,
             "couriersId": [
+                0,
                 3,
-                1,
-                4
+                6
             ],
-            "driverId": 2,
-            "startDate": 1473326842000,
-            "endDate": 1473659481000
+            "driverId": 1,
+            "weight": 0.134,
+            "price": 125.8,
+            "startDate": 1489216597000,
+            "endDate": 1489531053000
         },
         {
             "id": 33,
-            "customerId": 8,
-            "cargoId": 0,
-            "cityId": 4,
+            "customerId": 4,
+            "cargoId": 3,
+            "cityId": 3,
             "couriersId": [
-                4,
+                2,
+                4
+            ],
+            "driverId": 2,
+            "weight": 10.665,
+            "price": 1261.5,
+            "startDate": 1482884484000,
+            "endDate": 1483310677000
+        },
+        {
+            "id": 34,
+            "customerId": 5,
+            "cargoId": 2,
+            "cityId": 3,
+            "couriersId": [
                 2,
                 0
             ],
             "driverId": 2,
-            "startDate": 1441803925000,
-            "endDate": 1442042204000
-        },
-        {
-            "id": 34,
-            "customerId": 9,
-            "cargoId": 0,
-            "cityId": 1,
-            "couriersId": [
-                3
-            ],
-            "driverId": 1,
-            "startDate": 1496525285000,
-            "endDate": 1496731329000
+            "weight": 15.969,
+            "price": 1801.8999999999999,
+            "startDate": 1490519588000,
+            "endDate": 1490595096000
         },
         {
             "id": 35,
-            "customerId": 2,
-            "cargoId": 3,
-            "cityId": 4,
+            "customerId": 5,
+            "cargoId": 2,
+            "cityId": 2,
             "couriersId": [
-                6,
-                2
+                6
             ],
-            "driverId": 2,
-            "startDate": 1447748998000,
-            "endDate": 1447878954000
+            "driverId": 0,
+            "weight": 23.617,
+            "price": 2481.3,
+            "startDate": 1468102209000,
+            "endDate": 1468529586000
         },
         {
             "id": 36,
-            "customerId": 3,
-            "cargoId": 0,
-            "cityId": 3,
-            "couriersId": [
-                5
-            ],
-            "driverId": 1,
-            "startDate": 1425747500000,
-            "endDate": 1425901409000
-        },
-        {
-            "id": 37,
-            "customerId": 9,
-            "cargoId": 0,
-            "cityId": 1,
-            "couriersId": [
-                5,
-                4
-            ],
-            "driverId": 1,
-            "startDate": 1488166113000,
-            "endDate": 1488315137000
-        },
-        {
-            "id": 38,
-            "customerId": 7,
-            "cargoId": 1,
-            "cityId": 3,
-            "couriersId": [
-                4,
-                3
-            ],
-            "driverId": 1,
-            "startDate": 1505937431000,
-            "endDate": 1506100443000
-        },
-        {
-            "id": 39,
-            "customerId": 8,
-            "cargoId": 1,
-            "cityId": 4,
-            "couriersId": [
-                4,
-                2
-            ],
-            "driverId": 1,
-            "startDate": 1478311894000,
-            "endDate": 1478720848000
-        },
-        {
-            "id": 40,
-            "customerId": 6,
-            "cargoId": 2,
-            "cityId": 2,
-            "couriersId": [
-                5,
-                4,
-                2
-            ],
-            "driverId": 1,
-            "startDate": 1478566849000,
-            "endDate": 1478762582000
-        },
-        {
-            "id": 41,
-            "customerId": 9,
-            "cargoId": 2,
-            "cityId": 3,
-            "couriersId": [
-                2,
-                5,
-                3
-            ],
-            "driverId": 1,
-            "startDate": 1511342097000,
-            "endDate": 1511573566000
-        },
-        {
-            "id": 42,
-            "customerId": 7,
-            "cargoId": 3,
-            "cityId": 2,
-            "couriersId": [
-                5,
-                2,
-                4
-            ],
-            "driverId": 2,
-            "startDate": 1483477195000,
-            "endDate": 1483581556000
-        },
-        {
-            "id": 43,
             "customerId": 5,
             "cargoId": 0,
             "cityId": 1,
             "couriersId": [
+                0,
+                5,
+                4
+            ],
+            "driverId": 0,
+            "weight": 0.039,
+            "price": 116.3,
+            "startDate": 1494031360000,
+            "endDate": 1494208597000
+        },
+        {
+            "id": 37,
+            "customerId": 3,
+            "cargoId": 0,
+            "cityId": 1,
+            "couriersId": [
+                1,
+                3
+            ],
+            "driverId": 0,
+            "weight": 0.079,
+            "price": 110.3,
+            "startDate": 1478585118000,
+            "endDate": 1478592926000
+        },
+        {
+            "id": 38,
+            "customerId": 5,
+            "cargoId": 3,
+            "cityId": 1,
+            "couriersId": [
+                6,
+                0,
+                3,
+                2
+            ],
+            "driverId": 0,
+            "weight": 1.689,
+            "price": 301.3,
+            "startDate": 1428348104000,
+            "endDate": 1428620117000
+        },
+        {
+            "id": 39,
+            "customerId": 4,
+            "cargoId": 2,
+            "cityId": 4,
+            "couriersId": [
                 6
             ],
-            "driverId": 1,
-            "startDate": 1488582259000,
-            "endDate": 1488958950000
+            "driverId": 0,
+            "weight": 23.881,
+            "price": 2646.5,
+            "startDate": 1500515960000,
+            "endDate": 1500748690000
         },
         {
-            "id": 44,
-            "customerId": 8,
-            "cargoId": 0,
-            "cityId": 3,
-            "couriersId": [
-                0
-            ],
-            "driverId": 2,
-            "startDate": 1503260550000,
-            "endDate": 1503549503000
-        },
-        {
-            "id": 45,
+            "id": 40,
             "customerId": 8,
             "cargoId": 3,
             "cityId": 4,
             "couriersId": [
+                6,
+                2,
+                5
+            ],
+            "driverId": 1,
+            "weight": 21.622,
+            "price": 2430.6,
+            "startDate": 1440924504000,
+            "endDate": 1441140156000
+        },
+        {
+            "id": 41,
+            "customerId": 3,
+            "cargoId": 0,
+            "cityId": 4,
+            "couriersId": [
+                4,
                 3
             ],
             "driverId": 1,
-            "startDate": 1513434717000,
-            "endDate": 1513604477000
+            "weight": 0.119,
+            "price": 260.3,
+            "startDate": 1470087698000,
+            "endDate": 1470391365000
+        },
+        {
+            "id": 42,
+            "customerId": 2,
+            "cargoId": 0,
+            "cityId": 2,
+            "couriersId": [
+                4
+            ],
+            "driverId": 2,
+            "weight": 0.155,
+            "price": 115.1,
+            "startDate": 1429871515000,
+            "endDate": 1429943140000
+        },
+        {
+            "id": 43,
+            "customerId": 4,
+            "cargoId": 1,
+            "cityId": 1,
+            "couriersId": [
+                4,
+                1
+            ],
+            "driverId": 1,
+            "weight": 0.206,
+            "price": 113,
+            "startDate": 1444074119000,
+            "endDate": 1444375517000
+        },
+        {
+            "id": 44,
+            "customerId": 2,
+            "cargoId": 1,
+            "cityId": 4,
+            "couriersId": [
+                3,
+                6,
+                2
+            ],
+            "driverId": 0,
+            "weight": 0.144,
+            "price": 262.8,
+            "startDate": 1430873355000,
+            "endDate": 1430924190000
+        },
+        {
+            "id": 45,
+            "customerId": 3,
+            "cargoId": 3,
+            "cityId": 4,
+            "couriersId": [
+                1,
+                2
+            ],
+            "driverId": 0,
+            "weight": 18.3,
+            "price": 2088.4,
+            "startDate": 1498557070000,
+            "endDate": 1498664315000
         },
         {
             "id": 46,
             "customerId": 0,
-            "cargoId": 3,
+            "cargoId": 2,
             "cityId": 1,
             "couriersId": [
-                6,
-                3,
-                0
+                4,
+                2,
+                5
             ],
             "driverId": 2,
-            "startDate": 1459015647000,
-            "endDate": 1459222658000
+            "weight": 1.653,
+            "price": 297.7,
+            "startDate": 1502881607000,
+            "endDate": 1503202589000
         },
         {
             "id": 47,
-            "customerId": 5,
-            "cargoId": 3,
-            "cityId": 2,
-            "couriersId": [
-                4,
-                2
-            ],
-            "driverId": 1,
-            "startDate": 1468977752000,
-            "endDate": 1469334881000
-        },
-        {
-            "id": 48,
-            "customerId": 6,
-            "cargoId": 0,
-            "cityId": 3,
-            "couriersId": [
-                3,
-                6,
-                5
-            ],
-            "driverId": 0,
-            "startDate": 1431827934000,
-            "endDate": 1432023574000
-        },
-        {
-            "id": 49,
-            "customerId": 0,
-            "cargoId": 3,
-            "cityId": 3,
-            "couriersId": [
-                0,
-                1,
-                5,
-                2
-            ],
-            "driverId": 2,
-            "startDate": 1424011658000,
-            "endDate": 1424348073000
-        },
-        {
-            "id": 50,
-            "customerId": 1,
-            "cargoId": 3,
-            "cityId": 4,
-            "couriersId": [
-                5
-            ],
-            "driverId": 2,
-            "startDate": 1450948012000,
-            "endDate": 1451276596000
-        },
-        {
-            "id": 51,
-            "customerId": 1,
-            "cargoId": 0,
-            "cityId": 4,
-            "couriersId": [
-                2,
-                0,
-                5
-            ],
-            "driverId": 0,
-            "startDate": 1453532795000,
-            "endDate": 1453698916000
-        },
-        {
-            "id": 52,
-            "customerId": 1,
-            "cargoId": 3,
-            "cityId": 3,
-            "couriersId": [
-                1,
-                6,
-                4
-            ],
-            "driverId": 1,
-            "startDate": 1464050929000,
-            "endDate": 1464288648000
-        },
-        {
-            "id": 53,
-            "customerId": 5,
-            "cargoId": 1,
-            "cityId": 2,
-            "couriersId": [
-                5
-            ],
-            "driverId": 2,
-            "startDate": 1494374607000,
-            "endDate": 1494581564000
-        },
-        {
-            "id": 54,
-            "customerId": 7,
-            "cargoId": 3,
-            "cityId": 2,
-            "couriersId": [
-                1,
-                6
-            ],
-            "driverId": 1,
-            "startDate": 1444931084000,
-            "endDate": 1444988140000
-        },
-        {
-            "id": 55,
-            "customerId": 4,
-            "cargoId": 3,
-            "cityId": 4,
-            "couriersId": [
-                4
-            ],
-            "driverId": 2,
-            "startDate": 1439672790000,
-            "endDate": 1440050238000
-        },
-        {
-            "id": 56,
             "customerId": 7,
             "cargoId": 2,
             "cityId": 4,
             "couriersId": [
-                5,
-                3
+                4
             ],
-            "driverId": 1,
-            "startDate": 1512577866000,
-            "endDate": 1512896836000
+            "driverId": 2,
+            "weight": 3.922,
+            "price": 650.6,
+            "startDate": 1506210679000,
+            "endDate": 1506562907000
         },
         {
-            "id": 57,
-            "customerId": 2,
+            "id": 48,
+            "customerId": 5,
             "cargoId": 1,
             "cityId": 4,
             "couriersId": [
                 6,
+                3
+            ],
+            "driverId": 1,
+            "weight": 1.94,
+            "price": 432.4,
+            "startDate": 1432045700000,
+            "endDate": 1432354777000
+        },
+        {
+            "id": 49,
+            "customerId": 6,
+            "cargoId": 1,
+            "cityId": 4,
+            "couriersId": [
+                5,
+                0
+            ],
+            "driverId": 1,
+            "weight": 2.405,
+            "price": 478.9,
+            "startDate": 1510635827000,
+            "endDate": 1510830225000
+        },
+        {
+            "id": 50,
+            "customerId": 5,
+            "cargoId": 1,
+            "cityId": 1,
+            "couriersId": [
+                0,
                 5
             ],
+            "driverId": 0,
+            "weight": 1.14,
+            "price": 206.39999999999998,
+            "startDate": 1456122965000,
+            "endDate": 1456305662000
+        },
+        {
+            "id": 51,
+            "customerId": 4,
+            "cargoId": 0,
+            "cityId": 1,
+            "couriersId": [
+                5,
+                4
+            ],
+            "driverId": 0,
+            "weight": 0.166,
+            "price": 119,
+            "startDate": 1469065211000,
+            "endDate": 1469217256000
+        },
+        {
+            "id": 52,
+            "customerId": 0,
+            "cargoId": 0,
+            "cityId": 1,
+            "couriersId": [
+                3,
+                4
+            ],
+            "driverId": 0,
+            "weight": 0.218,
+            "price": 124.19999999999999,
+            "startDate": 1439494907000,
+            "endDate": 1439533216000
+        },
+        {
+            "id": 53,
+            "customerId": 3,
+            "cargoId": 0,
+            "cityId": 3,
+            "couriersId": [
+                1,
+                0
+            ],
+            "driverId": 1,
+            "weight": 0.093,
+            "price": 194.3,
+            "startDate": 1456530328000,
+            "endDate": 1456634211000
+        },
+        {
+            "id": 54,
+            "customerId": 4,
+            "cargoId": 2,
+            "cityId": 4,
+            "couriersId": [
+                6,
+                2
+            ],
             "driverId": 2,
-            "startDate": 1457793511000,
-            "endDate": 1457956671000
+            "weight": 11.06,
+            "price": 1374.4,
+            "startDate": 1499179975000,
+            "endDate": 1499217870000
+        },
+        {
+            "id": 55,
+            "customerId": 2,
+            "cargoId": 1,
+            "cityId": 1,
+            "couriersId": [
+                4,
+                1
+            ],
+            "driverId": 1,
+            "weight": 1.529,
+            "price": 245.29999999999998,
+            "startDate": 1439767753000,
+            "endDate": 1440108650000
+        },
+        {
+            "id": 56,
+            "customerId": 5,
+            "cargoId": 2,
+            "cityId": 2,
+            "couriersId": [
+                5,
+                6,
+                4
+            ],
+            "driverId": 2,
+            "weight": 14.994,
+            "price": 1639,
+            "startDate": 1513545772000,
+            "endDate": 1513797932000
+        },
+        {
+            "id": 57,
+            "customerId": 5,
+            "cargoId": 0,
+            "cityId": 1,
+            "couriersId": [
+                3,
+                4
+            ],
+            "driverId": 2,
+            "weight": 0.019,
+            "price": 104.3,
+            "startDate": 1424167818000,
+            "endDate": 1424445467000
         },
         {
             "id": 58,
             "customerId": 8,
-            "cargoId": 1,
-            "cityId": 1,
+            "cargoId": 0,
+            "cityId": 2,
             "couriersId": [
-                0,
+                2,
                 1
             ],
-            "driverId": 2,
-            "startDate": 1471368610000,
-            "endDate": 1471546004000
+            "driverId": 0,
+            "weight": 0.056,
+            "price": 115.19999999999999,
+            "startDate": 1479501768000,
+            "endDate": 1479630688000
         },
         {
             "id": 59,
-            "customerId": 7,
-            "cargoId": 0,
-            "cityId": 1,
+            "customerId": 2,
+            "cargoId": 3,
+            "cityId": 3,
             "couriersId": [
-                1,
-                2,
-                5
+                4,
+                1
             ],
-            "driverId": 1,
-            "startDate": 1434658962000,
-            "endDate": 1434867460000
+            "driverId": 2,
+            "weight": 13.585,
+            "price": 1553.5,
+            "startDate": 1431836300000,
+            "endDate": 1431837473000
         },
         {
             "id": 60,
             "customerId": 4,
-            "cargoId": 0,
+            "cargoId": 2,
             "cityId": 1,
             "couriersId": [
-                4
+                2,
+                1
             ],
-            "driverId": 2,
-            "startDate": 1476977200000,
-            "endDate": 1477381103000
+            "driverId": 1,
+            "weight": 21.927,
+            "price": 2315.1,
+            "startDate": 1461250034000,
+            "endDate": 1461498905000
         },
         {
             "id": 61,
             "customerId": 0,
-            "cargoId": 1,
-            "cityId": 2,
+            "cargoId": 0,
+            "cityId": 3,
             "couriersId": [
-                3,
-                5
+                0,
+                6
             ],
-            "driverId": 2,
-            "startDate": 1437099408000,
-            "endDate": 1437430715000
+            "driverId": 0,
+            "weight": 0.025,
+            "price": 187.5,
+            "startDate": 1471314951000,
+            "endDate": 1471356789000
         },
         {
             "id": 62,
             "customerId": 3,
-            "cargoId": 1,
-            "cityId": 3,
+            "cargoId": 0,
+            "cityId": 1,
             "couriersId": [
                 2,
-                1,
-                6
+                0
             ],
             "driverId": 2,
-            "startDate": 1478017499000,
-            "endDate": 1478409204000
+            "weight": 0.126,
+            "price": 115,
+            "startDate": 1424123134000,
+            "endDate": 1424213089000
         },
         {
             "id": 63,
-            "customerId": 0,
-            "cargoId": 2,
-            "cityId": 1,
+            "customerId": 3,
+            "cargoId": 1,
+            "cityId": 3,
             "couriersId": [
                 1,
-                3
+                5
             ],
-            "driverId": 0,
-            "startDate": 1450370625000,
-            "endDate": 1450521174000
+            "driverId": 2,
+            "weight": 0.641,
+            "price": 239.1,
+            "startDate": 1486671892000,
+            "endDate": 1486848199000
         },
         {
             "id": 64,
-            "customerId": 9,
-            "cargoId": 2,
-            "cityId": 3,
+            "customerId": 4,
+            "cargoId": 1,
+            "cityId": 4,
             "couriersId": [
-                4,
-                3
+                6
             ],
-            "driverId": 0,
-            "startDate": 1513010884000,
-            "endDate": 1513326220000
+            "driverId": 2,
+            "weight": 4.298,
+            "price": 658.2,
+            "startDate": 1482820644000,
+            "endDate": 1482951244000
         },
         {
             "id": 65,
             "customerId": 5,
-            "cargoId": 0,
-            "cityId": 3,
+            "cargoId": 2,
+            "cityId": 4,
             "couriersId": [
-                6,
-                4
+                2,
+                5
             ],
-            "driverId": 1,
-            "startDate": 1493762829000,
-            "endDate": 1493800563000
+            "driverId": 2,
+            "weight": 1.268,
+            "price": 395.20000000000005,
+            "startDate": 1496126469000,
+            "endDate": 1496482993000
         },
         {
             "id": 66,
-            "customerId": 1,
-            "cargoId": 3,
-            "cityId": 3,
+            "customerId": 0,
+            "cargoId": 0,
+            "cityId": 2,
             "couriersId": [
-                6,
-                1
+                2,
+                5
             ],
-            "driverId": 1,
-            "startDate": 1431768601000,
-            "endDate": 1431837424000
+            "driverId": 2,
+            "weight": 0.174,
+            "price": 127,
+            "startDate": 1449369145000,
+            "endDate": 1449410054000
         },
         {
             "id": 67,
@@ -1051,50 +1185,57 @@
             "cargoId": 0,
             "cityId": 4,
             "couriersId": [
-                5
+                2,
+                6
             ],
-            "driverId": 1,
-            "startDate": 1426302391000,
-            "endDate": 1426596678000
+            "driverId": 0,
+            "weight": 0.138,
+            "price": 262.2,
+            "startDate": 1503999048000,
+            "endDate": 1504377600000
         },
         {
             "id": 68,
-            "customerId": 4,
-            "cargoId": 0,
+            "customerId": 7,
+            "cargoId": 3,
             "cityId": 1,
             "couriersId": [
-                0,
-                3,
                 5
             ],
-            "driverId": 2,
-            "startDate": 1445946711000,
-            "endDate": 1446321016000
+            "driverId": 1,
+            "weight": 17.614,
+            "price": 1863.8000000000002,
+            "startDate": 1455342011000,
+            "endDate": 1455600671000
         },
         {
             "id": 69,
-            "customerId": 0,
+            "customerId": 9,
             "cargoId": 1,
-            "cityId": 4,
+            "cityId": 2,
             "couriersId": [
-                1,
-                0
+                5,
+                1
             ],
-            "driverId": 0,
-            "startDate": 1491041132000,
-            "endDate": 1491192648000
+            "driverId": 1,
+            "weight": 0.499,
+            "price": 149.5,
+            "startDate": 1499777858000,
+            "endDate": 1499894028000
         },
         {
             "id": 70,
-            "customerId": 1,
-            "cargoId": 1,
-            "cityId": 4,
+            "customerId": 2,
+            "cargoId": 0,
+            "cityId": 1,
             "couriersId": [
-                2
+                1
             ],
             "driverId": 2,
-            "startDate": 1454674744000,
-            "endDate": 1454959344000
+            "weight": 0.013,
+            "price": 93.7,
+            "startDate": 1454595197000,
+            "endDate": 1454604899000
         },
         {
             "id": 71,
@@ -1102,375 +1243,443 @@
             "cargoId": 2,
             "cityId": 1,
             "couriersId": [
-                3,
-                4
-            ],
-            "driverId": 0,
-            "startDate": 1455694342000,
-            "endDate": 1456056882000
-        },
-        {
-            "id": 72,
-            "customerId": 8,
-            "cargoId": 3,
-            "cityId": 4,
-            "couriersId": [
-                4
-            ],
-            "driverId": 1,
-            "startDate": 1456118350000,
-            "endDate": 1456521311000
-        },
-        {
-            "id": 73,
-            "customerId": 7,
-            "cargoId": 0,
-            "cityId": 4,
-            "couriersId": [
-                1,
-                3
-            ],
-            "driverId": 1,
-            "startDate": 1469577114000,
-            "endDate": 1469786701000
-        },
-        {
-            "id": 74,
-            "customerId": 7,
-            "cargoId": 2,
-            "cityId": 3,
-            "couriersId": [
-                2,
-                1,
-                0
-            ],
-            "driverId": 1,
-            "startDate": 1425140207000,
-            "endDate": 1425511313000
-        },
-        {
-            "id": 75,
-            "customerId": 7,
-            "cargoId": 3,
-            "cityId": 1,
-            "couriersId": [
-                2
-            ],
-            "driverId": 1,
-            "startDate": 1496140425000,
-            "endDate": 1496298235000
-        },
-        {
-            "id": 76,
-            "customerId": 1,
-            "cargoId": 3,
-            "cityId": 4,
-            "couriersId": [
-                3,
-                1,
-                2
-            ],
-            "driverId": 0,
-            "startDate": 1486888061000,
-            "endDate": 1486980900000
-        },
-        {
-            "id": 77,
-            "customerId": 8,
-            "cargoId": 1,
-            "cityId": 1,
-            "couriersId": [
-                6,
-                5
-            ],
-            "driverId": 0,
-            "startDate": 1423464829000,
-            "endDate": 1423884973000
-        },
-        {
-            "id": 78,
-            "customerId": 1,
-            "cargoId": 3,
-            "cityId": 3,
-            "couriersId": [
-                4
-            ],
-            "driverId": 1,
-            "startDate": 1445326618000,
-            "endDate": 1445588440000
-        },
-        {
-            "id": 79,
-            "customerId": 1,
-            "cargoId": 0,
-            "cityId": 3,
-            "couriersId": [
                 4,
                 5
             ],
             "driverId": 1,
-            "startDate": 1435633165000,
-            "endDate": 1435863982000
+            "weight": 4.137,
+            "price": 536.0999999999999,
+            "startDate": 1453037199000,
+            "endDate": 1453392660000
         },
         {
-            "id": 80,
+            "id": 72,
             "customerId": 1,
-            "cargoId": 2,
+            "cargoId": 0,
             "cityId": 2,
             "couriersId": [
                 3,
                 0,
-                1
+                2
+            ],
+            "driverId": 0,
+            "weight": 0.15,
+            "price": 134.6,
+            "startDate": 1486556442000,
+            "endDate": 1486649046000
+        },
+        {
+            "id": 73,
+            "customerId": 0,
+            "cargoId": 3,
+            "cityId": 4,
+            "couriersId": [
+                2,
+                4
             ],
             "driverId": 2,
-            "startDate": 1434182900000,
-            "endDate": 1434360646000
+            "weight": 6.881,
+            "price": 946.5,
+            "startDate": 1493565396000,
+            "endDate": 1493746779000
         },
         {
-            "id": 81,
-            "customerId": 0,
-            "cargoId": 0,
-            "cityId": 1,
-            "couriersId": [
-                0
-            ],
-            "driverId": 0,
-            "startDate": 1453026880000,
-            "endDate": 1453207401000
-        },
-        {
-            "id": 82,
-            "customerId": 8,
-            "cargoId": 0,
-            "cityId": 3,
-            "couriersId": [
-                4,
-                5,
-                1
-            ],
-            "driverId": 0,
-            "startDate": 1470812892000,
-            "endDate": 1471027190000
-        },
-        {
-            "id": 83,
-            "customerId": 9,
-            "cargoId": 1,
-            "cityId": 3,
-            "couriersId": [
-                3,
-                0
-            ],
-            "driverId": 0,
-            "startDate": 1481575437000,
-            "endDate": 1481597762000
-        },
-        {
-            "id": 84,
+            "id": 74,
             "customerId": 2,
-            "cargoId": 0,
+            "cargoId": 3,
             "cityId": 2,
+            "couriersId": [
+                1,
+                0,
+                5
+            ],
+            "driverId": 1,
+            "weight": 14.958,
+            "price": 1625.3999999999999,
+            "startDate": 1485081093000,
+            "endDate": 1485441006000
+        },
+        {
+            "id": 75,
+            "customerId": 6,
+            "cargoId": 1,
+            "cityId": 4,
+            "couriersId": [
+                5
+            ],
+            "driverId": 0,
+            "weight": 0.518,
+            "price": 280.2,
+            "startDate": 1477399017000,
+            "endDate": 1477667630000
+        },
+        {
+            "id": 76,
+            "customerId": 3,
+            "cargoId": 3,
+            "cityId": 3,
+            "couriersId": [
+                2,
+                0,
+                6,
+                5
+            ],
+            "driverId": 1,
+            "weight": 2.596,
+            "price": 474.6,
+            "startDate": 1447238522000,
+            "endDate": 1447533335000
+        },
+        {
+            "id": 77,
+            "customerId": 3,
+            "cargoId": 3,
+            "cityId": 4,
             "couriersId": [
                 5,
                 3
             ],
             "driverId": 2,
-            "startDate": 1509092752000,
-            "endDate": 1509283216000
+            "weight": 24.242,
+            "price": 2682.6000000000004,
+            "startDate": 1511193106000,
+            "endDate": 1511555594000
         },
         {
-            "id": 85,
+            "id": 78,
             "customerId": 6,
-            "cargoId": 3,
-            "cityId": 1,
-            "couriersId": [
-                4,
-                1
-            ],
-            "driverId": 2,
-            "startDate": 1509272079000,
-            "endDate": 1509585220000
-        },
-        {
-            "id": 86,
-            "customerId": 7,
-            "cargoId": 1,
-            "cityId": 4,
-            "couriersId": [
-                1,
-                2
-            ],
-            "driverId": 0,
-            "startDate": 1427702156000,
-            "endDate": 1427753048000
-        },
-        {
-            "id": 87,
-            "customerId": 0,
-            "cargoId": 3,
-            "cityId": 2,
-            "couriersId": [
-                0
-            ],
-            "driverId": 2,
-            "startDate": 1442855409000,
-            "endDate": 1442984882000
-        },
-        {
-            "id": 88,
-            "customerId": 0,
             "cargoId": 2,
-            "cityId": 4,
+            "cityId": 2,
             "couriersId": [
                 5,
-                4,
                 2
             ],
             "driverId": 2,
-            "startDate": 1469572896000,
-            "endDate": 1469834969000
+            "weight": 21.373,
+            "price": 2266.9,
+            "startDate": 1494019618000,
+            "endDate": 1494134084000
         },
         {
-            "id": 89,
-            "customerId": 6,
+            "id": 79,
+            "customerId": 2,
             "cargoId": 2,
-            "cityId": 4,
-            "couriersId": [
-                1,
-                4,
-                0
-            ],
-            "driverId": 0,
-            "startDate": 1452659446000,
-            "endDate": 1452978556000
-        },
-        {
-            "id": 90,
-            "customerId": 6,
-            "cargoId": 3,
             "cityId": 1,
             "couriersId": [
-                3,
-                2
-            ],
-            "driverId": 0,
-            "startDate": 1492880487000,
-            "endDate": 1492913423000
-        },
-        {
-            "id": 91,
-            "customerId": 0,
-            "cargoId": 2,
-            "cityId": 2,
-            "couriersId": [
-                0
-            ],
-            "driverId": 1,
-            "startDate": 1451207476000,
-            "endDate": 1451264735000
-        },
-        {
-            "id": 92,
-            "customerId": 9,
-            "cargoId": 1,
-            "cityId": 4,
-            "couriersId": [
-                4,
-                2,
-                1,
+                0,
                 5
             ],
             "driverId": 0,
-            "startDate": 1496238059000,
-            "endDate": 1496591479000
+            "weight": 15.553,
+            "price": 1677.7000000000003,
+            "startDate": 1510671036000,
+            "endDate": 1510709576000
         },
         {
-            "id": 93,
-            "customerId": 8,
+            "id": 80,
+            "customerId": 6,
             "cargoId": 1,
-            "cityId": 4,
+            "cityId": 3,
+            "couriersId": [
+                0,
+                4,
+                5
+            ],
+            "driverId": 2,
+            "weight": 1.437,
+            "price": 328.70000000000005,
+            "startDate": 1480311127000,
+            "endDate": 1480328688000
+        },
+        {
+            "id": 81,
+            "customerId": 8,
+            "cargoId": 3,
+            "cityId": 1,
+            "couriersId": [
+                2,
+                4,
+                5
+            ],
+            "driverId": 2,
+            "weight": 1.768,
+            "price": 299.2,
+            "startDate": 1466359709000,
+            "endDate": 1466698898000
+        },
+        {
+            "id": 82,
+            "customerId": 2,
+            "cargoId": 0,
+            "cityId": 1,
+            "couriersId": [
+                0,
+                4,
+                6
+            ],
+            "driverId": 2,
+            "weight": 0.245,
+            "price": 136.9,
+            "startDate": 1422529753000,
+            "endDate": 1422778453000
+        },
+        {
+            "id": 83,
+            "customerId": 3,
+            "cargoId": 2,
+            "cityId": 3,
             "couriersId": [
                 5,
-                1,
+                1
+            ],
+            "driverId": 1,
+            "weight": 23.137,
+            "price": 2518.7,
+            "startDate": 1444317371000,
+            "endDate": 1444511847000
+        },
+        {
+            "id": 84,
+            "customerId": 5,
+            "cargoId": 0,
+            "cityId": 2,
+            "couriersId": [
+                5
+            ],
+            "driverId": 0,
+            "weight": 0.031,
+            "price": 102.69999999999999,
+            "startDate": 1502321231000,
+            "endDate": 1502606334000
+        },
+        {
+            "id": 85,
+            "customerId": 8,
+            "cargoId": 1,
+            "cityId": 2,
+            "couriersId": [
+                0,
+                4,
+                5
+            ],
+            "driverId": 2,
+            "weight": 2.966,
+            "price": 406.20000000000005,
+            "startDate": 1476201224000,
+            "endDate": 1476327290000
+        },
+        {
+            "id": 86,
+            "customerId": 2,
+            "cargoId": 1,
+            "cityId": 1,
+            "couriersId": [
+                3,
+                6,
+                4
+            ],
+            "driverId": 0,
+            "weight": 3.576,
+            "price": 460,
+            "startDate": 1507891274000,
+            "endDate": 1508115377000
+        },
+        {
+            "id": 87,
+            "customerId": 6,
+            "cargoId": 1,
+            "cityId": 3,
+            "couriersId": [
+                2,
+                4,
                 0
             ],
             "driverId": 1,
-            "startDate": 1485513662000,
-            "endDate": 1485765980000
+            "weight": 3.426,
+            "price": 527.6,
+            "startDate": 1449781140000,
+            "endDate": 1450041135000
         },
         {
-            "id": 94,
-            "customerId": 2,
+            "id": 88,
+            "customerId": 6,
+            "cargoId": 3,
+            "cityId": 1,
+            "couriersId": [
+                0,
+                1,
+                5
+            ],
+            "driverId": 2,
+            "weight": 1.962,
+            "price": 318.59999999999997,
+            "startDate": 1498308295000,
+            "endDate": 1498495988000
+        },
+        {
+            "id": 89,
+            "customerId": 0,
             "cargoId": 0,
             "cityId": 3,
             "couriersId": [
                 5
             ],
             "driverId": 0,
-            "startDate": 1513153117000,
-            "endDate": 1513323124000
+            "weight": 0.094,
+            "price": 184.4,
+            "startDate": 1445501896000,
+            "endDate": 1445851263000
         },
         {
-            "id": 95,
-            "customerId": 3,
-            "cargoId": 2,
-            "cityId": 4,
+            "id": 90,
+            "customerId": 5,
+            "cargoId": 0,
+            "cityId": 1,
             "couriersId": [
-                2
+                2,
+                6
             ],
-            "driverId": 1,
-            "startDate": 1445684781000,
-            "endDate": 1445854812000
+            "driverId": 2,
+            "weight": 0.042,
+            "price": 106.6,
+            "startDate": 1481687720000,
+            "endDate": 1482085118000
         },
         {
-            "id": 96,
+            "id": 91,
             "customerId": 9,
             "cargoId": 1,
             "cityId": 2,
             "couriersId": [
-                4,
-                6
+                0
             ],
-            "driverId": 0,
-            "startDate": 1444708856000,
-            "endDate": 1444975907000
+            "driverId": 2,
+            "weight": 1.354,
+            "price": 225,
+            "startDate": 1479769220000,
+            "endDate": 1479827490000
         },
         {
-            "id": 97,
-            "customerId": 9,
-            "cargoId": 2,
-            "cityId": 1,
-            "couriersId": [
-                5,
-                6
-            ],
-            "driverId": 1,
-            "startDate": 1472784379000,
-            "endDate": 1473090877000
-        },
-        {
-            "id": 98,
+            "id": 92,
             "customerId": 8,
-            "cargoId": 1,
+            "cargoId": 3,
             "cityId": 3,
             "couriersId": [
-                2
+                3,
+                4,
+                0
             ],
             "driverId": 1,
-            "startDate": 1464914418000,
-            "endDate": 1465290205000
+            "weight": 16.926,
+            "price": 1897.6,
+            "startDate": 1506664713000,
+            "endDate": 1506826789000
         },
         {
-            "id": 99,
-            "customerId": 1,
+            "id": 93,
+            "customerId": 4,
+            "cargoId": 0,
+            "cityId": 4,
+            "couriersId": [
+                4,
+                2
+            ],
+            "driverId": 0,
+            "weight": 0.017,
+            "price": 250.1,
+            "startDate": 1456646011000,
+            "endDate": 1456842762000
+        },
+        {
+            "id": 94,
+            "customerId": 9,
+            "cargoId": 0,
+            "cityId": 4,
+            "couriersId": [
+                2,
+                1
+            ],
+            "driverId": 0,
+            "weight": 0.236,
+            "price": 272,
+            "startDate": 1475224628000,
+            "endDate": 1475394315000
+        },
+        {
+            "id": 95,
+            "customerId": 2,
             "cargoId": 3,
             "cityId": 4,
             "couriersId": [
+                3,
+                6
+            ],
+            "driverId": 2,
+            "weight": 19.254,
+            "price": 2183.8,
+            "startDate": 1422104108000,
+            "endDate": 1422501714000
+        },
+        {
+            "id": 96,
+            "customerId": 3,
+            "cargoId": 2,
+            "cityId": 1,
+            "couriersId": [
+                4,
+                6,
+                5
+            ],
+            "driverId": 1,
+            "weight": 20.927,
+            "price": 2225.1,
+            "startDate": 1426186162000,
+            "endDate": 1426259123000
+        },
+        {
+            "id": 97,
+            "customerId": 8,
+            "cargoId": 3,
+            "cityId": 2,
+            "couriersId": [
+                1,
                 0
             ],
-            "driverId": 0,
-            "startDate": 1426241375000,
-            "endDate": 1426657678000
+            "driverId": 2,
+            "weight": 21.693,
+            "price": 2288.9,
+            "startDate": 1493987777000,
+            "endDate": 1494103075000
+        },
+        {
+            "id": 98,
+            "customerId": 5,
+            "cargoId": 2,
+            "cityId": 1,
+            "couriersId": [
+                1,
+                0,
+                5
+            ],
+            "driverId": 2,
+            "weight": 18.03,
+            "price": 1935.4,
+            "startDate": 1434234719000,
+            "endDate": 1434428725000
+        },
+        {
+            "id": 99,
+            "customerId": 3,
+            "cargoId": 0,
+            "cityId": 4,
+            "couriersId": [
+                6
+            ],
+            "driverId": 1,
+            "weight": 0.179,
+            "price": 256.3,
+            "startDate": 1493442181000,
+            "endDate": 1493556362000
         }
     ]
 }
