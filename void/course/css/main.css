@@ -71,15 +71,14 @@ h2 {
 }
 
 table {
-    margin: 30px 0;
-    border: 1px solid #eee;
+    /* display: block; */
+    margin: 30px auto;
+    /* border: 1px solid #eee; */
     /* table-layout: fixed; */
     font-size: 12px;
-    display: block;
-    width: 100%;
     border-collapse: collapse;
-    white-space: nowrap;
-    overflow-x: auto;
+    /* white-space: nowrap; */
+    /* overflow-x: auto; */
 }
 
 table tr td {

@@ -266,7 +266,7 @@ function createData(length) {
     });
 }
 
-loadAllOrders();
+// loadAllOrders();
 
 function loadAllOrders() {
     clearOutput();
@@ -448,7 +448,7 @@ function loadAllOrders() {
     });
 }
 
-// analysis(2017);
+analysis(2017);
 
 function analysis(year) {
     clearOutput();
