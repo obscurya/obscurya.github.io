@@ -557,7 +557,7 @@ function loadCar(data, id) {
     table.innerHTML = loadOrders(data, car.orders);
 }
 
-loadTables();
+// loadTables();
 
 function loadTables() {
     clearOutput();
