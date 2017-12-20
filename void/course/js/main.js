@@ -71,6 +71,12 @@ function loadData() {
 
 //генерация новых данных
 function createData(length) {
+    function Group(id, group, description) {
+        this.id = id;
+        this.group = group;
+        this.description = description;
+    }
+
     function Customer(id, name, date, phone) {
         this.id = id;
         this.name = name;
@@ -139,6 +145,7 @@ function createData(length) {
 
     data = {};
 
+    data.groups = [];
     data.customers = [];
     data.cities = [];
     data.couriers = [];
@@ -149,7 +156,8 @@ function createData(length) {
     data.orders = [];
 
     $.getJSON(path + 'create.json', function (json) {
-        var names = json.names,
+        var groups = json.groups,
+            names = json.names,
             cities = json.cities,
             couriers = json.couriers,
             drivers = json.drivers,
@@ -157,73 +165,72 @@ function createData(length) {
             packages = json.packages;
             cars = json.cars;
 
+        for (var i = 0; i < json.groups.length; i++) {
+            var group = json.groups[i].group,
+                description = json.groups[i].description;
+
+            data.groups.push(new Group(i, group, description));
+        }
+
         for (var i = 0; i < json.names.length; i++) {
-            var id = i,
-                name = names[i],
+            var name = names[i],
                 date = randomDate(new Date(1937, 0, 1), new Date(1997, 0, 1)),
                 phone = randomPhone();
 
-            data.customers.push(new Customer(id, name, date, phone));
+            data.customers.push(new Customer(i, name, date, phone));
         }
 
         for (var i = 0; i < cities.length; i++) {
-            var id = i,
-                name = cities[i].name,
+            var name = cities[i].name,
                 x = cities[i].x,
                 y = cities[i].y,
                 distance = cities[i].distance;
 
-            data.cities.push(new City(id, name, x, y, distance));
+            data.cities.push(new City(i, name, x, y, distance));
         }
 
         for (var i = 0; i < couriers.length; i++) {
-            var id = i,
-                name = couriers[i],
+            var name = couriers[i],
                 phone = randomPhone(),
                 salary = random(20000, 30000);
 
-            data.couriers.push(new Courier(id, name, phone, salary));
+            data.couriers.push(new Courier(i, name, phone, salary));
         }
 
         for (var i = 0; i < drivers.length; i++) {
-            var id = i,
-                name = drivers[i],
+            var name = drivers[i],
                 phone = randomPhone(),
                 salary = random(20000, 30000);
 
-            data.drivers.push(new Courier(id, name, phone, salary));
+            data.drivers.push(new Courier(i, name, phone, salary));
         }
 
         for (var i = 0; i < cargoes.length; i++) {
-            var id = i,
-                name = cargoes[i].name,
+            var name = cargoes[i].name,
                 ratio = cargoes[i].ratio;
 
-            data.cargoes.push(new Cargo(id, name, ratio));
+            data.cargoes.push(new Cargo(i, name, ratio));
         }
 
         for (var i = 0; i < packages.length; i++) {
-            var id = i,
-                name = packages[i].name,
+            var name = packages[i].name,
                 size = packages[i].size,
                 price = packages[i].price;
 
-            data.packages.push(new Package(id, name, size, price));
+            data.packages.push(new Package(i, name, size, price));
         }
 
         for (var i = 0; i < cars.length; i++) {
-            var id = i,
-                name = cars[i].name,
+            var name = cars[i].name,
                 body = cars[i].body,
                 priceForRepair = cars[i].priceForRepair,
                 color = randomColor(0.5);
 
-            data.cars.push(new Car(id, name, body, priceForRepair, color));
+            data.cars.push(new Car(i, name, body, priceForRepair, color));
         }
 
         for (var i = 0; i < length; i++) {
-            var id = i,
-                customerId = data.customers[random(0, data.customers.length - 1)].id,
+            var customerId = data.customers[random(0, data.customers.length - 1)].id,
                 cargoId = data.cargoes[random(0, data.cargoes.length - 1)].id,
                 packageId = 0,
                 cityId = data.cities[random(1, data.cities.length - 1)].id,
@@ -236,11 +243,11 @@ function createData(length) {
                 weight = 0,
                 price = 0;
 
-            data.customers[customerId].orders.push(id);
-            data.cities[cityId].orders.push(id);
-            data.drivers[driverId].orders.push(id);
-            data.cargoes[cargoId].orders.push(id);
-            data.cars[carId].orders.push(id);
+            data.customers[customerId].orders.push(i);
+            data.cities[cityId].orders.push(i);
+            data.drivers[driverId].orders.push(i);
+            data.cargoes[cargoId].orders.push(i);
+            data.cars[carId].orders.push(i);
 
             if (cargoId == 0) {
                 weight = random(1, 250) / 1000;
@@ -253,7 +260,7 @@ function createData(length) {
                 packageId = random(3, data.packages.length - 1);
             }
 
-            data.packages[packageId].orders.push(id);
+            data.packages[packageId].orders.push(i);
 
             for (var j = 0; j < random(1, data.couriers.length / 2); j++) {
                 var courierId = data.couriers[random(0, data.couriers.length - 1)].id;
@@ -263,12 +270,12 @@ function createData(length) {
                 }
 
                 couriersId.push(courierId);
-                data.couriers[courierId].orders.push(id);
+                data.couriers[courierId].orders.push(i);
             }
 
             price = calculatePrice(data, cargoId, weight, cityId, couriersId.length, packageId);
 
-            data.orders.push(new Order(id, customerId, cargoId, packageId, cityId, couriersId, driverId, carId, weight, price, startDate, endDate));
+            data.orders.push(new Order(i, customerId, cargoId, packageId, cityId, couriersId, driverId, carId, weight, price, startDate, endDate));
         }
 
         saveData(data, 'data.json', 'text/plain');
@@ -703,7 +710,7 @@ function loadTables() {
     });
 }
 
-// analysis(2017);
+analysis(2017);
 
 function analysis(year) {
     clearOutput();
@@ -712,23 +719,6 @@ function analysis(year) {
 
     $.getJSON(path + 'data.json', function (json) {
         data = json;
-
-        var padding = 30;
-
-        h.innerHTML = '<h1>Анализ ресурсов за ' + year + ' год</h1>';
-        divCanvas.innerHTML = '<canvas id="canvas"></canvas>';
-
-        var canvas = document.getElementById('canvas'),
-            c = canvas.getContext('2d');
-
-        canvas.width = 640;
-        canvas.height = 360;
-
-        c.clearRect(0, 0, canvas.width, canvas.height);
-
-        c.fillStyle = '#fff';
-
-        c.fillRect(0, 0, canvas.width, canvas.height);
 
         function Car(id, usageCar) {
             this.id = id;
@@ -750,8 +740,30 @@ function analysis(year) {
             this.profit = 0;
             this.rate = 0;
             this.stock = 0;
-            this.group = 'A';
+            this.abc = 0;
+            this.blocks = [0, 0, 0, 0];
+            this.average = 0;
+            this.meanSquare = 0;
+            this.variation = 0;
+            this.xyz = 0;
         }
+
+        var padding = 30;
+
+        h.innerHTML = '<h1>Анализ ресурсов за ' + year + ' год</h1>';
+        divCanvas.innerHTML = '<canvas id="canvas"></canvas>';
+
+        var canvas = document.getElementById('canvas'),
+            c = canvas.getContext('2d');
+
+        canvas.width = 640;
+        canvas.height = 360;
+
+        c.clearRect(0, 0, canvas.width, canvas.height);
+
+        c.fillStyle = '#fff';
+
+        c.fillRect(0, 0, canvas.width, canvas.height);
 
         var cars = [],
             usageMax = 0;
@@ -961,16 +973,75 @@ function analysis(year) {
             return b.rate - a.rate;
         });
 
-        var groups = 'ABC';
-
         for (var i = 1; i < clusters.length; i++) {
             clusters[i].stock += clusters[i - 1].stock;
-            clusters[i].group = groups[i];
+        }
+
+        for (var i = 0; i < clusters.length; i++) {
+            if (clusters[i].stock * 100 < 80) {
+                clusters[i].abc = data.groups[0].id;
+            } else if (clusters[i].stock * 100 >= 80 && clusters[i].stock * 100 <= 95) {
+                clusters[i].abc = data.groups[1].id;
+            } else {
+                clusters[i].abc = data.groups[2].id;
+            }
+        }
+
+        for (var i = 0; i < clusters.length; i++) {
+            for (var j = 0; j < clusters[i].products.length; j++) {
+                var p = data.packages[clusters[i].products[j]];
+
+                for (var k = 0; k < p.orders.length; k++) {
+                    var order = data.orders[p.orders[k]],
+                        d = new Date(order.startDate);
+
+                    if (d.getFullYear() == year) {
+                        var blockNumber = 0,
+                            month = d.getMonth();
+
+                        if (month >= 0 && month <= 2) {
+                            blockNumber = 0;
+                        } else if (month >= 3 && month <= 5) {
+                            blockNumber = 1;
+                        } else if (month >= 6 && month <= 8) {
+                            blockNumber = 2;
+                        } else {
+                            blockNumber = 3;
+                        }
+
+                        clusters[i].blocks[blockNumber]++;
+                    }
+                }
+            }
+
+            var sum = 0,
+                meanSquare = 0;
+
+            for (var j = 0; j < clusters[i].blocks.length; j++) {
+                sum += clusters[i].blocks[j];
+            }
+
+            clusters[i].average = sum / 4;
+
+            for (var j = 0; j < clusters[i].blocks.length; j++) {
+                meanSquare += (clusters[i].blocks[j] - clusters[i].average) * (clusters[i].blocks[j] - clusters[i].average);
+            }
+
+            clusters[i].meanSquare = Math.sqrt(meanSquare / 4);
+            clusters[i].variation = clusters[i].meanSquare / clusters[i].average;
+
+            if (clusters[i].variation * 100 < 10) {
+                clusters[i].xyz = data.groups[3].id;
+            } else if (clusters[i].variation * 100 >= 10 && clusters[i].variation * 100 <= 25) {
+                clusters[i].xyz = data.groups[4].id;
+            } else {
+                clusters[i].xyz = data.groups[5].id;
+            }
         }
 
         var str = '';
 
-        str += '<h2>Спрос на упаковки</h2>';
+        str += '<h2>Спрос на упаковочные материалы</h2>';
         str += '<table>';
         str += '<tr><td>id</td><td>Упаковка</td><td>Цена, руб.</td><td>Продано, шт.</td><td>Выручка, руб.</td><td>Доля, %</td></tr>';
         for (var i = 0; i < packages.length; i++) {
@@ -992,7 +1063,7 @@ function analysis(year) {
 
         str += '<h2>ABC-анализ</h2>';
         str += '<table>';
-        str += '<tr><td>Кластер</td><td>Упаковки</td><td>Выручка, руб.</td><td>Доля, %</td><td>Доля в товарообороте накопительным итогом, %</td><td>Группа*</td></tr>';
+        str += '<tr><td>Кластер</td><td>Упаковки</td><td>Выручка, руб.</td><td>Доля, %</td><td>Доля накопительным итогом, %</td><td>Группа</td><td>Пояснение</td></tr>';
         for (var i = 0; i < clusters.length; i++) {
             var cluster = clusters[i];
 
@@ -1009,12 +1080,64 @@ function analysis(year) {
             str += '<td>' + cluster.profit + '</td>';
             str += '<td>' + (cluster.rate * 100).toFixed(2) + '</td>';
             str += '<td>' + (cluster.stock * 100).toFixed(2) + '</td>';
-            str += '<td>' + cluster.group + '</td>';
+            str += '<td>' + data.groups[cluster.abc].group + '</td>';
+            str += '<td>' + data.groups[cluster.abc].description + '</td>';
 
             str += '</tr>';
         }
         str += '</table>';
-        str += '<div class="note"><p>Товары группы А &mdash; наиболее важные товары, обеспечивающие первые 50% результатов;</p><p>Товары группы В &mdash; товары средней степени важности, обеспечивающие еще 30% результатов;</p><p>Товары группы С &mdash; наименее значимые товары, обеспечивающие оставшиеся 20% результатов.</p>';
+
+        str += '<h2>XYZ-анализ</h2>';
+        str += '<table>';
+        str += '<tr><td>Кластер</td><td>Упаковки</td><td>Квартал 1, шт.</td><td>Квартал 2, шт.</td><td>Квартал 3, шт.</td><td>Квартал 4, шт.</td><td>Cреднее</td><td>СКО</td><td>Коэф. вариации, %</td><td>Группа</td><td>Пояснение</td></tr>';
+        for (var i = 0; i < clusters.length; i++) {
+            var cluster = clusters[i];
+
+            str += '<tr>';
+
+            str += '<td>' + (i + 1) + '</td>';
+            str += '<td>';
+            for (var j = 0; j < cluster.products.length; j++) {
+                var p = packages[cluster.products[j]];
+
+                str += '<p>' + data.packages[p.id].name + '</p>';
+            }
+            str += '</td>';
+            for (var j = 0; j < cluster.blocks.length; j++) {
+                str += '<td>' + cluster.blocks[j] + '</td>';
+            }
+            str += '<td>' + cluster.average + '</td>';
+            str += '<td>' + cluster.meanSquare.toFixed(3) + '</td>';
+            str += '<td>' + (cluster.variation * 100).toFixed(2) + '</td>';
+            str += '<td>' + data.groups[cluster.xyz].group + '</td>';
+            str += '<td>' + data.groups[cluster.xyz].description + '</td>';
+
+            str += '</tr>';
+        }
+        str += '</table>';
+
+        str += '<h2>Вывод</h2>';
+        str += '<table>';
+        str += '<tr><td>Кластер</td><td>Упаковки</td><td>Группа</td><td>Пояснение</td></tr>';
+        for (var i = 0; i < clusters.length; i++) {
+            var cluster = clusters[i];
+
+            str += '<tr>';
+
+            str += '<td>' + (i + 1) + '</td>';
+            str += '<td>';
+            for (var j = 0; j < cluster.products.length; j++) {
+                var p = packages[cluster.products[j]];
+
+                str += '<p>' + data.packages[p.id].name + '</p>';
+            }
+            str += '</td>';
+            str += '<td>' + data.groups[cluster.abc].group + data.groups[cluster.xyz].group + '</td>';
+            str += '<td><p>' + data.groups[cluster.abc].description + '</p><p>' + data.groups[cluster.xyz].description + '</p></td>';
+
+            str += '</tr>';
+        }
+        str += '</table>';
 
         table.innerHTML = str;
 
