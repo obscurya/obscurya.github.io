@@ -86,26 +86,18 @@ table tr td {
     padding: 5px 10px;
 }
 
-table tr td p {
-    /* margin-bottom: 10px; */
-}
-
-table tr td p:last-child {
-    /* margin-bottom: 0px; */
-}
-
 table tr:first-child {
     background: #ECEFF1;
 }
 
 table tr:hover {
+    cursor: pointer;
     background: #ECEFF1;
 }
 
 #json {
     margin-top: 30px;
     background: #ECEFF1;
-    /* padding: 10px; */
 }
 
 #sum {

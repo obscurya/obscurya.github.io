@@ -13,11 +13,13 @@
 </head>
 <body>
     <header>
+        <button onclick="home();">Главная</button>
         <button onclick="loadAllOrders();">Таблица заказов</button>
+        <button onclick="loadTables();">Другие таблицы</button>
         <button onclick="analysis(2017);">Анализ ресурсов</button>
-        <button onclick="saveData(data, 'data.json', 'application/json');">Сохранить данные</button>
-        <button onclick="createData(100);">Сгенерировать данные</button>
         <button onclick="loadData();">Загрузить JSON</button>
+        <button onclick="saveData(data, 'data.json', 'application/json');" style="background: #EF9A9A;">Сохранить данные</button>
+        <button onclick="createData(500);" style="background: #EF9A9A;">Сгенерировать данные</button>
     </header>
     <div class="main">
         <div id="output">
@@ -27,7 +29,6 @@
             <pre id="json"></pre>
         </div>
     </div>
-
     <script src="js/main.js"></script>
 </body>
 </html>
