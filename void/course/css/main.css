@@ -71,6 +71,7 @@ h2 {
 }
 
 table {
+    text-align: left;
     /* display: block; */
     margin: 30px auto;
     /* border: 1px solid #eee; */
