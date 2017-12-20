@@ -557,7 +557,7 @@ function loadCar(data, id) {
     table.innerHTML = loadOrders(data, car.orders);
 }
 
-// loadTables();
+loadTables();
 
 function loadTables() {
     clearOutput();
@@ -584,9 +584,14 @@ function loadTables() {
             str += '<td>' + customer.name + '</td>';
 
             var d = new Date(customer.date),
-                age = (new Date()).getFullYear() - d.getFullYear();
+                age = (new Date()).getFullYear() - d.getFullYear(),
+                options = {
+                    day: 'numeric',
+                    month: 'numeric',
+                    year: 'numeric'
+                };
 
-            str += '<td>' + d.getDay() + '.' + (d.getMonth() + 1) + '.' + d.getFullYear() + ' (' + age + ')' + '</td>';
+            str += '<td>' + d.toLocaleString('ru', options) + ' (' + age + ')' + '</td>';
             str += '<td>' + customer.phone + '</td>';
 
             str += '</tr>';
