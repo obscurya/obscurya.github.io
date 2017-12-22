@@ -107,3 +107,31 @@ footer img {
     height: 35px;
     margin-bottom: 20px;
 }
+
+@media screen and (max-width: 400px) {
+    header h1 {
+        font-size: 32px;
+    }
+
+    header nav a {
+        display: block;
+        padding: 5px;
+    }
+
+    section {
+        padding: 60px 0;
+    }
+
+    section .group article {
+        width: 100%;
+        margin: 10px 0 20px 0;
+    }
+
+    section .group article .img {
+        border-radius: 0px;
+    }
+
+    section .group article .body {
+        border-radius: 0px;
+    }
+}
