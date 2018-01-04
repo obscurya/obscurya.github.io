@@ -14,12 +14,16 @@ function random(min, max) {
     return Math.floor(Math.random() * (max + 1 - min) + min);
 }
 
+function randomDouble(min, max) {
+    return Math.random() * (max - min) + min;
+}
+
 function color(red, green, blue, alpha) {
     return 'rgba(' + red + ', ' + green + ', ' + blue + ', ' + alpha / 255 + ')';
 }
 
-function randomMonochromeColor() {
-    var mono = random(55, 155);
+function randomMonochromeColor(min, max) {
+    var mono = random(min, max);
     return color(mono, mono, mono, 255);
 }
 
@@ -30,18 +34,18 @@ function Part(x, y, partColor) {
 }
 
 function Background(width, height) {
-    this.x = 0;
-    this.y = 0;
     this.partWidth = playground.width;
     this.partHeight = playground.height;
     this.width = this.partWidth * width;
     this.height = this.partHeight * height;
+    this.x = (playground.width - this.width) / 2;
+    this.y = (playground.height - this.height) / 2;
     this.parts = [];
 
     for (var h = 0; h < height; h++) {
         for (var w = 0; w < width; w++) {
-            var partColor = randomMonochromeColor();
-            this.parts.push(new Part(this.x + this.partWidth * w, this.y + this.partHeight * h, partColor));
+            var partColor = randomMonochromeColor(25, 55);
+            this.parts.push(new Part(this.partWidth * w, this.partHeight * h, partColor));
         }
     }
 
@@ -66,8 +70,8 @@ function Background(width, height) {
                 y = this.y + this.parts[i].y;
 
             c.fillStyle = '#ddd';
-            c.fillText(i + 1, (x + this.partWidth) / 2, (y + this.partHeight) / 2);
-            // c.fillText(i + 1, x + this.partWidth / 2, y + this.partHeight / 2);
+            // c.fillText(i + 1, (x + this.partWidth) / 2, (y + this.partHeight) / 2);
+            c.fillText(i + 1, x + this.partWidth / 2, y + this.partHeight / 2);
         }
         c.closePath();
     }
@@ -103,10 +107,96 @@ function Player() {
     }
 }
 
-var padding = 50;
+function Hud() {
+    this.draw = function () {
+        c.beginPath();
+        c.fillStyle = '#fff';
+        c.font = '14px sans-serif';
+        c.textAlign = 'left';
+        c.fillText(getCoordinates(player), 20, 30);
+        c.closePath();
+    }
+}
 
-var background = new Background(3, 2),
-    player = new Player();
+function Particle(x, y, r) {
+    this.x = 0;
+    this.y = 0;
+    this.r = 0;
+
+    this.create = function (x, y) {
+        this.x = x;
+        this.y = y;
+        this.r = random(flameParticleMinRadius, flameParticleMaxRadius);
+        this.speed = ((flameParticleMaxSpeed - this.r) / (flameParticleMaxSpeed - flameParticleMinSpeed)) * flameParticleMinSpeed;
+        this.green = random(155, 225);
+        this.lifespan = Math.round((flameParticleMaxLifespan - this.r) / (flameParticleMaxLifespan - flameParticleMinLifespan) * flameParticleMaxLifespan);
+    }
+
+    this.draw = function () {
+        var alpha = (1 - (flameParticleMaxLifespan - this.lifespan) / (flameParticleMaxLifespan - flameParticleMinLifespan)) * 255;
+
+        c.beginPath();
+        c.fillStyle = color(0, this.green, 255, alpha);
+        c.arc(background.x + this.x, background.y + this.y, this.r, 0, Math.PI * 2);
+        c.fill();
+        c.closePath();
+    }
+}
+
+function Flame() {
+    this.x = random(background.x, background.x + background.width) - background.x;
+    this.y = random(background.y, background.y + background.height) - background.y;
+    this.r = flameRadius;
+    this.particlesNumber = 64;
+    this.particles = [];
+
+    for (var i = 0; i < this.particlesNumber; i++) {
+        var particle = new Particle(),
+            particleX = this.x + random(-this.r / 2, this.r / 2),
+            particleY = this.y + random(-this.r / 2, this.r / 2);
+
+        particle.create(particleX, particleY);
+
+        this.particles.push(particle);
+    }
+
+    this.draw = function () {
+        for (var i = 0; i < this.particles.length; i++) {
+            var particle = this.particles[i];
+
+            particle.draw();
+
+            particle.y -= particle.speed;
+            particle.lifespan--;
+
+            if (particle.lifespan <= 0) {
+                var particleX = this.x + random(-this.r / 2, this.r / 2),
+                    particleY = this.y + random(-this.r / 2, this.r / 2);
+
+                particle.create(particleX, particleY);
+            }
+        }
+    }
+}
+
+function getCoordinates(obj) {
+    return -(background.x + background.width / 2 - obj.x) + ' ' + -(background.y + background.height / 2 - obj.y);
+}
+
+var padding = 100;
+
+var flameRadius = 30,
+    flameParticleMaxRadius = flameRadius,
+    flameParticleMinRadius = flameRadius / 6,
+    flameParticleMaxLifespan = flameParticleMaxRadius,
+    flameParticleMinLifespan = flameParticleMinRadius,
+    flameParticleMaxSpeed = flameParticleMaxRadius,
+    flameParticleMinSpeed = flameParticleMinRadius;
+
+var background = new Background(2, 2),
+    player = new Player(),
+    hud = new Hud(),
+    flame = new Flame();
 
 document.addEventListener('keydown', function (event) {
     if (event.keyCode == 37) player.moveLeft = true;
@@ -127,6 +217,8 @@ function draw() {
 
     background.draw();
     player.draw();
+    hud.draw();
+    flame.draw();
 
     if (player.moveLeft) {
         if (player.x - player.r <= 0 + padding && background.x < 0) {
