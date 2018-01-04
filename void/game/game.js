@@ -66,7 +66,8 @@ function Background(width, height) {
                 y = this.y + this.parts[i].y;
 
             c.fillStyle = '#ddd';
-            c.fillText(i + 1, x + this.partWidth / 2, y + this.partHeight / 2);
+            c.fillText(i + 1, (x + this.partWidth) / 2, (y + this.partHeight) / 2);
+            // c.fillText(i + 1, x + this.partWidth / 2, y + this.partHeight / 2);
         }
         c.closePath();
     }
@@ -104,7 +105,7 @@ function Player() {
 
 var padding = 50;
 
-var background = new Background(4, 3),
+var background = new Background(3, 2),
     player = new Player();
 
 document.addEventListener('keydown', function (event) {
