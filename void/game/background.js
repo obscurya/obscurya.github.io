@@ -27,7 +27,7 @@ function Background(width, height) {
                 y = this.y + this.parts[i].y;
 
             c.fillStyle = this.parts[i].color;
-            c.fillRect(x, y, this.partWidth, this.partHeight);
+            rect(x, y, this.partWidth, this.partHeight);
         }
         c.closePath();
 

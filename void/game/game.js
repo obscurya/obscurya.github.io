@@ -4,37 +4,13 @@ var playground = document.getElementById('playground'),
 playground.width = 640;
 playground.height = 480;
 
-function clear() {
-    c.fillStyle = 'black';
-    c.clearRect(0, 0, playground.width, playground.height);
-    c.fillRect(0, 0, playground.width, playground.height);
-}
-
-function random(min, max) {
-    return Math.floor(Math.random() * (max + 1 - min) + min);
-}
-
-function randomDouble(min, max) {
-    return Math.random() * (max - min) + min;
-}
-
-function color(red, green, blue, alpha) {
-    return 'rgba(' + red + ', ' + green + ', ' + blue + ', ' + alpha / 255 + ')';
-}
-
-function randomMonochromeColor(min, max) {
-    var mono = random(min, max);
-    return color(mono, mono, mono, 255);
-}
-
 function Hud() {
     this.draw = function () {
         c.beginPath();
         c.fillStyle = '#fff';
         c.font = '14px sans-serif';
         c.textAlign = 'left';
-        c.fillText('x: ' + getCoordinateX(player.x) + ' y: ' + getCoordinateY(player.y), 20, 30);
-        // c.fillText('px: ' + getCoordinateX(player.px) + ' py: ' + getCoordinateY(player.py), 20, 50);
+        c.fillText('x: ' + gcx(player.x) + ' y: ' + gcy(player.y), 20, 30);
         c.fillText('angle: ' + (player.angle * 180 / Math.PI).toFixed(1), 20, 50);
         c.fillText('fireballs: ' + flames.length, 20, 70);
         // c.fillText('beginCast: ' + player.beginCast, 20, 90);
@@ -42,12 +18,16 @@ function Hud() {
         // c.fillText('casting: ' + player.casting, 20, 130);
         c.closePath();
 
-        var castWidth = player.casting / player.castDuration * playground.width;
+        var healthWidth = player.health / player.maxHealth * playground.width;
 
-        c.beginPath();
-        c.fillStyle = color(255, 205, 0, 255 / 2);
-        c.fillRect(0, playground.height - 10, castWidth, 10);
-        c.closePath();
+        c.fillStyle = color(255, 255, 255, 255 / 2);
+        rect(0, playground.height - 15, healthWidth, 15);
+
+        var castRadius = player.casting / player.castDuration * player.r;
+
+        c.fillStyle = color(255, 255, 0, 255 / 2);
+        circle(player.x, player.y, castRadius);
+        // rect(0, playground.height - 20, castWidth, 5);
     }
 }
 
@@ -68,11 +48,8 @@ function Particle(x, y, r, angle) {
     this.draw = function () {
         var alpha = (1 - (flameParticleMaxLifespan - this.lifespan) / (flameParticleMaxLifespan - flameParticleMinLifespan)) * 255;
 
-        c.beginPath();
         c.fillStyle = color(255, this.green, 0, alpha);
-        c.arc(background.x + this.x, background.y + this.y, this.r, 0, Math.PI * 2);
-        c.fill();
-        c.closePath();
+        circle(background.x + this.x, background.y + this.y, this.r);
     }
 }
 
@@ -113,16 +90,12 @@ function Flame(angle) {
     }
 }
 
-function getCoordinates(obj) {
-    return -(background.x + background.width / 2 - obj.x) + ' ' + -(background.y + background.height / 2 - obj.y);
+function gcx(x) {
+    return x + background.x;
 }
 
-function getCoordinateX(x) {
-    return x + Math.abs(background.x);
-}
-
-function getCoordinateY(y) {
-    return y + Math.abs(background.y);
+function gcy(y) {
+    return y + background.y;
 }
 
 var padding = 100;
@@ -155,7 +128,15 @@ function draw() {
         flame.x += flame.vx;
         flame.y += flame.vy;
 
-        if (getCoordinateX(flame.x) <= 0 || getCoordinateX(flame.x) >= getCoordinateX(background.width) || getCoordinateY(flame.y) <= 0 || getCoordinateY(flame.y) >= getCoordinateY(background.height)) {
+        // c.beginPath();
+        // c.strokeStyle = color(255, 255, 255, 255 / 5);
+        // c.lineWidth = 2;
+        // c.moveTo(player.x, player.y);
+        // c.lineTo(gcx(flame.x), gcy(flame.y));
+        // c.stroke();
+        // c.closePath();
+
+        if (flame.x <= 0 || flame.x >= background.width || flame.y <= 0 || flame.y >= background.height) {
             flames.splice(i, 1);
         }
     }
@@ -169,7 +150,8 @@ function draw() {
         aimRight = player.aimRight,
         aimDown = player.aimDown;
 
-    player.calculateAngle(aimLeft, aimUp, aimRight, aimDown);
+    player.calculateAngle([aimRight, aimDown, aimLeft, aimUp]);
+    // player.calculateAngle([aimLeft, aimUp, aimRight, aimDown]);
 
     if (left) {
         if (player.x - player.r <= 0 + padding && background.x < 0) {
