@@ -27,105 +27,28 @@ function randomMonochromeColor(min, max) {
     return color(mono, mono, mono, 255);
 }
 
-function Part(x, y, partColor) {
-    this.x = x;
-    this.y = y;
-    this.color = partColor;
-}
-
-function Background(width, height) {
-    this.partWidth = playground.width;
-    this.partHeight = playground.height;
-    this.width = this.partWidth * width;
-    this.height = this.partHeight * height;
-    this.x = (playground.width - this.width) / 2;
-    this.y = (playground.height - this.height) / 2;
-    this.parts = [];
-
-    for (var h = 0; h < height; h++) {
-        for (var w = 0; w < width; w++) {
-            var partColor = randomMonochromeColor(25, 55);
-            this.parts.push(new Part(this.partWidth * w, this.partHeight * h, partColor));
-        }
-    }
-
-    this.draw = function () {
-        c.beginPath();
-        for (var i = 0; i < this.parts.length; i++) {
-            var x = this.x + this.parts[i].x,
-                y = this.y + this.parts[i].y;
-
-            c.fillStyle = this.parts[i].color;
-            c.fillRect(x, y, this.partWidth, this.partHeight);
-        }
-        c.closePath();
-
-        c.font = '64px sans-serif';
-        c.textAlign = 'center';
-        c.textBaseline = 'middle';
-
-        c.beginPath();
-        for (var i = 0; i < this.parts.length; i++) {
-            var x = this.x + this.parts[i].x,
-                y = this.y + this.parts[i].y;
-
-            c.fillStyle = '#ddd';
-            // c.fillText(i + 1, (x + this.partWidth) / 2, (y + this.partHeight) / 2);
-            c.fillText(i + 1, x + this.partWidth / 2, y + this.partHeight / 2);
-        }
-        c.closePath();
-    }
-}
-
-function Player() {
-    var playerDefaultFillColor = '#000',
-        playerDefaultStrokeColor = '#fff';
-
-    this.x = playground.width / 2;
-    this.y = playground.height / 2;
-    this.r = 30;
-    this.vx = 10;
-    this.vy = 10;
-
-    this.moveLeft = false;
-    this.moveUp = false;
-    this.moveRight = false;
-    this.moveDown = false;
-
-    this.draw = function () {
-        c.fillStyle = playerDefaultFillColor;
-        c.beginPath();
-        c.arc(this.x, this.y, this.r, 0, Math.PI * 2);
-        c.fill();
-        c.closePath();
-
-        c.fillStyle = playerDefaultStrokeColor;
-        c.beginPath();
-        c.arc(this.x, this.y, this.r - 5, 0, Math.PI * 2);
-        c.fill();
-        c.closePath();
-    }
-}
-
 function Hud() {
     this.draw = function () {
         c.beginPath();
         c.fillStyle = '#fff';
         c.font = '14px sans-serif';
         c.textAlign = 'left';
-        c.fillText(getCoordinates(player), 20, 30);
+        c.fillText('x: ' + getCoordinateX(player.x) + ' y: ' + getCoordinateY(player.y), 20, 30);
+        // c.fillText('px: ' + getCoordinateX(player.px) + ' py: ' + getCoordinateY(player.py), 20, 50);
+        c.fillText('angle: ' + (player.angle * 180 / Math.PI).toFixed(1), 20, 50);
+        c.fillText('fireballs: ' + flames.length, 20, 70);
         c.closePath();
     }
 }
 
-function Particle(x, y, r) {
+function Particle(x, y, r, angle) {
     this.x = 0;
     this.y = 0;
     this.r = 0;
 
-    this.create = function (x, y) {
-        this.x = x;
-        this.y = y;
+    this.create = function (x, y, r) {
+        this.x = x + random(-r / 4, r / 4);
+        this.y = y + random(-r / 4, r / 4);
         this.r = random(flameParticleMinRadius, flameParticleMaxRadius);
         this.speed = ((flameParticleMaxSpeed - this.r) / (flameParticleMaxSpeed - flameParticleMinSpeed)) * flameParticleMinSpeed;
         this.green = random(155, 225);
@@ -143,19 +66,22 @@ function Particle(x, y, r) {
     }
 }
 
-function Flame() {
-    this.x = random(background.x, background.x + background.width) - background.x;
-    this.y = random(background.y, background.y + background.height) - background.y;
+function Flame(angle) {
+    // this.x = random(background.x + padding, background.x + background.width - padding) - background.x;
+    // this.y = random(background.y + padding, background.y + background.height - padding) - background.y;
+
+    this.x = player.x + Math.abs(background.x);
+    this.y = player.y + Math.abs(background.y);
     this.r = flameRadius;
+    this.vx = 5 * Math.cos(angle);
+    this.vy = 5 * Math.sin(angle);
     this.particlesNumber = 64;
     this.particles = [];
 
     for (var i = 0; i < this.particlesNumber; i++) {
-        var particle = new Particle(),
-            particleX = this.x + random(-this.r / 2, this.r / 2),
-            particleY = this.y + random(-this.r / 2, this.r / 2);
+        var particle = new Particle();
 
-        particle.create(particleX, particleY);
+        particle.create(this.x, this.y, this.r, angle);
 
         this.particles.push(particle);
     }
@@ -166,14 +92,12 @@ function Flame() {
 
             particle.draw();
 
-            particle.y -= particle.speed;
+            particle.y -= particle.speed * Math.sin(angle);
+            particle.x -= particle.speed * Math.cos(angle);
             particle.lifespan--;
 
             if (particle.lifespan <= 0) {
-                var particleX = this.x + random(-this.r / 2, this.r / 2),
-                    particleY = this.y + random(-this.r / 2, this.r / 2);
-
-                particle.create(particleX, particleY);
+                particle.create(this.x, this.y, this.r);
             }
         }
     }
@@ -181,6 +105,14 @@ function Flame() {
 
 function getCoordinates(obj) {
     return -(background.x + background.width / 2 - obj.x) + ' ' + -(background.y + background.height / 2 - obj.y);
+}
+
+function getCoordinateX(x) {
+    return x + Math.abs(background.x);
+}
+
+function getCoordinateY(y) {
+    return y + Math.abs(background.y);
 }
 
 var padding = 100;
@@ -196,21 +128,7 @@ var flameRadius = 30,
 var background = new Background(2, 2),
     player = new Player(),
     hud = new Hud(),
-    flame = new Flame();
-
-document.addEventListener('keydown', function (event) {
-    if (event.keyCode == 37) player.moveLeft = true;
-    if (event.keyCode == 38) player.moveUp = true;
-    if (event.keyCode == 39) player.moveRight = true;
-    if (event.keyCode == 40) player.moveDown = true;
-});
-
-document.addEventListener('keyup', function (event) {
-    if (event.keyCode == 37) player.moveLeft = false;
-    if (event.keyCode == 38) player.moveUp = false;
-    if (event.keyCode == 39) player.moveRight = false;
-    if (event.keyCode == 40) player.moveDown = false;
-});
+    flames = [];
 
 function draw() {
     clear();
@@ -218,9 +136,32 @@ function draw() {
     background.draw();
     player.draw();
     hud.draw();
-    flame.draw();
 
-    if (player.moveLeft) {
+    for (var i = flames.length - 1; i >= 0; i--) {
+        var flame = flames[i];
+
+        flame.draw();
+
+        flame.x += flame.vx;
+        flame.y += flame.vy;
+
+        if (getCoordinateX(flame.x) <= 0 || getCoordinateX(flame.x) >= getCoordinateX(background.width) || getCoordinateY(flame.y) <= 0 || getCoordinateY(flame.y) >= getCoordinateY(background.height)) {
+            flames.splice(i, 1);
+        }
+    }
+
+    var left = player.moveLeft,
+        up = player.moveUp,
+        right = player.moveRight,
+        down = player.moveDown,
+        aimLeft = player.aimLeft,
+        aimUp = player.aimUp,
+        aimRight = player.aimRight,
+        aimDown = player.aimDown;
+
+    player.calculateAngle(aimLeft, aimUp, aimRight, aimDown);
+
+    if (left) {
         if (player.x - player.r <= 0 + padding && background.x < 0) {
             background.x += player.vx;
         } else {
@@ -229,7 +170,7 @@ function draw() {
             }
         }
     }
-    if (player.moveUp) {
+    if (up) {
         if (player.y - player.r <= 0 + padding && background.y < 0) {
             background.y += player.vy;
         } else {
@@ -238,7 +179,7 @@ function draw() {
             }
         }
     }
-    if (player.moveRight) {
+    if (right) {
         if (player.x + player.r >= playground.width - padding && background.x + background.width > playground.width) {
             background.x -= player.vx;
         } else {
@@ -247,7 +188,7 @@ function draw() {
             }
         }
     }
-    if (player.moveDown) {
+    if (down) {
         if (player.y + player.r >= playground.height - padding && background.y + background.height > playground.height) {
             background.y -= player.vy;
         } else {
