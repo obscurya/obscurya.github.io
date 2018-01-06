@@ -5,9 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Game</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font: 14px sans-serif;
+        }
+
+        div p {
+            margin: 20px;
+        }
+    </style>
 </head>
 <body>
     <canvas id="playground"></canvas>
+    <div>
+        <p>player movement - wasd</p>
+        <p>direction - arrows</p>
+        <p>fire - spacebar</p>
+    </div>
     <script src="events.js"></script>
     <script src="background.js"></script>
     <script src="player.js"></script>

@@ -37,6 +37,16 @@ function Hud() {
         // c.fillText('px: ' + getCoordinateX(player.px) + ' py: ' + getCoordinateY(player.py), 20, 50);
         c.fillText('angle: ' + (player.angle * 180 / Math.PI).toFixed(1), 20, 50);
         c.fillText('fireballs: ' + flames.length, 20, 70);
+        // c.fillText('beginCast: ' + player.beginCast, 20, 90);
+        // c.fillText('endCast: ' + player.endCast, 20, 110);
+        // c.fillText('casting: ' + player.casting, 20, 130);
+        c.closePath();
+
+        var castWidth = player.casting / player.castDuration * playground.width;
+
+        c.beginPath();
+        c.fillStyle = color(255, 205, 0, 255 / 2);
+        c.fillRect(0, playground.height - 10, castWidth, 10);
         c.closePath();
     }
 }
@@ -59,7 +69,7 @@ function Particle(x, y, r, angle) {
         var alpha = (1 - (flameParticleMaxLifespan - this.lifespan) / (flameParticleMaxLifespan - flameParticleMinLifespan)) * 255;
 
         c.beginPath();
-        c.fillStyle = color(0, this.green, 255, alpha);
+        c.fillStyle = color(255, this.green, 0, alpha);
         c.arc(background.x + this.x, background.y + this.y, this.r, 0, Math.PI * 2);
         c.fill();
         c.closePath();
@@ -195,6 +205,14 @@ function draw() {
             if (player.y + player.r < playground.height) {
                 player.y += player.vy;
             }
+        }
+    }
+
+    if (player.beginCast) {
+        if (player.casting !== player.castDuration) {
+            player.casting++;
+        } else {
+            player.endCast = true;
         }
     }
 
