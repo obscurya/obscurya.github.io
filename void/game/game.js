@@ -32,9 +32,9 @@ var flameRadius = 30,
 
 var background = new Background(2, 2),
     player = new Player(false),
-    hud = new Hud(),
     flames = [],
-    enemy = new Player(true);
+    enemy = new Player(true),
+    hud = new Hud();
 
 function draw() {
     clear();

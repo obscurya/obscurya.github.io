@@ -1,17 +1,26 @@
 function Hud() {
     this.draw = function () {
-        c.beginPath();
+        var text = [
+                'unknown game v 0.5.4',
+                'x: ' + (player.x + Math.abs(background.x)) + ' y: ' + (player.y + Math.abs(background.y)),
+                'angle: ' + (player.angle * 180 / Math.PI).toFixed(1),
+                'fireballs: ' + flames.length,
+                'controls: ' + player.controls,
+                'aim: ' + player.aim
+            ],
+            step = 30;
+
         c.fillStyle = color(255, 255, 255, 255 / 2);
         c.font = '14px sans-serif';
         c.textAlign = 'left';
-        c.fillText('x: ' + (player.x + Math.abs(background.x)) + ' y: ' + (player.y + Math.abs(background.y)), 20, 30);
-        c.fillText('angle: ' + (player.angle * 180 / Math.PI).toFixed(1), 20, 50);
-        c.fillText('fireballs: ' + flames.length, 20, 70);
-        c.fillText('controls: ' + player.controls, 20, 90);
-        // c.fillText('beginCast: ' + player.beginCast, 20, 90);
-        c.fillText('aim: ' + player.aim, 20, 110);
-        // c.fillText('endCast: ' + player.endCast, 20, 110);
-        // c.fillText('casting: ' + player.casting, 20, 130);
+
+        c.beginPath();
+
+        for (var i = 0; i < text.length; i++) {
+            c.fillText(text[i], 20, step);
+            step += 20;
+        }
+
         c.closePath();
 
         var healthWidth = player.health / player.maxHealth * playground.width;
