@@ -112,12 +112,15 @@ function Player(isEnemy) {
     //     }
     // }
 
-    this.updateAngle = function () {
-        var dx = gcx(this.x) - player.x,
-            dy = gcy(this.y) - player.y,
-            angle = Math.atan2(-dy, -dx);
+    this.updateAngle = function (obj) {
+        var dx = this.x - obj.x,
+            dy = this.y - obj.y;
 
-        this.angle = angle;
+        if (this.isEnemy) {
+            this.angle = Math.atan2(-gcy(dy), -gcx(dx));
+        } else {
+            this.angle = Math.atan2(-pgcy(dy), -pgcx(dx));
+        }
     }
 
     this.calculateAngle = function (directions) {

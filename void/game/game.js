@@ -41,9 +41,10 @@ function draw() {
 
     background.draw();
     player.draw();
+    player.updateAngle(enemy);
     player.move(player.controls);
     enemy.draw();
-    enemy.updateAngle();
+    enemy.updateAngle(player);
     hud.draw();
 
     for (var i = flames.length - 1; i >= 0; i--) {
@@ -67,7 +68,7 @@ function draw() {
         }
     }
 
-    player.calculateAngle(player.aim);
+    // player.calculateAngle(player.aim);
 
     if (player.beginCast) {
         if (player.casting !== player.castDuration) {
