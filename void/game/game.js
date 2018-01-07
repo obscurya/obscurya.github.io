@@ -43,6 +43,7 @@ function draw() {
     player.draw();
     player.move(player.controls);
     enemy.draw();
+    enemy.updateAngle();
     hud.draw();
 
     for (var i = flames.length - 1; i >= 0; i--) {
