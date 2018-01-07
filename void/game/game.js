@@ -86,18 +86,24 @@ function draw() {
         }
     }
 
-    if (!enemy.beginCast) {
-        enemy.beginCast = true;
-    } else {
-        if (enemy.casting !== enemy.castDuration) {
-            enemy.casting++;
+    if (player.health > 0) {
+        if (!enemy.beginCast) {
+            enemy.beginCast = true;
         } else {
-            // enemy.endCast = true;
-            enemy.beginCast = false;
-            enemy.endCast = false;
-            enemy.casting = 0;
-            enemy.fire();
+            if (enemy.casting !== enemy.castDuration) {
+                enemy.casting++;
+            } else {
+                // enemy.endCast = true;
+                enemy.beginCast = false;
+                enemy.endCast = false;
+                enemy.casting = 0;
+                enemy.fire();
+            }
         }
+    } else {
+        enemy.beginCast = false;
+        enemy.endCast = false;
+        enemy.casting = 0;
     }
 
     requestAnimationFrame(draw);
