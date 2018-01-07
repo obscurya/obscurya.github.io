@@ -10,7 +10,7 @@ function Hud() {
         c.fillStyle = '#fff';
         c.font = '14px sans-serif';
         c.textAlign = 'left';
-        c.fillText('x: ' + gcx(player.x) + ' y: ' + gcy(player.y), 20, 30);
+        c.fillText('x: ' + (player.x + Math.abs(background.x)) + ' y: ' + (player.y + Math.abs(background.y)), 20, 30);
         c.fillText('angle: ' + (player.angle * 180 / Math.PI).toFixed(1), 20, 50);
         c.fillText('fireballs: ' + flames.length, 20, 70);
         // c.fillText('beginCast: ' + player.beginCast, 20, 90);
@@ -46,10 +46,17 @@ function Particle(x, y, r, angle) {
     }
 
     this.draw = function () {
+        var x = gcx(this.x),
+            y = gcy(this.y);
+
         var alpha = (1 - (flameParticleMaxLifespan - this.lifespan) / (flameParticleMaxLifespan - flameParticleMinLifespan)) * 255;
 
         c.fillStyle = color(255, this.green, 0, alpha);
-        circle(background.x + this.x, background.y + this.y, this.r);
+        circle(x, y, this.r);
+
+        c.strokeStyle = color(0, 0, 0, alpha);
+        c.lineWidth = 2;
+        ring(x, y, this.r);
     }
 }
 
@@ -98,6 +105,36 @@ function gcy(y) {
     return y + background.y;
 }
 
+function Enemy() {
+    var enemyDefaultFillColor = '#000',
+        enemyDefaultStrokeColor = '#fff';
+
+    this.w = player.r * 2;
+    this.h = this.w;
+
+    this.x = random(background.x + padding, background.x + background.width - padding) - background.x;
+    this.y = random(background.y + padding, background.y + background.height - padding) - background.y;
+
+    this.draw = function () {
+        var x = gcx(this.x),
+            y = gcy(this.y);
+
+        c.fillStyle = enemyDefaultFillColor;
+        rect(x, y, this.w, this.h);
+
+        c.fillStyle = '#999';
+        rect(x + 5, y + 5, this.w - 10, this.h - 10);
+
+        // c.strokeStyle = color(255, 255, 255, 255 / 5);
+        // c.beginPath();
+        // c.lineWidth = 2;
+        // c.moveTo(player.x, player.y);
+        // c.lineTo(x, y);
+        // c.stroke();
+        // c.closePath();
+    }
+}
+
 var padding = 100;
 
 var flameRadius = 30,
@@ -111,13 +148,15 @@ var flameRadius = 30,
 var background = new Background(2, 2),
     player = new Player(),
     hud = new Hud(),
-    flames = [];
+    flames = [],
+    enemy = new Enemy();
 
 function draw() {
     clear();
 
     background.draw();
     player.draw();
+    enemy.draw();
     hud.draw();
 
     for (var i = flames.length - 1; i >= 0; i--) {

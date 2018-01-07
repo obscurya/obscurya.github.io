@@ -28,6 +28,13 @@ function circle(x, y, r) {
     c.closePath();
 }
 
+function ring(x, y, r) {
+    c.beginPath();
+    c.arc(x, y, r, 0, Math.PI * 2);
+    c.stroke();
+    c.closePath();
+}
+
 function rect(x1, y1, x2, y2) {
     c.beginPath();
     c.fillRect(x1, y1, x2, y2);
