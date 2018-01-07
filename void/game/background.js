@@ -14,6 +14,14 @@ function Background(width, height) {
     this.y = (playground.height - this.height) / 2;
     this.parts = [];
 
+    this.backgroundStyle = [];
+
+    for (var i = 0; i < 10; i++) {
+        var col = (i + 4) * 10;
+
+        this.backgroundStyle.push(color(col, col, col, 255));
+    }
+
     for (var h = 0; h < height; h++) {
         for (var w = 0; w < width; w++) {
             var partColor = randomMonochromeColor(40, 70),
@@ -32,7 +40,7 @@ function Background(width, height) {
     }
 
     this.draw = function () {
-        c.beginPath();
+        // c.beginPath();
         for (var i = 0; i < this.parts.length; i++) {
             var p = this.parts[i];
 
@@ -44,14 +52,11 @@ function Background(width, height) {
                 tmpWidth = this.partWidth / p.map[0].length,
                 tmpHeight = this.partHeight / p.map[0].length;
 
-            // var style = ['#689F38', '#7CB342'];
-            var style = ['#222', '#333'];
-
             for (var j = 0; j < p.map.length; j++) {
                 tmpX = x;
                 for (var n = 0; n < p.map[j].length; n++) {
                     c.beginPath();
-                    c.fillStyle = style[p.map[j][n]];
+                    c.fillStyle = this.backgroundStyle[p.map[j][n]];
                     rect(tmpX, tmpY, tmpWidth, tmpHeight);
                     c.closePath();
 
@@ -63,7 +68,7 @@ function Background(width, height) {
             // c.fillStyle = this.parts[i].color;
             // rect(x, y, this.partWidth, this.partHeight);
         }
-        c.closePath();
+        // c.closePath();
 
         // c.font = '64px sans-serif';
         // c.textAlign = 'center';

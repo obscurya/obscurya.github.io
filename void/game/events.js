@@ -1,13 +1,15 @@
 document.addEventListener('keydown', function (event) {
-    if (event.keyCode == 65) player.moveLeft = true;
-    if (event.keyCode == 87) player.moveUp = true;
-    if (event.keyCode == 68) player.moveRight = true;
-    if (event.keyCode == 83) player.moveDown = true;
+    var code = event.keyCode;
 
-    if (event.keyCode == 37) player.aimLeft = true;
-    if (event.keyCode == 38) player.aimUp = true;
-    if (event.keyCode == 39) player.aimRight = true;
-    if (event.keyCode == 40) player.aimDown = true;
+    if (code == 65) player.controls[0] = true;
+    if (code == 87) player.controls[1] = true;
+    if (code == 68) player.controls[2] = true;
+    if (code == 83) player.controls[3] = true;
+
+    if (code == 37) player.aim[2] = true;
+    if (code == 38) player.aim[3] = true;
+    if (code == 39) player.aim[0] = true;
+    if (code == 40) player.aim[1] = true;
 
     if (event.keyCode == 32) {
         if (!player.beginCast) {
@@ -17,17 +19,19 @@ document.addEventListener('keydown', function (event) {
 });
 
 document.addEventListener('keyup', function (event) {
-    if (event.keyCode == 65) player.moveLeft = false;
-    if (event.keyCode == 87) player.moveUp = false;
-    if (event.keyCode == 68) player.moveRight = false;
-    if (event.keyCode == 83) player.moveDown = false;
+    var code = event.keyCode;
 
-    if (event.keyCode == 37) player.aimLeft = false;
-    if (event.keyCode == 38) player.aimUp = false;
-    if (event.keyCode == 39) player.aimRight = false;
-    if (event.keyCode == 40) player.aimDown = false;
+    if (code == 65) player.controls[0] = false;
+    if (code == 87) player.controls[1] = false;
+    if (code == 68) player.controls[2] = false;
+    if (code == 83) player.controls[3] = false;
 
-    if (event.keyCode == 32) {
+    if (code == 37) player.aim[2] = false;
+    if (code == 38) player.aim[3] = false;
+    if (code == 39) player.aim[0] = false;
+    if (code == 40) player.aim[1] = false;
+
+    if (code == 32) {
         if (!player.endCast) {
             player.beginCast = false;
             player.casting = 0;

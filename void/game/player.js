@@ -1,11 +1,17 @@
-function Player() {
+function Player(isEnemy) {
+    this.isEnemy = isEnemy;
+
     var playerDefaultFillColor = '#000',
         playerDefaultStrokeColor = '#fff';
 
-    this.x = playground.width / 2;
-    this.px = this.x;
-    this.y = playground.height / 2;
-    this.py = this.y;
+    if (isEnemy) {
+        this.x = random(background.x + padding, background.x + background.width - padding) - background.x;
+        this.y = random(background.y + padding, background.y + background.height - padding) - background.y;
+    } else {
+        this.x = playground.width / 2;
+        this.y = playground.height / 2;
+    }
+
     this.r = 30;
     this.vx = 10;
     this.vy = 10;
@@ -13,15 +19,47 @@ function Player() {
     this.maxHealth = 100;
     this.health = this.maxHealth;
 
-    this.moveLeft = false;
-    this.moveUp = false;
-    this.moveRight = false;
-    this.moveDown = false;
+    this.controls = [false, false, false, false]; // left, up, right, down
+    this.aim = [false, false, false, false]; // right, down, left, up
 
-    this.aimLeft = false;
-    this.aimUp = false;
-    this.aimRight = false;
-    this.aimDown = false;
+    this.move = function (m) {
+        if (m[0]) {
+            if (this.x - this.r <= 0 + padding && background.x < 0) {
+                background.x += this.vx;
+            } else {
+                if (this.x - this.r > 0) {
+                    this.x -= this.vx;
+                }
+            }
+        }
+        if (m[1]) {
+            if (this.y - this.r <= 0 + padding && background.y < 0) {
+                background.y += this.vy;
+            } else {
+                if (this.y - this.r > 0) {
+                    this.y -= this.vy;
+                }
+            }
+        }
+        if (m[2]) {
+            if (this.x + this.r >= playground.width - padding && background.x + background.width > playground.width) {
+                background.x -= this.vx;
+            } else {
+                if (this.x + this.r < playground.width) {
+                    this.x += this.vx;
+                }
+            }
+        }
+        if (m[3]) {
+            if (this.y + this.r >= playground.height - padding && background.y + background.height > playground.height) {
+                background.y -= this.vy;
+            } else {
+                if (this.y + this.r < playground.height) {
+                    this.y += this.vy;
+                }
+            }
+        }
+    }
 
     this.beginCast = false;
     this.endCast = false;
@@ -33,14 +71,28 @@ function Player() {
     this.draw = function () {
         var hr = this.r / 2 - 5;
 
-        c.fillStyle = playerDefaultFillColor;
-        circle(this.x, this.y, this.r);
+        var x, y;
 
-        c.fillStyle = '#999';
-        circle(this.x, this.y, this.r - 5);
+        if (this.isEnemy) {
+            x = gcx(this.x);
+            y = gcy(this.y);
+        } else {
+            x = this.x;
+            y = this.y;
+        }
+
+        c.fillStyle = playerDefaultFillColor;
+        circle(x, y, this.r);
+
+        if (this.isEnemy) {
+            c.fillStyle = '#E57373';
+        } else {
+            c.fillStyle = '#999';
+        }
+        circle(x, y, this.r - 5);
 
         c.fillStyle = playerDefaultStrokeColor;
-        circle(this.x + hr * Math.cos(this.angle), this.y + hr * Math.sin(this.angle), this.r / 2);
+        circle(x + hr * Math.cos(this.angle), y + hr * Math.sin(this.angle), this.r / 2);
     }
 
     // this.calculateAngle = function (d) {
@@ -73,7 +125,11 @@ function Player() {
     }
 
     this.fire = function () {
-        flames.push(new Flame(this.angle));
+        if (this.isEnemy) {
+            flames.push(new Flame(this.x, this.y, this.angle, true));
+        } else {
+            flames.push(new Flame(pgcx(this.x), pgcy(this.y), this.angle));
+        }
     }
 
     this.damage = function () {
