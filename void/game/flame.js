@@ -28,17 +28,16 @@ function Particle(x, y, r, angle) {
 }
 
 function Flame(x, y, angle, isEnemy) {
-    // this.x = random(background.x + padding, background.x + background.width - padding) - background.x;
-    // this.y = random(background.y + padding, background.y + background.height - padding) - background.y;
-
     this.x = x;
     this.y = y;
     this.r = flameRadius;
+    // this.range = this.r * 2;
     this.vx = 5 * Math.cos(angle);
     this.vy = 5 * Math.sin(angle);
     this.particlesNumber = 64;
     this.particles = [];
-    this.enemy = isEnemy;
+    this.damage = 25;
+    this.isEnemy = isEnemy;
 
     for (var i = 0; i < this.particlesNumber; i++) {
         var particle = new Particle();
@@ -49,6 +48,9 @@ function Flame(x, y, angle, isEnemy) {
     }
 
     this.draw = function () {
+        c.fillStyle = color(255, 255, 255, 15);
+        circle(gcx(this.x), gcy(this.y), this.r * 2);
+
         for (var i = 0; i < this.particles.length; i++) {
             var particle = this.particles[i];
 

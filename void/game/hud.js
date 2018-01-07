@@ -1,8 +1,8 @@
 function Hud() {
     this.draw = function () {
         var text = [
-                'unknown game v 0.5.4',
-                'x: ' + (player.x + Math.abs(background.x)) + ' y: ' + (player.y + Math.abs(background.y)),
+                'unknown game v 0.6.1',
+                'x: ' + player.getX() + ' y: ' + player.getY(),
                 'angle: ' + (player.angle * 180 / Math.PI).toFixed(1),
                 'fireballs: ' + flames.length,
                 'controls: ' + player.controls,
@@ -38,6 +38,6 @@ function Hud() {
 
         var enemyCastRadius = enemy.casting / enemy.castDuration * enemy.r;
 
-        circle(gcx(enemy.x), gcy(enemy.y), enemyCastRadius);
+        circle(enemy.getX(), enemy.getY(), enemyCastRadius);
     }
 }

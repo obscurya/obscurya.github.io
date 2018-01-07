@@ -74,8 +74,8 @@ function Player(isEnemy) {
         var x, y;
 
         if (this.isEnemy) {
-            x = gcx(this.x);
-            y = gcy(this.y);
+            x = this.getX();
+            y = this.getY();
         } else {
             x = this.x;
             y = this.y;
@@ -95,55 +95,44 @@ function Player(isEnemy) {
         circle(x + hr * Math.cos(this.angle), y + hr * Math.sin(this.angle), this.r / 2);
     }
 
-    // this.calculateAngle = function (d) {
-    //     if (d[0] || d[1] || d[2] || d[3]) {
-    //         var a = 0;
-    //
-    //         if (d[0]) a = 180;
-    //         if (d[1]) a = 270;
-    //         if (d[2]) a = 0;
-    //         if (d[3]) a = 90;
-    //         if (d[0] && d[1]) a = 180 + 45;
-    //         if (d[1] && d[2]) a = 270 + 45;
-    //         if (d[2] && d[3]) a = 45;
-    //         if (d[3] && d[0]) a = 90 + 45;
-    //
-    //         this.angle = a * Math.PI / 180;
-    //     }
-    // }
+    this.getX = function () {
+        return (this.isEnemy) ? gcx(this.x) : pgcx(this.x);
+    }
+
+    this.getY = function () {
+        return (this.isEnemy) ? gcy(this.y) : pgcy(this.y);
+    }
 
     this.updateAngle = function (obj) {
-        var dx = this.x - obj.x,
-            dy = this.y - obj.y;
+        var dx = obj.getX() - this.x,
+            dy = obj.getY() - this.y;
 
-        if (this.isEnemy) {
-            this.angle = Math.atan2(-gcy(dy), -gcx(dx));
-        } else {
-            this.angle = Math.atan2(-pgcy(dy), -pgcx(dx));
-        }
+        this.angle = Math.atan2(dy, dx);
     }
 
-    this.calculateAngle = function (directions) {
-        var angle = 0;
-
-        for (var i = 0; i < directions.length; i++) {
-            if (directions[i]) {
-                this.angle = angle;
-            } else {
-                angle += Math.PI / 2;
-            }
-        }
-    }
+    // this.calculateAngle = function (directions) {
+    //     var angle = 0;
+    //
+    //     for (var i = 0; i < directions.length; i++) {
+    //         if (directions[i]) {
+    //             this.angle = angle;
+    //         } else {
+    //             angle += Math.PI / 2;
+    //         }
+    //     }
+    // }
 
     this.fire = function () {
         if (this.isEnemy) {
             flames.push(new Flame(this.x, this.y, this.angle, true));
         } else {
-            flames.push(new Flame(pgcx(this.x), pgcy(this.y), this.angle));
+            flames.push(new Flame(this.getX(), this.getY(), this.angle, false));
         }
     }
 
-    this.damage = function () {
-        this.health -= random(0, this.maxHealth);
+    this.getDamage = function (dmg) {
+        if (this.health > 0) {
+            this.health -= dmg;
+        }
     }
 }

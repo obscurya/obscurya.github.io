@@ -48,7 +48,10 @@ function draw() {
     hud.draw();
 
     for (var i = flames.length - 1; i >= 0; i--) {
-        var flame = flames[i];
+        var flame = flames[i],
+            dx = player.x - gcx(flame.x),
+            dy = player.y - gcy(flame.y),
+            d = Math.sqrt(dx * dx + dy * dy);
 
         flame.draw();
 
@@ -63,7 +66,12 @@ function draw() {
         // c.stroke();
         // c.closePath();
 
-        if (flame.x <= 0 || flame.x >= background.width || flame.y <= 0 || flame.y >= background.height) {
+        if (d <= player.r + flame.r / 2 && flame.isEnemy) {
+            flames.splice(i, 1);
+            player.getDamage(flame.damage);
+        }
+
+        if (flame.x - flame.r <= 0 || flame.x + flame.r >= background.width || flame.y - flame.r <= 0 || flame.y + flame.r >= background.height) {
             flames.splice(i, 1);
         }
     }

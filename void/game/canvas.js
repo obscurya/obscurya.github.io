@@ -28,6 +28,16 @@ function circle(x, y, r) {
     c.closePath();
 }
 
+function circleShadow(x, y, r, color, blur) {
+    c.beginPath();
+    c.fillStyle = 'transparent';
+    c.shadowColor = color;
+    c.shadowBlur = blur;
+    c.arc(x, y, r, 0, Math.PI * 2);
+    c.fill();
+    c.closePath();
+}
+
 function ring(x, y, r) {
     c.beginPath();
     c.arc(x, y, r, 0, Math.PI * 2);
