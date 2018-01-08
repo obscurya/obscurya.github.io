@@ -1,7 +1,7 @@
 function Hud() {
     this.draw = function () {
         var text = [
-                'unknown game v 0.6.7',
+                'unknown game v 0.6.8',
                 'x: ' + player.getX().toFixed(2) + ' y: ' + player.getY().toFixed(2),
                 'angle: ' + (player.angle * 180 / Math.PI).toFixed(2),
                 'fireballs: ' + flames.length,
@@ -24,10 +24,10 @@ function Hud() {
 
         c.closePath();
 
-        var healthWidth = player.health / player.maxHealth * playground.width;
-
-        c.fillStyle = color(255, 255, 255, 255 / 2);
-        rect(0, playground.height - 15, healthWidth, 15);
+        // var healthWidth = player.health / player.maxHealth * playground.width;
+        //
+        // c.fillStyle = color(255, 255, 255, 255 / 2);
+        // rect(0, playground.height - 15, healthWidth, 15);
 
         c.fillStyle = color(255, 255, 255, 255 / 2);
         // c.fillStyle = color(255, 255, 0, 255 / 2);

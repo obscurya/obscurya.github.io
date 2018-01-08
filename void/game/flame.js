@@ -25,11 +25,13 @@ function Particle(isEnemy, destruction) {
     }
 
     this.getColor = function (green, alpha) {
-        if (this.isEnemy) {
-            return color(255, green, 0, alpha);
-        } else {
-            return color(0, green, 255, alpha);
-        }
+        return color(0, green, 255, alpha);
+
+        // if (this.isEnemy) {
+        //     return color(255, green, 0, alpha);
+        // } else {
+        //     return color(0, green, 255, alpha);
+        // }
     }
 
     this.update = function (x, y, r) {

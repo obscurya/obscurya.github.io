@@ -50,3 +50,9 @@ function rect(x1, y1, x2, y2) {
     c.fillRect(x1, y1, x2, y2);
     c.closePath();
 }
+
+function border(x1, y1, x2, y2) {
+    c.beginPath();
+    c.strokeRect(x1, y1, x2, y2);
+    c.closePath();
+}

@@ -156,17 +156,17 @@ function Player(isEnemy) {
             }
         }
 
-        if (this.hit) {
-            this.eyeColor = eyeHitColor;
-            this.hitCounter++;
-
-            if (this.hitCounter >= 10) {
-                this.hit = false;
-                this.hitCounter = 0;
-            }
-        } else {
-            this.eyeColor = eyeColor;
-        }
+        // if (this.hit) {
+        //     this.eyeColor = eyeHitColor;
+        //     this.hitCounter++;
+        //
+        //     if (this.hitCounter >= 10) {
+        //         this.hit = false;
+        //         this.hitCounter = 0;
+        //     }
+        // } else {
+        //     this.eyeColor = eyeColor;
+        // }
     }
 
     this.draw = function () {
@@ -194,5 +194,15 @@ function Player(isEnemy) {
 
         c.fillStyle = this.eyeColor;
         circle(x + hr * Math.cos(this.angle), y + hr * Math.sin(this.angle), this.r / 2);
+
+        var healthBarWidth = Math.floor(this.r * 2),
+            healthBarHeight = Math.floor(this.r / 3),
+            pad = 2,
+            healthWidth = normalize(this.health, this.maxHealth, 0) * (healthBarWidth - pad * 2);
+
+        c.fillStyle = '#000';
+        rect(x - healthBarWidth / 2, y + this.r + 5, healthBarWidth, healthBarHeight);
+        c.fillStyle = '#444';
+        rect(x - healthBarWidth / 2 + pad, y + this.r + 5 + pad, healthWidth, healthBarHeight - pad * 2);
     }
 }

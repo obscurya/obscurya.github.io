@@ -20,6 +20,10 @@ function pgcy(y) {
     return y + Math.abs(background.y);
 }
 
+function normalize(value, min, max) {
+    return (max - value) / (max - min);
+}
+
 var padding = 100;
 
 var background = new Background(2, 2),
