@@ -6,11 +6,12 @@ var flameRadius = 30,
     flameParticleMaxSpeed = flameParticleMaxRadius,
     flameParticleMinSpeed = flameParticleMinRadius;
 
-function Particle(destruction) {
+function Particle(isEnemy, destruction) {
     this.x = 0;
     this.y = 0;
     this.r = 0;
     this.angle = 0;
+    this.isEnemy = isEnemy;
     this.destruction = destruction;
 
     this.create = function (x, y, r, angle) {
@@ -21,6 +22,14 @@ function Particle(destruction) {
         this.green = random(155, 225);
         this.lifespan = Math.round((flameParticleMaxLifespan - this.r) / (flameParticleMaxLifespan - flameParticleMinLifespan) * flameParticleMaxLifespan);
         this.angle = angle;
+    }
+
+    this.getColor = function (green, alpha) {
+        if (this.isEnemy) {
+            return color(255, green, 0, alpha);
+        } else {
+            return color(0, green, 255, alpha);
+        }
     }
 
     this.update = function (x, y, r) {
@@ -41,7 +50,7 @@ function Particle(destruction) {
 
         var alpha = (1 - (flameParticleMaxLifespan - this.lifespan) / (flameParticleMaxLifespan - flameParticleMinLifespan)) * 255;
 
-        c.fillStyle = color(255, this.green, 0, alpha);
+        c.fillStyle = this.getColor(this.green, alpha);
         circle(x, y, this.r);
 
         c.strokeStyle = color(0, 0, 0, alpha);
@@ -65,7 +74,7 @@ function Flame(owner, x, y, angle, isEnemy) {
     this.isEnemy = isEnemy;
 
     for (var i = 0; i < this.particlesNumber; i++) {
-        var particle = new Particle(false);
+        var particle = new Particle(this.isEnemy, false);
 
         particle.create(this.x, this.y, this.r, this.angle);
 
@@ -128,7 +137,7 @@ function Flame(owner, x, y, angle, isEnemy) {
         this.particles = [];
 
         for (var i = 0; i < this.particlesNumber; i++) {
-            var particle = new Particle(true),
+            var particle = new Particle(this.isEnemy, true),
                 angle = randomDouble(-Math.PI, Math.PI);
 
             particle.create(this.x, this.y, this.r, angle);
