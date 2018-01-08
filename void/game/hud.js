@@ -1,9 +1,9 @@
 function Hud() {
     this.draw = function () {
         var text = [
-                'unknown game v 0.6.2',
-                'x: ' + player.getX() + ' y: ' + player.getY(),
-                'angle: ' + (player.angle * 180 / Math.PI).toFixed(1),
+                'unknown game v 0.6.3',
+                'x: ' + player.getX().toFixed(2) + ' y: ' + player.getY().toFixed(2),
+                'angle: ' + (player.angle * 180 / Math.PI).toFixed(2),
                 'fireballs: ' + flames.length,
                 'controls: ' + player.controls,
                 'aim: ' + player.aim

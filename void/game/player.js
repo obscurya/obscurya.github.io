@@ -4,7 +4,7 @@ function Player(isEnemy) {
     var playerDefaultFillColor = '#000',
         playerDefaultStrokeColor = '#fff';
 
-    if (isEnemy) {
+    if (this.isEnemy) {
         this.x = random(background.x + padding, background.x + background.width - padding) - background.x;
         this.y = random(background.y + padding, background.y + background.height - padding) - background.y;
     } else {
@@ -22,42 +22,82 @@ function Player(isEnemy) {
     this.controls = [false, false, false, false]; // left, up, right, down
     this.aim = [false, false, false, false]; // right, down, left, up
 
+    this.update = function () {
+        if (this.beginCast) {
+            if (this.casting !== this.castDuration) {
+                this.casting++;
+            } else {
+                this.endCast = true;
+            }
+        }
+
+        if (this.isEnemy) {
+            if (!this.beginCast) {
+                this.beginCast = true;
+            } else {
+                if (this.endCast) {
+                    this.beginCast = false;
+                    this.endCast = false;
+                    this.casting = 0;
+                    this.fire();
+                }
+            }
+        }
+    }
+
+    this.checkCollision = function (obj) {
+        var dx = this.x - obj.getX(),
+            dy = this.y - obj.getY(),
+            d = Math.sqrt(dx * dx + dy * dy);
+
+        if (d < this.r + obj.r + this.vx) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     this.move = function (m) {
-        if (m[0]) {
-            if (this.x - this.r <= 0 + padding && background.x < 0) {
-                background.x += this.vx;
-            } else {
-                if (this.x - this.r > 0) {
-                    this.x -= this.vx;
+        if (!this.checkCollision(enemy)) {
+            if (m[0]) {
+                if (this.x - this.r <= 0 + padding && background.x < 0) {
+                    background.x += this.vx;
+                } else {
+                    if (this.x - this.r > 0) {
+                        this.x -= this.vx;
+                    }
                 }
             }
-        }
-        if (m[1]) {
-            if (this.y - this.r <= 0 + padding && background.y < 0) {
-                background.y += this.vy;
-            } else {
-                if (this.y - this.r > 0) {
-                    this.y -= this.vy;
+            if (m[1]) {
+                if (this.y - this.r <= 0 + padding && background.y < 0) {
+                    background.y += this.vy;
+                } else {
+                    if (this.y - this.r > 0) {
+                        this.y -= this.vy;
+                    }
                 }
             }
-        }
-        if (m[2]) {
-            if (this.x + this.r >= playground.width - padding && background.x + background.width > playground.width) {
-                background.x -= this.vx;
-            } else {
-                if (this.x + this.r < playground.width) {
-                    this.x += this.vx;
+            if (m[2]) {
+                if (this.x + this.r >= playground.width - padding && background.x + background.width > playground.width) {
+                    background.x -= this.vx;
+                } else {
+                    if (this.x + this.r < playground.width) {
+                        this.x += this.vx;
+                    }
                 }
             }
-        }
-        if (m[3]) {
-            if (this.y + this.r >= playground.height - padding && background.y + background.height > playground.height) {
-                background.y -= this.vy;
-            } else {
-                if (this.y + this.r < playground.height) {
-                    this.y += this.vy;
+            if (m[3]) {
+                if (this.y + this.r >= playground.height - padding && background.y + background.height > playground.height) {
+                    background.y -= this.vy;
+                } else {
+                    if (this.y + this.r < playground.height) {
+                        this.y += this.vy;
+                    }
                 }
             }
+        } else {
+            this.x -= this.vx * Math.cos(this.angle);
+            this.y -= this.vy * Math.sin(this.angle);
         }
     }
 

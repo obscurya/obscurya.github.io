@@ -41,11 +41,11 @@ function draw() {
 
     background.draw();
     player.draw();
-    player.updateAngle(enemy);
+    player.update();
     player.move(player.controls);
+    player.updateAngle(enemy);
     enemy.draw();
     enemy.updateAngle(player);
-    hud.draw();
 
     for (var i = flames.length - 1; i >= 0; i--) {
         var flame = flames[i],
@@ -78,35 +78,17 @@ function draw() {
 
     // player.calculateAngle(player.aim);
 
-    if (player.beginCast) {
-        if (player.casting !== player.castDuration) {
-            player.casting++;
-        } else {
-            player.endCast = true;
-        }
-    }
-
     if (player.health > 0) {
-        if (!enemy.beginCast) {
-            enemy.beginCast = true;
-        } else {
-            if (enemy.casting !== enemy.castDuration) {
-                enemy.casting++;
-            } else {
-                // enemy.endCast = true;
-                enemy.beginCast = false;
-                enemy.endCast = false;
-                enemy.casting = 0;
-                enemy.fire();
-            }
-        }
+        enemy.update();
     } else {
         enemy.beginCast = false;
         enemy.endCast = false;
         enemy.casting = 0;
     }
 
+    hud.draw();
+
     requestAnimationFrame(draw);
 }
 
-requestAnimationFrame(draw);
+draw();
