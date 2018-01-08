@@ -22,14 +22,6 @@ function pgcy(y) {
 
 var padding = 100;
 
-var flameRadius = 30,
-    flameParticleMaxRadius = flameRadius,
-    flameParticleMinRadius = flameRadius / 6,
-    flameParticleMaxLifespan = flameParticleMaxRadius,
-    flameParticleMinLifespan = flameParticleMinRadius,
-    flameParticleMaxSpeed = flameParticleMaxRadius,
-    flameParticleMinSpeed = flameParticleMinRadius;
-
 var background = new Background(2, 2),
     player = new Player(false),
     flames = [],
@@ -41,13 +33,13 @@ function draw() {
 
     background.draw();
 
-    player.draw();
     player.update();
     player.move(player.controls);
     player.updateAngle(enemy);
+    player.draw();
 
-    enemy.draw();
     enemy.updateAngle(player);
+    enemy.draw();
 
     for (var i = flames.length - 1; i >= 0; i--) {
         flames[i].update();

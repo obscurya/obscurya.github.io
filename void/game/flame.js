@@ -1,3 +1,11 @@
+var flameRadius = 30,
+    flameParticleMaxRadius = flameRadius,
+    flameParticleMinRadius = flameRadius / 6,
+    flameParticleMaxLifespan = flameParticleMaxRadius,
+    flameParticleMinLifespan = flameParticleMinRadius,
+    flameParticleMaxSpeed = flameParticleMaxRadius,
+    flameParticleMinSpeed = flameParticleMinRadius;
+
 function Particle(destruction) {
     this.x = 0;
     this.y = 0;
@@ -42,48 +50,7 @@ function Particle(destruction) {
     }
 }
 
-// function DestructionParticle() {
-//     this.x = 0;
-//     this.y = 0;
-//     this.r = 0;
-//     this.angle = 0;
-//
-//     this.create = function (x, y, r, angle) {
-//         this.x = x + random(-r / 4, r / 4);
-//         this.y = y + random(-r / 4, r / 4);
-//         this.r = random(flameParticleMinRadius, flameParticleMaxRadius);
-//         this.speed = ((flameParticleMaxSpeed - this.r) / (flameParticleMaxSpeed - flameParticleMinSpeed)) * flameParticleMinSpeed;
-//         this.green = random(155, 225);
-//         this.lifespan = Math.round((flameParticleMaxLifespan - this.r) / (flameParticleMaxLifespan - flameParticleMinLifespan) * flameParticleMaxLifespan);
-//         this.angle = angle;
-//     }
-//
-//     this.update = function (x, y, r) {
-//         this.x -= this.speed * Math.cos(this.angle);
-//         this.y -= this.speed * Math.sin(this.angle);
-//         this.lifespan--;
-//
-//         // if (this.lifespan <= 0) {
-//         //     this.create(x, y, r, this.angle);
-//         // }
-//     }
-//
-//     this.draw = function () {
-//         var x = gcx(this.x),
-//             y = gcy(this.y);
-//
-//         var alpha = (1 - (flameParticleMaxLifespan - this.lifespan) / (flameParticleMaxLifespan - flameParticleMinLifespan)) * 255;
-//
-//         c.fillStyle = color(255, this.green, 0, alpha);
-//         circle(x, y, this.r);
-//
-//         c.strokeStyle = color(0, 0, 0, alpha);
-//         c.lineWidth = 2;
-//         ring(x, y, this.r);
-//     }
-// }
-
-function Flame(x, y, angle, isEnemy) {
+function Flame(owner, x, y, angle, isEnemy) {
     this.x = x;
     this.y = y;
     this.r = flameRadius;
@@ -94,6 +61,7 @@ function Flame(x, y, angle, isEnemy) {
     this.particlesNumber = 64;
     this.particles = [];
     this.damage = 25;
+    this.owner = owner;
     this.isEnemy = isEnemy;
 
     for (var i = 0; i < this.particlesNumber; i++) {
@@ -121,6 +89,7 @@ function Flame(x, y, angle, isEnemy) {
             this.beginDestruction = true;
             this.destruction();
             obj.getDamage(this.damage);
+            owner.hit = true;
         }
     }
 

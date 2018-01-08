@@ -1,8 +1,11 @@
 function Player(isEnemy) {
     this.isEnemy = isEnemy;
 
-    var playerDefaultFillColor = '#000',
-        playerDefaultStrokeColor = '#fff';
+    var borderColor = color(0, 0, 0, 255),
+        playerColor = '#999',
+        enemyColor = '#e57373',
+        eyeColor = color(255, 255, 255, 255),
+        eyeHitColor = color(255, 0, 0, 255 / 2);
 
     if (this.isEnemy) {
         this.x = random(background.x + padding, background.x + background.width - padding) - background.x;
@@ -16,34 +19,13 @@ function Player(isEnemy) {
     this.vx = 10;
     this.vy = 10;
 
+    this.eyeColor = eyeColor;
+
     this.maxHealth = 100;
     this.health = this.maxHealth;
 
     this.controls = [false, false, false, false]; // left, up, right, down
     this.aim = [false, false, false, false]; // right, down, left, up
-
-    this.update = function () {
-        if (this.beginCast) {
-            if (this.casting !== this.castDuration) {
-                this.casting++;
-            } else {
-                this.endCast = true;
-            }
-        }
-
-        if (this.isEnemy) {
-            if (!this.beginCast) {
-                this.beginCast = true;
-            } else {
-                if (this.endCast) {
-                    this.beginCast = false;
-                    this.endCast = false;
-                    this.casting = 0;
-                    this.fire();
-                }
-            }
-        }
-    }
 
     this.checkCollision = function (obj) {
         var dx = this.x - obj.getX(),
@@ -108,33 +90,6 @@ function Player(isEnemy) {
 
     this.angle = 0;
 
-    this.draw = function () {
-        var hr = this.r / 2 - 5;
-
-        var x, y;
-
-        if (this.isEnemy) {
-            x = this.getX();
-            y = this.getY();
-        } else {
-            x = this.x;
-            y = this.y;
-        }
-
-        c.fillStyle = playerDefaultFillColor;
-        circle(x, y, this.r);
-
-        if (this.isEnemy) {
-            c.fillStyle = '#E57373';
-        } else {
-            c.fillStyle = '#999';
-        }
-        circle(x, y, this.r - 5);
-
-        c.fillStyle = playerDefaultStrokeColor;
-        circle(x + hr * Math.cos(this.angle), y + hr * Math.sin(this.angle), this.r / 2);
-    }
-
     this.getX = function () {
         return (this.isEnemy) ? gcx(this.x) : pgcx(this.x);
     }
@@ -162,11 +117,14 @@ function Player(isEnemy) {
     //     }
     // }
 
+    this.hit = false;
+    this.hitCounter = 0;
+
     this.fire = function () {
         if (this.isEnemy) {
-            flames.push(new Flame(this.x, this.y, this.angle, true));
+            flames.push(new Flame(this, this.x, this.y, this.angle, true));
         } else {
-            flames.push(new Flame(this.getX(), this.getY(), this.angle, false));
+            flames.push(new Flame(this, this.getX(), this.getY(), this.angle, false));
         }
     }
 
@@ -174,5 +132,67 @@ function Player(isEnemy) {
         if (this.health > 0) {
             this.health -= dmg;
         }
+    }
+
+    this.update = function () {
+        if (this.beginCast) {
+            if (this.casting !== this.castDuration) {
+                this.casting++;
+            } else {
+                this.endCast = true;
+            }
+        }
+
+        if (this.isEnemy) {
+            if (!this.beginCast) {
+                this.beginCast = true;
+            } else {
+                if (this.endCast) {
+                    this.beginCast = false;
+                    this.endCast = false;
+                    this.casting = 0;
+                    this.fire();
+                }
+            }
+        }
+
+        if (this.hit) {
+            this.eyeColor = eyeHitColor;
+            this.hitCounter++;
+
+            if (this.hitCounter >= 10) {
+                this.hit = false;
+                this.hitCounter = 0;
+            }
+        } else {
+            this.eyeColor = eyeColor;
+        }
+    }
+
+    this.draw = function () {
+        var hr = this.r / 2 - 5;
+
+        var x, y;
+
+        if (this.isEnemy) {
+            x = this.getX();
+            y = this.getY();
+        } else {
+            x = this.x;
+            y = this.y;
+        }
+
+        c.fillStyle = borderColor;
+        circle(x, y, this.r);
+
+        if (this.isEnemy) {
+            c.fillStyle = enemyColor;
+        } else {
+            c.fillStyle = playerColor;
+        }
+        circle(x, y, this.r - 5);
+
+        c.fillStyle = this.eyeColor;
+        circle(x + hr * Math.cos(this.angle), y + hr * Math.sin(this.angle), this.r / 2);
     }
 }
