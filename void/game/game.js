@@ -50,7 +50,8 @@ function draw() {
     enemy.updateAngle(player);
 
     for (var i = flames.length - 1; i >= 0; i--) {
-        flames[i].update(i);
+        flames[i].update();
+        flames[i].draw(i);
     }
 
     // player.calculateAngle(player.aim);
