@@ -1,12 +1,13 @@
 function Hud() {
     this.draw = function () {
         var text = [
-                'unknown game v 0.6.3',
+                'unknown game v 0.6.4',
                 'x: ' + player.getX().toFixed(2) + ' y: ' + player.getY().toFixed(2),
                 'angle: ' + (player.angle * 180 / Math.PI).toFixed(2),
                 'fireballs: ' + flames.length,
-                'controls: ' + player.controls,
-                'aim: ' + player.aim
+                // 'controls: ' + player.controls,
+                // 'aim: ' + player.aim,
+                'enemy hp: ' + enemy.health
             ],
             step = 30;
 

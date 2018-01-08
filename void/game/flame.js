@@ -47,6 +47,50 @@ function Flame(x, y, angle, isEnemy) {
         this.particles.push(particle);
     }
 
+    this.getX = function () {
+        return (this.isEnemy) ? gcx(this.x) : this.x;
+    }
+
+    this.getY = function () {
+        return (this.isEnemy) ? gcy(this.y) : this.y;
+    }
+
+    this.checkCollision = function (index, obj) {
+        var dx = obj.x - this.getX(),
+            dy = obj.y - this.getY(),
+            d = Math.sqrt(dx * dx + dy * dy);
+
+        if (d <= obj.r + this.r / 2) {
+            flames.splice(index, 1);
+            obj.getDamage(this.damage);
+        }
+    }
+
+    this.update = function (index) {
+        this.x += this.vx;
+        this.y += this.vy;
+
+        if (this.isEnemy) {
+            this.checkCollision(index, player);
+        } else {
+            this.checkCollision(index, enemy);
+        }
+
+        // c.beginPath();
+        // c.strokeStyle = color(255, 255, 255, 255 / 5);
+        // c.lineWidth = 2;
+        // c.moveTo(player.x, player.y);
+        // c.lineTo(gcx(flame.x), gcy(flame.y));
+        // c.stroke();
+        // c.closePath();
+
+        if (this.x - this.r <= 0 || this.x + this.r >= background.width || this.y - this.r <= 0 || this.y + this.r >= background.height) {
+            flames.splice(index, 1);
+        }
+
+        this.draw();
+    }
+
     this.draw = function () {
         c.fillStyle = color(255, 255, 255, 15);
         circle(gcx(this.x), gcy(this.y), this.r * 2);
