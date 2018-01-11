@@ -26,8 +26,10 @@ a:hover {
 }
 
 .hello {
+    position: relative;
     width: 100%;
     background: #171921;
+    overflow: hidden;
 }
 
 .hello .content {
@@ -40,6 +42,10 @@ a:hover {
 
 .hello .content a:hover {
     color: #fff;
+}
+
+.hello .content p {
+    position: relative;
 }
 
 .hello .content #hello {
@@ -64,7 +70,23 @@ a:hover {
     white-space: pre-wrap;
 }
 
-.work:nth-child(2n+1) {
+/* .hello .web {
+    position: absolute;
+    font-size: 128px;
+    text-align: center;
+    color: rgba(255, 121, 198, 0.05);
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    line-height: 32px;
+} */
+
+section {
+    background: #282a36;
+    color: #fff;
+}
+
+.work:nth-child(2n) {
     background: #f5f5f5;
 }
 

@@ -1,11 +1,3 @@
-function begin() {
-    c.beginPath();
-}
-
-function close() {
-    c.closePath();
-}
-
 function random(min, max) {
     return Math.floor(min + Math.random() * (max + 1 - min));
 }
@@ -46,10 +38,10 @@ function circle(x, y, r, color) {
     c.closePath();
 }
 
-function line(x1, y1, x2, y2) {
+function line(x1, y1, x2, y2, width, color) {
     c.beginPath();
-    c.strokeStyle = 'rgba(255, 255, 255, 0.5)';
-    c.lineWidth = 1;
+    c.lineWidth = width;
+    c.strokeStyle = color;
     c.moveTo(x1, y1);
     c.lineTo(x2, y2);
     c.stroke();
