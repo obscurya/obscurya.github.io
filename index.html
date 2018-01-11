@@ -2,120 +2,40 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Russo+One" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/fonts.css">
-    <title>Obscurya GitHub</title>
-    <style>
-        body {
-            font-size: 0;
-            position: relative;
-        }
-
-        .text {
-            position: absolute;
-            z-index: 999;
-            top: 30px;
-            width: 100%;
-            text-align: center;
-        }
-
-        .text table {
-            display: inline-block;
-            border-collapse: collapse;
-            background: rgba(255, 255, 255, 0.05);
-            transition: 0.3s;
-        }
-
-        .text table tr td {
-            border: 1px solid #222;
-            transition: 0.3s;
-        }
-
-        .text table:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transition: 0.3s;
-        }
-
-        .text table:hover tr td {
-            border: 1px solid #333;
-            transition: 0.3s;
-        }
-
-        #text, button {
-            font: 14px sans-serif;
-            padding: 10px;
-            border-style: solid;
-            border-color: none;
-            border-width: 0px;
-            background: none;
-            color: rgba(255, 255, 255, 0.1);
-            transition: 0.3s;
-        }
-
-        #text:hover, button:hover {
-            color: rgba(255, 255, 255, 0.3);
-            transition: 0.3s;
-        }
-
-        button:hover {
-            cursor: pointer;
-        }
-
-        #text:focus, button:focus {
-            outline: none;
-        }
-
-        #text:focus {
-            color: rgba(255, 255, 255, 0.3);
-            transition: 0.3s;
-        }
-
-        #msg {
-            display: none;
-            padding: 30px;
-            font-size: 14px;
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700&amp;subset=cyrillic" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Obscurya</title>
 </head>
 <body>
-    <canvas id="canvas"></canvas>
-    <div id="input-text" class="text">
-        <table>
-            <tr>
-                <td><input id="text" type="text" value="obscurya"></td>
-                <td><button onclick="create();">Create</button></td>
-            </tr>
-        </table>
+    <div class="wrapper">
+        <div class="hello">
+            <p>Привет, приятель.</p>
+            <p>Я люблю алгоритмизацию, программирование и визуализацию данных.</p>
+            <p>Пишу на JavaScript<i class="material-icons">favorite_border</i>.</p>
+            <p>Здесь я выкладываю свои работы, когда мне не лень.</p>
+            <nav>
+                <a href="#">GitHub</a>
+                <a href="#">VK</a>
+            </nav>
+        </div>
+        <div class="work">
+            <article>
+                <div class="img" style="background-image: url(images/canvas71.png);"></div>
+                <p class="title"><a href="void/game/">Игрулькен</a></p>
+                <p class="desc">Без сюжета и даже намека на идею. Просто пытаюсь оправдать время, которое мог использовать для подготовки к сессии.</p>
+                <div style="clear: both;"></div>
+            </article>
+            <article>
+                <div class="img" style="background-image: url(images/canvas55.png);"></div>
+                <p class="title"><a href="void/particles/">Частицы</a></p>
+                <p class="desc">Игрался с гравитацией.</p>
+                <div style="clear: both;"></div>
+            </article>
+        </div>
     </div>
-    <div id="msg">Привет, приятель. Зайди на сайт с компьютера, чтобы насладиться всеми возможностями WebGL.</div>
-    <!-- <header><img src="images/canvas.png"></header> -->
-    <!-- <div class="wrapper">
-        <div class="table">
-            <p>Girl Scout Cookies (beta)</p>
-            <div class="element" style="border-color: #ddd;">
-                <p class="number1">gsc</p>
-                <h1>Px<span>Pixels</span></h1>
-                <p class="number2">0.998</p>
-            </div>
-        </div>
-        <div class="table">
-            <p>Alaskan Thunder Fuck (alpha)</p>
-            <div class="element" style="border-color: #eee;">
-                <p class="number1">atf</p>
-                <h1>Pr<span>Particles</span></h1>
-                <p class="number2">0.8975</p>
-            </div>
-            <div class="element" style="border-color: #eee;">
-                <p class="number1">atf</p>
-                <h1>Ir<span>Image reproduce</span></h1>
-                <p class="number2">0.799</p>
-            </div>
-        </div>
-    </div> -->
-    <script src="obscurya.js"></script>
 </body>
 </html>
