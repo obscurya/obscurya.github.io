@@ -82,10 +82,6 @@ a:hover {
     font-weight: bold;
 }
 
-.work .content table tr .show a {
-    color: #171921;
-}
-
-.work .content table tr .show a:hover {
-    color: #282a36;
+.work .content table tr td a {
+    color: #424242;
 }
