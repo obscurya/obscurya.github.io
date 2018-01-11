@@ -98,6 +98,7 @@ section {
 
 .work .content table tr td {
     padding-right: 10px;
+    vertical-align: middle;
 }
 
 .work .content table tr .title {
