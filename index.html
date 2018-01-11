@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700&amp;subset=cyrillic" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
@@ -13,27 +14,28 @@
 <body>
     <div class="wrapper">
         <div class="hello">
-            <p>Привет, приятель.</p>
-            <p>Я люблю алгоритмизацию, программирование и визуализацию данных.</p>
-            <p>Пишу на JavaScript<i class="material-icons">favorite_border</i>.</p>
+            <div class="content">
+                <p id="hello"></p>
+                <p>Я люблю алгоритмизацию, программирование и визуализацию данных.</p>
+                <p>Пишу на JavaScript<i class="material-icons">favorite_border</i></p>
+                <pre id="code"></pre>
+                <p>На этой странице я выкладываю ссылки на мои работы, которые можно посмотреть и потрогать за все.</p>
+                <p>Мой аккаунт на гитхабе: <a href="https://github.com/obscurya">https://github.com/obscurya</a></p>
+            </div>
         </div>
-        <nav>
-            <a href="https://github.com/obscurya">GitHub</a>
-            <a href="https://vk.com/i_id42">VK</a>
-        </nav>
         <div class="work">
-            <p>Мои работы. Список обновляется, когда мне не лень.</p><br>
-            <table>
-                <tr>
-                    <td><a href="void/game/">unknown game</a></td>
-                    <td>Без сюжета и даже намека на идею. Просто пытаюсь оправдать время, которое мог использовать для подготовки к сессии.</td>
-                </tr>
-                <tr>
-                    <td><a href="void/particles/particles.html">particles</a></td>
-                    <td>Игрался с гравитацией.</td>
-                </tr>
-            </table>
+            <div class="content">
+                <article>
+                    <a href="void/game/"><p class="title">unknown game</p></a>
+                    <p class="desc">Без сюжета и даже намека на идею. Просто пытаюсь оправдать время, которое мог использовать для подготовки к сессии.</p>
+                </article>
+                <article>
+                    <a href="void/particles/particles.html"><p class="title">particles</p></a>
+                    <p class="desc">Игрался с гравитацией.</p>
+                </article>
+            </div>
         </div>
     </div>
+    <script src="index.js"></script>
 </body>
 </html>
