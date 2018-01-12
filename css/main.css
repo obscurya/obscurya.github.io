@@ -86,6 +86,11 @@ section {
     color: #fff;
 }
 
+.light {
+    background: #f5f5f5;
+    color: #424242;
+}
+
 .work .content {
     border-bottom: 1px solid #f5f5f5;
 }
