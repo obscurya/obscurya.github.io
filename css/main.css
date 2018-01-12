@@ -86,19 +86,28 @@ section {
     color: #fff;
 }
 
-.work:nth-child(2n) {
-    background: #f5f5f5;
+.work .content {
+    border-bottom: 1px solid #f5f5f5;
 }
+
+.work:last-child .content {
+    border-bottom: none;
+}
+
+/* .work:nth-child(2n) .content {
+    background: #f5f5f5;
+} */
 
 .work .content table {
     font-size: 18px;
     border-collapse: collapse;
     margin-bottom: 10px;
+    line-height: normal;
 }
 
 .work .content table tr td {
     padding-right: 10px;
-    vertical-align: middle;
+    vertical-align: top;
 }
 
 .work .content table tr .title {
