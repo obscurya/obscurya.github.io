@@ -1,6 +1,6 @@
 var hello = function () {
     var recipient = ['friend', 'buddy', 'human', 'Mark'],
-        rnd = Math.floor(Math.random() * (recipient.length));
+        rnd = Math.floor(Math.random() * recipient.length);
     return 'Oh, hi, ' + recipient[rnd] + '.';
 }
 
