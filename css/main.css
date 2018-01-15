@@ -144,7 +144,7 @@ article .content .body .desc {
 article .content .body .img {
     width: 250px;
     background-color: #eee;
-    background-size: auto;
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     /* border: 1px solid #ddd; */
