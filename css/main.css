@@ -152,6 +152,10 @@ article .content .buttons .body > div a {
     font-size: 18px;
 }
 
+article .content .buttons .body > div a span {
+    display: block;
+}
+
 article .content .buttons .body > div:hover {
     background: rgba(40, 42, 54, 0.7);
 }
