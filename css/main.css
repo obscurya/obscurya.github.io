@@ -145,6 +145,7 @@ article .content .body .img {
     border-radius: 3px;
     /* border: 1px solid #171921; */
     overflow: hidden;
+    font-size: 0px;
 }
 
 article .content .body .img img {
