@@ -1,0 +1,64 @@
+{
+    "articles": {
+        "new": [
+            {
+                "title": "matrix",
+                "link_view": "",
+                "link_source": "https://github.com/obscurya/matrix",
+                "desc": "Матричная математика и простейшая нейронная сеть с тремя слоями.",
+                "img": ""
+            },
+            {
+                "title": "unknown game",
+                "link_view": "void/game/",
+                "link_source": "#",
+                "desc": "Игра без сюжета и даже намека на идею. Просто пытаюсь оправдать время, которое мог использовать для подготовки к сессии.",
+                "img": ""
+            },
+            {
+                "title": "cluster analysis",
+                "link_view": "void/cluster-analysis/",
+                "link_source": "https://github.com/obscurya/cluster-analysis",
+                "desc": "Кластерный анализ методом ближайшего соседа. Расстояние между объектами &mdash; Евклидово. Делал для курсовой.",
+                "img": "canvas74.png"
+            },
+            {
+                "title": "obscurya",
+                "link_view": "void/particles/obscurya/",
+                "link_source": "https://github.com/obscurya/particles/tree/master/obscurya",
+                "desc": "Частицы образуют введенные слова.",
+                "img": "canvas75.png"
+            },
+            {
+                "title": "gravity",
+                "link_view": "void/particles/gravity/particles.html",
+                "link_source": "https://github.com/obscurya/particles/tree/master/gravity",
+                "desc": "Игрался с гравитацией.",
+                "img": ""
+            }
+        ],
+        "old": [
+            {
+                "title": "packing",
+                "link_view": "void/particles/packing/packing.html",
+                "link_source": "https://github.com/obscurya/particles/tree/master/packing",
+                "desc": "Буквы заполняют область.",
+                "img": ""
+            },
+            {
+                "title": "pixels",
+                "link_view": "void/pixels/pixels.html",
+                "link_source": "https://github.com/obscurya/pixels",
+                "desc": "Пикселизация картинки.",
+                "img": ""
+            },
+            {
+                "title": "lines",
+                "link_view": "void/lines/lines.html",
+                "link_source": "https://github.com/obscurya/lines",
+                "desc": "Фрактал в виде пунктиров.",
+                "img": ""
+            }
+        ]
+    }
+}

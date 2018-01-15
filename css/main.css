@@ -91,88 +91,97 @@ section {
     color: #424242;
 }
 
-.work .content {
+article .content {
     border-bottom: 1px solid #f5f5f5;
 }
 
-.work:last-child .content {
+article:last-child .content {
     border-bottom: none;
 }
 
-/* .work:nth-child(2n) .content {
+/* article:nth-child(2n) .content {
     background: #f5f5f5;
 } */
 
-.work .content table {
+article .content table {
     font-size: 18px;
     border-collapse: collapse;
     margin-bottom: 10px;
     line-height: normal;
 }
 
-.work .content table tr td {
+article .content table tr td {
     padding-right: 10px;
     vertical-align: top;
 }
 
-.work .content table tr .title {
+article .content table tr .title {
     font-weight: bold;
 }
 
-.work .content table tr td a {
+article .content table tr td a {
     color: #424242;
 }
 
-.work .content .clear {
+article .content .clear {
     clear: both;
 }
 
-
-
-
-.work .content .body {
+article .content .body {
     display: table;
 }
 
-.work .content .body .desc, .work .content .body .img {
+article .content .body .desc, article .content .body .img {
     display: table-cell;
+    vertical-align: top;
 }
 
-.work .content .body .desc {
-    padding-right: 10px;
+article .content .body .desc {
+    width: 500px;
+    padding-right: 20px;
 }
 
-.work .content .body .img {
+article .content .body .img {
     width: 250px;
     background-color: #eee;
     background-size: auto;
     background-position: center;
     background-repeat: no-repeat;
-    border: 1px solid #ddd;
+    /* border: 1px solid #ddd; */
     border-radius: 3px;
-    /* height: 200px; */
+    overflow: hidden;
+    height: 100px;
+}
+
+footer {
+    width: 100%;
+    background: #f5f5f5;
+}
+
+footer .content {
+    text-align: center;
+}
+
+footer .content img {
+    max-width: 100%;
 }
 
 @media screen and (max-width: 600px) {
-    .work .content .body {
+    article .content .body {
         display: block;
     }
 
-    .work .content .body .desc, .work .content .body .img {
+    article .content .body .desc, article .content .body .img {
         display: block;
         width: 100%;
     }
 
-    .work .content .body .desc {
+    article .content .body .desc {
         padding-right: 0px;
         margin-bottom: 20px;
     }
 
-    .work .content .body .img {
+    article .content .body .img {
         height: 100px;
     }
-
-    /* .work .content .body .img {
-        display: none;
-    } */
 }
