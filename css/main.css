@@ -212,8 +212,8 @@ footer .content .title {
     text-transform: uppercase;
 }
 
-@media screen and (max-width: 500px) {
-    article .content .buttons > div a {
+@media screen and (max-width: 600px) {
+    article .content .buttons .body > div a {
         font-size: 12px;
     }
 }
