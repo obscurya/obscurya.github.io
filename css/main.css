@@ -146,10 +146,13 @@ article .content .body .img {
     /* border: 1px solid #171921; */
     overflow: hidden;
     font-size: 0px;
+    padding: 0px;
 }
 
 article .content .body .img img {
     max-width: 100%;
+    margin: 0px;
+    padding: 0px;
 }
 
 footer {
