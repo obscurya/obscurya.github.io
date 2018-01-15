@@ -213,7 +213,12 @@ footer .content .title {
 }
 
 @media screen and (max-width: 600px) {
-    article .content .buttons .body > div a {
-        font-size: 12px;
+    article .content .buttons .body > div a span {
+        display: none;
+        font-size: 0px;
     }
+
+    /* article .content .buttons .body > div a {
+        font-size: 12px;
+    } */
 }
