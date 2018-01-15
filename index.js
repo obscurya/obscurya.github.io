@@ -10,6 +10,14 @@ var output = document.getElementById('hello'),
 output.innerHTML = hello();
 code.innerHTML = hello;
 
+function doYouKnowTheWay(answer) {
+    if (answer) {
+        alert('Show us the way. We have found the WHEY.');
+    } else {
+        alert('Spit on him, brothers. Spit on the non-believer.');
+    }
+}
+
 function loadJSON(file, callback) {
     var request = new XMLHttpRequest();
     request.overrideMimeType('application/json');
@@ -50,23 +58,21 @@ loadJSON('data.json', function (response) {
         groupNew = document.getElementById('groupNew'),
         groupOld = document.getElementById('groupOld');
 
-    groupNew.innerHTML = '';
+    groupNew.innerHTML = formEmpty();
 
     if (articles.new[0]) {
+        groupNew.innerHTML = '';
         for (var i = 0; i < articles.new.length; i++) {
             groupNew.innerHTML += formArticle(articles.new[i]);
         }
-    } else {
-        groupNew.innerHTML = formEmpty();
     }
 
-    groupOld.innerHTML = '';
+    groupOld.innerHTML = formEmpty();
 
     if (articles.old[0]) {
+        groupOld.innerHTML = '';
         for (var i = 0; i < articles.old.length; i++) {
             groupOld.innerHTML += formArticle(articles.old[i]);
         }
-    } else {
-        groupOld.innerHTML = formEmpty();
     }
 });

@@ -160,10 +160,38 @@ footer {
 
 footer .content {
     text-align: center;
+    font-size: 0px;
 }
 
 footer .content img {
     max-width: 100%;
+    margin-bottom: 20px;
+}
+
+footer .content p {
+    font: 24px 'Press Start 2P';
+}
+
+footer .content a {
+    display: inline-block;
+    font: 24px 'Press Start 2P';
+    margin: 20px;
+}
+
+footer .content #yes {
+    color: #388E3C;
+}
+
+footer .content #no {
+    color: #E57373;
+}
+
+footer .content #yes:hover {
+    color: #1B5E20;
+}
+
+footer .content #no:hover {
+    color: #F44336;
 }
 
 @media screen and (max-width: 600px) {
