@@ -122,3 +122,57 @@ section {
 .work .content table tr td a {
     color: #424242;
 }
+
+.work .content .clear {
+    clear: both;
+}
+
+
+
+
+.work .content .body {
+    display: table;
+}
+
+.work .content .body .desc, .work .content .body .img {
+    display: table-cell;
+}
+
+.work .content .body .desc {
+    padding-right: 10px;
+}
+
+.work .content .body .img {
+    width: 250px;
+    background-color: #eee;
+    background-size: auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    /* height: 200px; */
+}
+
+@media screen and (max-width: 600px) {
+    .work .content .body {
+        display: block;
+    }
+
+    .work .content .body .desc, .work .content .body .img {
+        display: block;
+        width: 100%;
+    }
+
+    .work .content .body .desc {
+        padding-right: 0px;
+        margin-bottom: 20px;
+    }
+
+    .work .content .body .img {
+        height: 100px;
+    }
+
+    /* .work .content .body .img {
+        display: none;
+    } */
+}
