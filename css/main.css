@@ -150,8 +150,9 @@ article .content .body .img {
 }
 
 article .content .body .img img {
+    display: block;
+    margin: auto;
     max-width: 100%;
-    margin: 0px;
     padding: 0px;
 }
 
