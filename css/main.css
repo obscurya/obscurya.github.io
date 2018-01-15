@@ -106,13 +106,10 @@ article .content .title {
 
 article .content .buttons {
     position: relative;
-    display: table;
     width: 100%;
-    /* border: 1px solid #171921; */
     border-radius: 3px;
     margin: 20px 0px;
     overflow: hidden;
-    border-collapse: collapse;
 }
 
 article .content .buttons .img {
@@ -124,12 +121,22 @@ article .content .buttons .img {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    /* transform: scale(1.1); */
-    /* filter: blur(2px); */
+    transform: scale(1.1);
+    filter: blur(2px);
     overflow: hidden;
+    border-radius: 3px;
 }
 
-article .content .buttons .view, article .content .buttons .source {
+article .content .buttons .body {
+    display: table;
+    width: 100%;
+    border-radius: 3px;
+    border-collapse: collapse;
+    border-spacing: 0px;
+    table-layout: fixed;
+}
+
+article .content .buttons .body .view, article .content .buttons .body .source {
     position: relative;
     display: table-cell;
     text-align: center;
@@ -138,18 +145,18 @@ article .content .buttons .view, article .content .buttons .source {
     font-size: 0px;
 }
 
-article .content .buttons > div a {
+article .content .buttons .body > div a {
     display: block;
     padding: 30px 20px;
     color: rgba(255, 255, 255, 0.7);
     font-size: 18px;
 }
 
-article .content .buttons > div:hover {
+article .content .buttons .body > div:hover {
     background: rgba(40, 42, 54, 0.7);
 }
 
-article .content .buttons > div a:hover {
+article .content .buttons .body > div a:hover {
     color: #fff;
 }
 
