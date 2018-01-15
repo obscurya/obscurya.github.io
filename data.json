@@ -20,14 +20,14 @@
                 "link_view": "void/cluster-analysis/",
                 "link_source": "https://github.com/obscurya/cluster-analysis",
                 "desc": "Кластерный анализ методом ближайшего соседа. Расстояние между объектами &mdash; Евклидово. Делал для курсовой.",
-                "img": "canvas74.png"
+                "img": ""
             },
             {
                 "title": "obscurya",
                 "link_view": "void/particles/obscurya/",
                 "link_source": "https://github.com/obscurya/particles/tree/master/obscurya",
                 "desc": "Частицы образуют введенные слова.",
-                "img": "canvas75.png"
+                "img": ""
             },
             {
                 "title": "gravity",
