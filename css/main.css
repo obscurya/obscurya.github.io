@@ -120,7 +120,7 @@ article .content .buttons .img {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    /* transform: scale(1.1); */
+    transform: scale(1.1);
     filter: blur(2px);
 }
 
@@ -132,10 +132,15 @@ article .content .buttons .view, article .content .buttons .source {
     vertical-align: middle;
 }
 
+article .content .buttons > div {
+    font-size: 0px;
+}
+
 article .content .buttons > div a {
     display: block;
-    padding: 30px;
+    padding: 30px 20px;
     color: rgba(255, 255, 255, 0.7);
+    font-size: 18px;
 }
 
 article .content .buttons > div:hover {
@@ -200,6 +205,6 @@ footer .content .title {
 
 @media screen and (max-width: 500px) {
     article .content .buttons > div a {
-        font-size: 14px;
+        font-size: 12px;
     }
 }
