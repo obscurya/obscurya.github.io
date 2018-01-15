@@ -58,10 +58,10 @@ function formArticle(article) {
         output += '<div class="img" style="background-image: linear-gradient(45deg, ' + color1 + ', ' + color2 + ');"></div>';
     }
     if (article.link_view !== '') {
-        output += '<div class="view"><a href="' + article.link_view + '"><i class="material-icons">visibility</i><br>Посмотреть</a></div>';
+        output += '<div class="view"><a href="' + article.link_view + '" target="_blank"><i class="material-icons">visibility</i><br>Посмотреть</a></div>';
     }
     if (article.link_source !== '') {
-        output += '<div class="source"><a href="' + article.link_source + '"><i class="material-icons">code</i><br>Исходный код</a></div>';
+        output += '<div class="source"><a href="' + article.link_source + '" target="_blank"><i class="material-icons">code</i><br>Исходный код</a></div>';
     }
     output += '</div><p class="desc">' + article.desc + '</p>';
     return output;
