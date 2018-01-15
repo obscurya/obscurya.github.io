@@ -2,6 +2,9 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 }
 
 body {
@@ -121,8 +124,9 @@ article .content .buttons .img {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    transform: scale(1.1);
-    filter: blur(2px);
+    /* transform: scale(1.1); */
+    /* filter: blur(2px); */
+    overflow: hidden;
 }
 
 article .content .buttons .view, article .content .buttons .source {
@@ -131,9 +135,6 @@ article .content .buttons .view, article .content .buttons .source {
     text-align: center;
     background: rgba(40, 42, 54, 0.5);
     vertical-align: middle;
-}
-
-article .content .buttons > div {
     font-size: 0px;
 }
 
