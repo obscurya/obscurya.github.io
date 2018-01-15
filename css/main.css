@@ -109,6 +109,7 @@ article .content .buttons {
     border-radius: 3px;
     margin: 20px 0px;
     overflow: hidden;
+    border-collapse: collapse;
 }
 
 article .content .buttons .img {
