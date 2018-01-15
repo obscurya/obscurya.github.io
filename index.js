@@ -10,14 +10,6 @@ var output = document.getElementById('hello'),
 output.innerHTML = hello();
 code.innerHTML = hello;
 
-function doYouKnowTheWay(answer) {
-    if (answer) {
-        alert('Show us the way. We have found the WHEY.');
-    } else {
-        alert('Spit on him, brothers. Spit on the non-believer.');
-    }
-}
-
 function loadJSON(file, callback) {
     var request = new XMLHttpRequest();
     request.overrideMimeType('application/json');
@@ -38,10 +30,9 @@ function formArticle(article) {
     if (article.link_source !== '') {
         output += '<td class="source"><a href="' + article.link_source + '" target="_blank"><i class="material-icons">code</i></a></td>';
     }
-    if (article.img == '') {
-        output += '</table><div class="body"><p class="desc" style="width: 100%; padding-right: 0px;">' + article.desc + '</p>';
-    } else {
-        output += '</table><div class="body"><p class="desc">' + article.desc + '</p><div class="img" style="background-image: url(images/' + article.img + ');"></div>';
+    output += '</table><div class="body"><p class="desc" style="width: 100%; padding-right: 0px;">' + article.desc + '</p>';
+    if (article.img !== '') {
+        output += '<div class="img"><img src="images/' + article.img + '"></div>';
     }
     output += '</div></div></article>';
     return output;
