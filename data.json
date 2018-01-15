@@ -13,7 +13,7 @@
                 "link_view": "void/game/",
                 "link_source": "",
                 "desc": "Игра без сюжета и даже намека на идею. Просто пытаюсь оправдать время, которое мог использовать для подготовки к сессии.",
-                "img": ""
+                "img": "canvas71.png"
             },
             {
                 "title": "cluster analysis",
@@ -27,14 +27,14 @@
                 "link_view": "void/particles/obscurya/",
                 "link_source": "https://github.com/obscurya/particles/tree/master/obscurya",
                 "desc": "Частицы образуют введенные слова.",
-                "img": ""
+                "img": "canvas75.png"
             },
             {
                 "title": "gravity",
                 "link_view": "void/particles/gravity/particles.html",
                 "link_source": "https://github.com/obscurya/particles/tree/master/gravity",
                 "desc": "Игрался с гравитацией.",
-                "img": ""
+                "img": "canvas55.png"
             }
         ],
         "old": [
@@ -43,7 +43,7 @@
                 "link_view": "void/particles/packing/packing.html",
                 "link_source": "https://github.com/obscurya/particles/tree/master/packing",
                 "desc": "Буквы заполняют область.",
-                "img": ""
+                "img": "canvas.png"
             },
             {
                 "title": "pixels",
@@ -57,7 +57,7 @@
                 "link_view": "void/lines/lines.html",
                 "link_source": "https://github.com/obscurya/lines",
                 "desc": "Фрактал в виде пунктиров.",
-                "img": ""
+                "img": "canvas1.png"
             }
         ]
     }
