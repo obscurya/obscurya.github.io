@@ -2,6 +2,13 @@
     "articles": {
         "new": [
             {
+                "title": "image reproduction",
+                "link_view": "https://obscurya.github.io/void/reproduce/",
+                "link_source": "https://github.com/obscurya/Genetic-Algorithms/tree/master/reproduce",
+                "desc": "Воссоздание изображения, на основе исходного. То есть оно изошло, ну, умерло, да? Давно делал, но недавно переписал, стало лучше.",
+                "img": "canvas79.png"
+            },
+            {
                 "title": "randomizer",
                 "link_view": "https://obscurya.github.io/void/randomizer/",
                 "link_source": "https://github.com/obscurya/randomizer",
