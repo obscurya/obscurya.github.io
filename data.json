@@ -2,6 +2,13 @@
     "articles": {
         "new": [
             {
+                "title": "randomizer",
+                "link_view": "https://obscurya.github.io/void/randomizer/",
+                "link_source": "https://github.com/obscurya/randomizer",
+                "desc": "Рулетка, которая сделает единственный правильный выбор.",
+                "img": "canvas78.png"
+            },
+            {
                 "title": "matrix",
                 "link_view": "",
                 "link_source": "https://github.com/obscurya/matrix",
