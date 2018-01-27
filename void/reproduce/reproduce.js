@@ -65,7 +65,7 @@ class Polygon {
 
 function create(dna) {
     polygons.fitness = (dna) ? Number(dna[3]) : 0;
-    dna.splice(0, 4);
+    if (dna) dna.splice(0, 4);
     for (var i = 0; i < polygonsCount; i++) {
         if (dna) {
             var polygonDNA = dna.splice(0, 4 + vertices * 2);
@@ -273,11 +273,11 @@ function start() {
     if (file) {
         reader.readAsDataURL(file);
     } else {
-        // img.src = 'girl.jpg';
+        img.src = 'girl.jpg';
     }
 }
 
-// start();
+start();
 
 function save() {
     if (polygons) {
