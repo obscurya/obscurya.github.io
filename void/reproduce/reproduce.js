@@ -280,11 +280,11 @@ function start() {
     if (file) {
         reader.readAsDataURL(file);
     } else {
-        img.src = 'girl.jpg';
+        // img.src = 'girl.jpg';
     }
 }
 
-start();
+// start();
 
 function save() {
     if (polygons) {
