@@ -64,13 +64,16 @@ class Polygon {
 }
 
 function create(dna) {
-    polygons.fitness = (dna) ? Number(dna[3]) : 0;
-    if (dna) dna.splice(0, 4);
-    for (var i = 0; i < polygonsCount; i++) {
-        if (dna) {
+    if (dna) {
+        polygons.fitness = dna[3];
+        dna.splice(0, 4);
+        for (var i = 0; i < polygonsCount; i++) {
             var polygonDNA = dna.splice(0, 4 + vertices * 2);
             polygons.push(new Polygon(polygonDNA));
-        } else {
+        }
+    } else {
+        polygons.fitness = 0;
+        for (var i = 0; i < polygonsCount; i++) {
             polygons.push(new Polygon);
         }
     }
@@ -223,6 +226,9 @@ function start() {
 
     if (dna) {
         dna = dna.split(' ');
+        for (var i = 0; i < dna.length; i++) {
+            dna[i] = Number(dna[i]);
+        }
     }
 
     img = new Image();
@@ -233,10 +239,10 @@ function start() {
         scale = Number(document.getElementById('scale').value);
         imgData = [];
         polygons = [];
-        polygonsCount = (dna) ? Number(dna[0]) : Number(document.getElementById('polygonsCount').value);
-        vertices = (dna) ? Number(dna[1]) : Number(document.getElementById('vertices').value);
+        polygonsCount = (dna) ? dna[0] : Number(document.getElementById('polygonsCount').value);
+        vertices = (dna) ? dna[1] : Number(document.getElementById('vertices').value);
         fitnesses = [];
-        mutations = (dna) ? Number(dna[2]) : 0;
+        mutations = (dna) ? dna[2] : 0;
 
         var imgRatio = img.width / img.height;
 
@@ -273,11 +279,11 @@ function start() {
     if (file) {
         reader.readAsDataURL(file);
     } else {
-        img.src = 'girl.jpg';
+        // img.src = 'girl.jpg';
     }
 }
 
-start();
+// start();
 
 function save() {
     if (polygons) {
