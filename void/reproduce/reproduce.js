@@ -65,8 +65,8 @@ class Polygon {
 
 function create(dna) {
     if (dna) {
-        polygons.fitness = dna[3];
-        dna.splice(0, 4);
+        polygons.fitness = dna[4];
+        dna.splice(0, 5);
         for (var i = 0; i < polygonsCount; i++) {
             var polygonDNA = dna.splice(0, 4 + vertices * 2);
             polygons.push(new Polygon(polygonDNA));
@@ -107,7 +107,6 @@ function mutate() {
 
     if (tmp.fitness >= polygons.fitness) {
         if (tmp.fitness > polygons.fitness) {
-            // fitnesses.push(tmp.fitness);
             improvements++;
         }
         polygons = tmp;
@@ -278,7 +277,7 @@ function start() {
         mutations = (dna) ? dna[2] : 0;
         improvements = 0;
         ips = [0];
-        ipsMax = 0;
+        ipsMax = (dna) ? dna[3] : 0;
 
         var imgRatio = img.width / img.height;
 
@@ -328,6 +327,7 @@ function save() {
         dna.push(polygons.length);
         dna.push(vertices);
         dna.push(mutations);
+        dna.push(ipsMax);
         dna.push(polygons.fitness);
 
         for (var i = 0; i < polygons.length; i++) {
