@@ -214,7 +214,7 @@ function draw() {
 
     drawGraph(graphCtx);
 
-    if (fitnesses.length >= 60) {
+    if (mutations % (60 * 60) == 0) {
         fitnesses = [fitnesses[fitnesses.length - 1]];
         ips = [ips[ips.length - 1]];
     }
