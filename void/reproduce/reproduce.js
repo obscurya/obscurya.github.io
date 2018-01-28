@@ -180,7 +180,7 @@ function drawGraph(ctx) {
 
     var text = [];
 
-    text.push('Fitness: ' + (polygons.fitness * 100).toFixed(2) + '%');
+    text.push('Fitness: ' + polygons.fitness);
     text.push('Mutations: ' + mutations);
     // text.push('Improvements: ' + fitnesses.length);
     text.push('Imp. per second: ' + ips[ips.length - 1]);
