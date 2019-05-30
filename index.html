@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Yandex.Metrika counter --> <script type="text/javascript" > (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(53744843, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true, trackHash:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/53744843" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>obscurya</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap&subset=cyrillic" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -27,18 +30,8 @@
 
     body {
       position: relative;
-      font: 12px sans-serif;
+      font: 20px 'Montserrat', sans-serif;
       overflow: hidden;
-    }
-
-    .code {
-      position: absolute;
-      top: -5px;
-      right: -5px;
-      bottom: -5px;
-      left: -5px;
-      word-break: break-all;
-      opacity: 0.15;
     }
 
     .container {
@@ -53,66 +46,194 @@
 
     .container img {
       position: relative;
-      width: 100%;
+      /* width: 100%; */
       max-width: 500px;
       margin-bottom: 30px;
+    }
+
+    .text {
+      position: absolute;
+      max-width: 800px;
+    }
+
+    .glitch {
+      color: white;
+      /* font-size: 100px; */
+      position: relative;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    @keyframes noise-anim {
+      0% {
+        clip: rect(82px, 9999px, 65px, 0);
+      }
+      5% {
+        clip: rect(14px, 9999px, 8px, 0);
+      }
+      10% {
+        clip: rect(58px, 9999px, 37px, 0);
+      }
+      15% {
+        clip: rect(44px, 9999px, 99px, 0);
+      }
+      20% {
+        clip: rect(55px, 9999px, 31px, 0);
+      }
+      25% {
+        clip: rect(70px, 9999px, 48px, 0);
+      }
+      30% {
+        clip: rect(99px, 9999px, 24px, 0);
+      }
+      35% {
+        clip: rect(60px, 9999px, 56px, 0);
+      }
+      40% {
+        clip: rect(48px, 9999px, 11px, 0);
+      }
+      45% {
+        clip: rect(28px, 9999px, 73px, 0);
+      }
+      50% {
+        clip: rect(78px, 9999px, 9px, 0);
+      }
+      55% {
+        clip: rect(9px, 9999px, 19px, 0);
+      }
+      60% {
+        clip: rect(2px, 9999px, 94px, 0);
+      }
+      65% {
+        clip: rect(29px, 9999px, 29px, 0);
+      }
+      70% {
+        clip: rect(33px, 9999px, 80px, 0);
+      }
+      75% {
+        clip: rect(33px, 9999px, 63px, 0);
+      }
+      80% {
+        clip: rect(93px, 9999px, 60px, 0);
+      }
+      85% {
+        clip: rect(40px, 9999px, 46px, 0);
+      }
+      90% {
+        clip: rect(58px, 9999px, 13px, 0);
+      }
+      95% {
+        clip: rect(68px, 9999px, 16px, 0);
+      }
+      100% {
+        clip: rect(18px, 9999px, 4px, 0);
+      }
+    }
+    .glitch:after {
+      content: attr(data-text);
+      position: absolute;
+      left: 2px;
+      text-shadow: -1px 0 red;
+      top: 0;
+      color: white;
+      background: black;
+      overflow: hidden;
+      clip: rect(0, 900px, 0, 0);
+      animation: noise-anim 2s infinite linear alternate-reverse;
+    }
+
+    @keyframes noise-anim-2 {
+      0% {
+        clip: rect(78px, 9999px, 76px, 0);
+      }
+      5% {
+        clip: rect(21px, 9999px, 97px, 0);
+      }
+      10% {
+        clip: rect(78px, 9999px, 12px, 0);
+      }
+      15% {
+        clip: rect(84px, 9999px, 99px, 0);
+      }
+      20% {
+        clip: rect(58px, 9999px, 52px, 0);
+      }
+      25% {
+        clip: rect(28px, 9999px, 73px, 0);
+      }
+      30% {
+        clip: rect(46px, 9999px, 63px, 0);
+      }
+      35% {
+        clip: rect(5px, 9999px, 35px, 0);
+      }
+      40% {
+        clip: rect(58px, 9999px, 61px, 0);
+      }
+      45% {
+        clip: rect(62px, 9999px, 2px, 0);
+      }
+      50% {
+        clip: rect(73px, 9999px, 43px, 0);
+      }
+      55% {
+        clip: rect(71px, 9999px, 94px, 0);
+      }
+      60% {
+        clip: rect(31px, 9999px, 15px, 0);
+      }
+      65% {
+        clip: rect(16px, 9999px, 87px, 0);
+      }
+      70% {
+        clip: rect(16px, 9999px, 34px, 0);
+      }
+      75% {
+        clip: rect(22px, 9999px, 53px, 0);
+      }
+      80% {
+        clip: rect(9px, 9999px, 27px, 0);
+      }
+      85% {
+        clip: rect(96px, 9999px, 89px, 0);
+      }
+      90% {
+        clip: rect(84px, 9999px, 39px, 0);
+      }
+      95% {
+        clip: rect(33px, 9999px, 23px, 0);
+      }
+      100% {
+        clip: rect(24px, 9999px, 1px, 0);
+      }
+    }
+    .glitch:before {
+      content: attr(data-text);
+      position: absolute;
+      left: -2px;
+      text-shadow: 1px 0 blue;
+      top: 0;
+      color: white;
+      background: black;
+      overflow: hidden;
+      clip: rect(0, 900px, 0, 0);
+      animation: noise-anim-2 3s infinite linear alternate-reverse;
     }
   </style>
 </head>
 <body>
-  <div class="code"></div>
   <div class="container">
     <img src="img.jpg">
+    <div class="text">
+      <p class="glitch" data-text="привет, я так рад слышать тебя спустя столько лет">привет, я так рад слышать тебя спустя столько лет</p>
+      <p class="glitch" data-text="помоги умереть себе и другим">дай сигарету и выключи свет</p>
+    </div>
   </div>
 
   <script>
     function random(min, max) {
       return Math.floor(Math.random() * (max + 1 - min) + min);
     }
-
-    function generatePastelColor() {
-      return `hsl(${360 * Math.random()}, ${25 + 70 * Math.random()}%, ${85 + 10 * Math.random()}%)`;
-    }
-
-    var spans = [];
-    var str = `(window.webpackJsonp=window.webpackJsonp||[]).push([[0],{27:function(e,t,n){},47:function(e,t,n){e.exports=n(83)},53:function(e,t,n){},74:function(e,t,n){},75:function(e,t,n){},76:function(e,t,n){},77:function(e,t,n){},78:function(e,t,n){},79:function(e,t,n){},83:function(e,t,n){"use strict";n.r(t);var a=n(0),s=n.n(a),i=n(8),c=n.n(i),l=(n(53),n(2)),r=n(3),o=n(5),m=n(4),d=n(6),u=n(85),p=n(86),h=n(87),v=n(46),E=n(14),b=n(16),f=function(e){function t(e){var n;return Object(l.a)(this,t),(n=Object(o.a)(this,Object(m.a)(t).call(this,e))).setActiveElement=function(){n.props.setActiveElement(n.props.node,[n.props.blockIndex])},n.state={titleParent:"",titleNode:"",subnodes:[]},n}return Object(d.a)(t,e),Object(r.a)(t,[{key:"componentWillReceiveProps",value:function(e){for(var t=e.node,n=t.content.substr(0),a=[],s=0;s<t.nodes.length;s++)a.push({titleParent:"",node:t.nodes[s]});var i=document.createElement("html");i.innerHTML=n;for(var c=i.textContent.split(/\{|\}/g),l="",r=0;r<c.length;r++)if(-1!==c[r].indexOf("$")){var o=c[r].split("$");l+=o[0];for(var m=Number(o[1]),d=0;d<t.nodes.length;d++)if(t.nodes[d].id===m){a[d].titleParent=o[0];break}}else l+=c[r];var u=l;u.length>64&&(u=u.substr(0,64)+"...");var p=t.isBasic?u:e.titleParent;this.setState({node:t,titleParent:p,titleNode:u,subnodes:a})}},{key:"renderNode",value:function(){var e=this;return this.props.node.isBasic?s.a.createElement("li",{className:"base-node"},s.a.createElement("div",{className:"base-node-title"+this.props.checkActiveElement(this.props.node),onClick:this.setActiveElement},this.state.titleParent),this.state.subnodes.length>0&&s.a.createElement("ul",{className:"nodes-list"},this.state.subnodes.map(function(n,a){return s.a.createElement(t,{key:a,blockIndex:e.props.blockIndex,node:n.node,titleParent:n.titleParent,setActiveElement:e.props.setActiveElement,checkActiveElement:e.props.checkActiveElement})}))):s.a.createElement("li",{className:"node"},s.a.createElement("div",{className:"node-title"+this.props.checkActiveElement(this.props.node),onClick:this.setActiveElement.bind(this)},s.a.createElement("div",{className:"node-title-left"},this.props.node.id));`;
-
-    for (var i = 0; i < 20; i++) {
-      var tmp = str.slice(0);
-      var chunks = [];
-
-      while (tmp.length > 0) {
-        var index = random(0, tmp.length - 1);
-
-        chunks.push(tmp.substring(0, index));
-
-        var l = tmp.substring(index);
-
-        if (l.length < 20) {
-          chunks.push(l);
-
-          tmp = '';
-        } else {
-          tmp = tmp.substring(index);
-        }
-      }
-
-      for (var j = 0; j < chunks.length; j++) {
-        var span = document.createElement('span');
-
-        span.textContent = chunks[j];
-        span.style.color = generatePastelColor();
-
-        document.querySelector('.code').appendChild(span);
-        spans.push(span);
-      }
-    }
-
-    setInterval(() => {
-      for (var i = 0; i < spans.length; i++) {
-        spans[i].style.color = generatePastelColor();
-      }
-    }, 1000 / 10);
 
     document.ontouchmove = (e) => {
       e.preventDefault();
