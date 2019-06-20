@@ -7,21 +7,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>obscurya</title>
+  <link href="https://fonts.googleapis.com/css?family=Merriweather&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box }
-    body { overflow: hidden }
+    body { font: 14px 'Merriweather', serif; position: relative; overflow: hidden }
+    div { position: absolute; top: 0; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 30px }
+    p { color: #fff }
   </style>
 </head>
 <body>
   <canvas></canvas>
+  <div>
+    <p>Из окон небо звездное, синее, я вспомнил про лето.<br>Горы, лес, сигарета, море, бриз и рассветы.<br>Над головой небо звездное, синее, такое красивое.<br>Я вспомнил про лето.</p>
+  </div>
+  <script src="perlin.js"></script>
+  <script src="script.js"></script>
   <script>
-    random=(a,b)=>Math.floor(Math.random()*(b+1-a)+a);let hw,hh,PERSPECTIVE,PROJECTION_CENTER_X,PROJECTION_CENTER_Y,terrain,gradient,ground,minDepth,maxDepth,sx,ex,ix,iz,canvas=document.querySelector("canvas"),c=canvas.getContext("2d"),w=window.innerWidth,h=window.innerHeight,numberOfPoints=[20,20],lineWidthMax=2,speed=5;getCoord=a=>({x:a.xProjected,y:a.yProjected}),fillPolygon=([a,b,d,e])=>{let f=getCoord(a),g=getCoord(b),h=getCoord(d),i=(maxDepth-e)/(maxDepth-minDepth)*lineWidthMax,j=[140*((maxDepth-e)/(maxDepth-minDepth)),30*((maxDepth-e)/(maxDepth-minDepth)),255*((maxDepth-e)/(maxDepth-minDepth))],k=[242*((maxDepth-e)/(maxDepth-minDepth)),34*((maxDepth-e)/(maxDepth-minDepth)),255*((maxDepth-e)/(maxDepth-minDepth))];c.lineJoin="round",c.lineWidth=0===i?.01:i,c.fillStyle=`rgb(${j[0]},${j[1]},${j[2]})`,c.strokeStyle=`rgb(${k[0]},${k[1]},${k[2]})`,c.beginPath(),c.moveTo(f.x,f.y),c.lineTo(g.x,g.y),c.lineTo(h.x,h.y),c.closePath(),c.fill(),c.stroke()};class Point{constructor(a,b,c){this.x=a,this.y=b+random(-150,0),this.z=c,this.xProjected=0,this.yProjected=0,this.scaleProjected=0}project(){this.scaleProjected=PERSPECTIVE/(PERSPECTIVE+this.z),this.xProjected=this.x*this.scaleProjected+PROJECTION_CENTER_X,this.yProjected=this.y*this.scaleProjected+PROJECTION_CENTER_Y}render(){c.beginPath(),c.arc(this.xProjected,this.yProjected,5,0,2*Math.PI),c.fill(),c.closePath()}}class Terrain{constructor(){this.points=[];let a=sx,b=ground,c=maxDepth;for(let d=0;d<numberOfPoints[1];d++){this.points[d]=[],a=sx;for(let e=0;e<numberOfPoints[0];e++)this.points[d][e]=new Point(a,b,c),a+=ix;c-=iz}}render(){for(let a=0;a<numberOfPoints[1];a++)for(let b=0;b<numberOfPoints[0];b++)this.points[a][b].project();let a=this.points,b=[];for(let c=0;c<numberOfPoints[1];c++)for(let d=0;d<numberOfPoints[0];d++){if(a[c][d+1]&&a[c-1]&&a[c-1][d+1]){let e=(a[c][d].z+a[c][d+1].z+a[c-1][d+1].z)/3;b.push([a[c][d],a[c][d+1],a[c-1][d+1],e])}if(a[c][d+1]&&a[c+1]&&a[c+1][d]){let e=(a[c][d].z+a[c][d+1].z+a[c+1][d].z)/3;b.push([a[c][d],a[c][d+1],a[c+1][d],e])}}b.sort((c,a)=>a[3]-c[3]);for(let a=0;a<b.length;a++)fillPolygon(b[a])}update(){let a=this.points[numberOfPoints[1]-1][0];if(a.z<minDepth){let a=sx,b=ground,c=maxDepth;for(let a=numberOfPoints[1]-1;1<=a;a--)this.points[a]=this.points[a-1].slice(0);for(let d=0;d<numberOfPoints[0];d++)this.points[0][d]=new Point(a,b,c),a+=ix}for(let a=0;a<numberOfPoints[1];a++)for(let b=0;b<numberOfPoints[0];b++)this.points[a][b].z-=speed}}window.onresize=function(){w=window.innerWidth,h=window.innerHeight,canvas.width=w,canvas.height=h,hw=w/2,hh=h/2,PERSPECTIVE=.8*w,PROJECTION_CENTER_X=w/2,PROJECTION_CENTER_Y=h/2,ground=hh,minDepth=-hw,maxDepth=2*w,sx=-hw,ex=hw,ix=(ex-sx)/(numberOfPoints[0]-1),iz=(maxDepth-minDepth)/(numberOfPoints[1]-1),init()},init=()=>{terrain=new Terrain,animation=void 0,gradient=c.createLinearGradient(hw,0,hw,h),gradient.addColorStop(0,"rgb(255,144,31)"),gradient.addColorStop(1,"rgb(255,41,117)"),render()},render=()=>{animation&&(cancelAnimationFrame(animation),animation=void 0),c.clearRect(0,0,w,h),c.fillStyle=gradient,c.fillRect(0,0,w,h),terrain.render(),terrain.update(),animation=requestAnimationFrame(render)},window.onresize();
-
-    document.ontouchmove = (e) => {
+    document.ontouchmove = e => {
       e.preventDefault();
     }
 
-    document.ontouchend = (e) => {
+    document.ontouchend = e => {
       e.preventDefault();
     }
   </script>
