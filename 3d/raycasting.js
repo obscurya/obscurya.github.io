@@ -5,11 +5,49 @@ document.exitPointerLock = document.exitPointerLock || document.mozExitPointerLo
 let keysMap = { w: false, a: false, s: false, d: false, ArrowLeft: false, ArrowRight: false };
 
 window.onkeydown = e => {
-  if (e.key in keysMap) keysMap[e.key] = true;
+  let key = e.key;
+
+  switch (key.toLowerCase()) {
+    case 'ц':
+      key = 'w';
+      break;
+    case 'ф':
+      key = 'a';
+      break;
+    case 'ы':
+      key = 's';
+      break;
+    case 'в':
+      key = 'd';
+      break;
+    default:
+      break;
+  }
+
+  if (key in keysMap) keysMap[key] = true;
 };
 
 window.onkeyup = e => {
-  if (e.key in keysMap) keysMap[e.key] = false;
+  let key = e.key;
+
+  switch (key.toLowerCase()) {
+    case 'ц':
+      key = 'w';
+      break;
+    case 'ф':
+      key = 'a';
+      break;
+    case 'ы':
+      key = 's';
+      break;
+    case 'в':
+      key = 'd';
+      break;
+    default:
+      break;
+  }
+
+  if (key in keysMap) keysMap[key] = false;
 };
 
 window.onmousemove = e => {
