@@ -2,213 +2,214 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,shrink-to-fit=no"
-    />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>obscurya</title>
-    <link href="https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap" rel="stylesheet" />
-    <style>
-      body {
-        font: 84px 'Bebas Neue', monospace;
-        background: #000;
-      }
-
-      .container {
-        position: fixed;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-      }
-
-      p {
-        text-transform: uppercase;
-        color: #fff;
-      }
-
-      .glitch {
-        position: relative;
-        width: 100%;
-        margin: 0 auto;
-      }
-
-      @keyframes noise-anim {
-        0% {
-          clip: rect(82px, 9999px, 65px, 0);
-        }
-        5% {
-          clip: rect(14px, 9999px, 8px, 0);
-        }
-        10% {
-          clip: rect(58px, 9999px, 37px, 0);
-        }
-        15% {
-          clip: rect(44px, 9999px, 99px, 0);
-        }
-        20% {
-          clip: rect(55px, 9999px, 31px, 0);
-        }
-        25% {
-          clip: rect(70px, 9999px, 48px, 0);
-        }
-        30% {
-          clip: rect(99px, 9999px, 24px, 0);
-        }
-        35% {
-          clip: rect(60px, 9999px, 56px, 0);
-        }
-        40% {
-          clip: rect(48px, 9999px, 11px, 0);
-        }
-        45% {
-          clip: rect(28px, 9999px, 73px, 0);
-        }
-        50% {
-          clip: rect(78px, 9999px, 9px, 0);
-        }
-        55% {
-          clip: rect(9px, 9999px, 19px, 0);
-        }
-        60% {
-          clip: rect(2px, 9999px, 94px, 0);
-        }
-        65% {
-          clip: rect(29px, 9999px, 29px, 0);
-        }
-        70% {
-          clip: rect(33px, 9999px, 80px, 0);
-        }
-        75% {
-          clip: rect(33px, 9999px, 63px, 0);
-        }
-        80% {
-          clip: rect(93px, 9999px, 60px, 0);
-        }
-        85% {
-          clip: rect(40px, 9999px, 46px, 0);
-        }
-        90% {
-          clip: rect(58px, 9999px, 13px, 0);
-        }
-        95% {
-          clip: rect(68px, 9999px, 16px, 0);
-        }
-        100% {
-          clip: rect(18px, 9999px, 4px, 0);
-        }
-      }
-      .glitch:after {
-        content: attr(data-text);
-        position: absolute;
-        left: 2px;
-        text-shadow: -1px 0 red;
-        top: 0;
-        color: white;
-        background: black;
-        overflow: hidden;
-        clip: rect(0, 900px, 0, 0);
-        animation: noise-anim 2s infinite linear alternate-reverse;
-      }
-
-      @keyframes noise-anim-2 {
-        0% {
-          clip: rect(78px, 9999px, 76px, 0);
-        }
-        5% {
-          clip: rect(21px, 9999px, 97px, 0);
-        }
-        10% {
-          clip: rect(78px, 9999px, 12px, 0);
-        }
-        15% {
-          clip: rect(84px, 9999px, 99px, 0);
-        }
-        20% {
-          clip: rect(58px, 9999px, 52px, 0);
-        }
-        25% {
-          clip: rect(28px, 9999px, 73px, 0);
-        }
-        30% {
-          clip: rect(46px, 9999px, 63px, 0);
-        }
-        35% {
-          clip: rect(5px, 9999px, 35px, 0);
-        }
-        40% {
-          clip: rect(58px, 9999px, 61px, 0);
-        }
-        45% {
-          clip: rect(62px, 9999px, 2px, 0);
-        }
-        50% {
-          clip: rect(73px, 9999px, 43px, 0);
-        }
-        55% {
-          clip: rect(71px, 9999px, 94px, 0);
-        }
-        60% {
-          clip: rect(31px, 9999px, 15px, 0);
-        }
-        65% {
-          clip: rect(16px, 9999px, 87px, 0);
-        }
-        70% {
-          clip: rect(16px, 9999px, 34px, 0);
-        }
-        75% {
-          clip: rect(22px, 9999px, 53px, 0);
-        }
-        80% {
-          clip: rect(9px, 9999px, 27px, 0);
-        }
-        85% {
-          clip: rect(96px, 9999px, 89px, 0);
-        }
-        90% {
-          clip: rect(84px, 9999px, 39px, 0);
-        }
-        95% {
-          clip: rect(33px, 9999px, 23px, 0);
-        }
-        100% {
-          clip: rect(24px, 9999px, 1px, 0);
-        }
-      }
-      .glitch:before {
-        content: attr(data-text);
-        position: absolute;
-        left: -2px;
-        text-shadow: 1px 0 blue;
-        top: 0;
-        color: white;
-        background: black;
-        overflow: hidden;
-        clip: rect(0, 900px, 0, 0);
-        animation: noise-anim-2 3s infinite linear alternate-reverse;
-      }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet" />
+    <title>Yaroslav F. Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="container">
-      <div class="text">
-        <p class="glitch" data-text="obscurya">obscurya</p>
+    <canvas id="canvas-grid" width="0" height="0"></canvas>
+    <div class="wrapper">
+      <div class="block block-image">
+        <div class="block-content">
+          <div class="left">
+            <h1>Французяк Ярослав</h1>
+            <h2>М, 22</h2>
+            <p>Бакалавр и в настоящее время магистрант кафедры Информационных технологий ИГЭУ</p>
+            <p>
+              Также получил доп. образование по направлению "Переводчик в сфере профессиональной коммуникации" на кафедре Интенсивного изучения
+              английского языка ИГЭУ
+            </p>
+            <p><a href="https://github.com/obscurya" class="link" target="_blank">Мой аккаунт на GitHub</a></p>
+          </div>
+          <div class="right">
+            <img src="images/DSC_0612.jpg" alt="" />
+          </div>
+        </div>
+      </div>
+
+      <div class="block">
+        <h2>Научные интересы и хард-скиллы</h2>
+        <p>
+          <span>Анализ и оптимизация бизнес-процессов.</span> Мое основное образовательное направление. Изучал системный анализ, теоретические основы
+          информационных систем и их проектирование, математические методы принятия решений, информационную и инновационную экономику, архитектуру
+          предприятий и так далее, список большой.
+        </p>
+        <p>
+          <span>Анализ данных.</span> Хотя, мне не нравится повсеместное употребление понятия "анализа". Анализ &mdash; это разложение общего на
+          частные взаимосвязанные элементы. Данные не надо раскладывать на что-то еще более мелкое, их нужно синтезировать и генерировать новую ценную
+          информацию.
+        </p>
+        <p>
+          <span>Машинное обучение.</span> В данном направлении я больше самоучка. Понимаю, для чего нужны различные модели распознавания образов,
+          классификации, прогнозирования и на чем они основаны.
+        </p>
+        <p>
+          <span>Веб-разработка.</span> Неплохо чувствую себя как во фронт-, так и в бэк-энд разработке. Само собой знаю HTML и CSS, а также PHP,
+          Python, но предпочитаю JavaScript (React, NodeJS). Однако готов адаптироваться под разные задачи, стараюсь постоянно развиваться и
+          актуализировать имеющиеся знания. Имел дело с SQL и NoSQL базами.
+        </p>
+      </div>
+
+      <div class="block">
+        <h2>Софт-скиллы</h2>
+        <p>
+          Можно много написать про то, какой я коммуникабельный, что умею работать в команде и контролировать гнев, но уверен, что это ненужно.
+          Объективно оценить темперамент и характер человека возможно только при личном общении, поэтому ко мне можно обратиться по вот этим ссылкам:
+        </p>
+        <div class="block-links">
+          <a href="https://vk.com/i_id42" target="_blank">ВКонтакте</a>
+          <a href="mailto:h4z4rd42@gmail.com" target="_blank">h4z4rd42@gmail.com</a>
+        </div>
+      </div>
+
+      <!-- <div class="block" style="background-image: linear-gradient(135deg, #ff0266, #0336ff); color: #fff;"> -->
+      <!-- <div class="block" style="background-image: linear-gradient(135deg, #ff0266, #ffde03); color: #fff;"> -->
+      <!-- <div class="block" style="background-image: linear-gradient(135deg, #0336ff, #ef538e); color: #fff;"> -->
+
+      <div class="block">
+        <h1>Далее о моих проектах</h1>
+      </div>
+
+      <div class="block block-image block-project">
+        <div class="block-content">
+          <div class="left">
+            <h2>
+              Комплекс систем, применяющийся в задаче продвижения инноваций
+            </h2>
+            <p>Моя текущая научно-исследовательская работа в университете.</p>
+            <p>
+              Комплекс состоит из системы представления и управления контентом, системы поддержки формирования контента, системы окулографического
+              мониторинга восприятия информации.
+            </p>
+            <p>
+              Цель данной НИР &mdash; вложить в задачу Интернет-маркетинга больше осмысленности, логики; максимально параметризировать элементы
+              целевой аудитории для того, чтобы представить каждому человеку индивидуальную информацию, способную объяснить смысл инновации и ее
+              предназначение в конкретно его предметной области.
+            </p>
+            <p>
+              Для реализации НИР активно используется машинное обучение в задачах распознавания глаз человека, прогнозирования направления его взгляда
+              на мониторе, адаптации контента под индивидуальные особенности пользователей.
+            </p>
+            <p>
+              Приходится залезать в различные научные области: в маркетинг, когнитологию, гештальтпсихологию, лингвистику, интеллектуальный анализ
+              данных &mdash; и изучать много нового.
+            </p>
+          </div>
+          <div class="right">
+            <img src="images/Screenshot_1062.png" alt="" />
+            <p>
+              Локализация правого глаза и радужки для дальнейшей параметризации, накопления выборки и обучения модели прогнозирования направления
+              взгляда
+            </p>
+            <img src="images/Screenshot_1126.png" alt="" />
+            <p>Отображение пути взгляда пользователя для ручного мониторинга восприятия</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="block block-image block-project">
+        <div class="block-content">
+          <div class="left">
+            <h2>
+              Прототип информационной системы для поддержки принятий решений по техническому обслуживанию и ремонту промышленных станков с ЧПУ
+            </h2>
+            <p>
+              Прототип разрабатывался командой Сигматика, в которой я был капитаном, в рамках направления "Цифровой атом" отборочного этапа чемпионата
+              CASE-IN 2020.
+            </p>
+            <p>
+              В процессе разработки были обработаны заданные массивы исходных данных с Kaggle, построена модель перцептрона для решения задачи
+              предиктивного обслуживания оборудования.
+            </p>
+            <p>Клиент &mdash; React, сервер &mdash; NodeJS и Python (для обеспечения работы библиотеки BrainJS), СУБД &mdash; MongoDB.</p>
+            <p><a href="https://github.com/obscurya/case-in" class="link" target="_blank">Исходный код на гитхабе</a></p>
+          </div>
+          <div class="right">
+            <img src="images/toir.png" alt="" />
+            <p>
+              Отображение состояния оборудования
+            </p>
+            <img src="images/diploma.png" alt="" style="max-width: 300px;" />
+            <p>
+              Диплом прилагается. Чемпионат проходил не в родном университете, поэтому не первое место, но в финал все равно прошли
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="block block-image block-project">
+        <div class="block-content">
+          <div class="left">
+            <h2>
+              Парсер расписания ИГЭУ и последующее представление в удобном мне (и некоторым студентам) виде
+            </h2>
+            <p>
+              Мне не нравится то, как представлено <a href="http://schedule.ispu.ru/" target="_blank">наше расписание на сайте ИГЭУ</a>, поэтому я
+              захотел сделать свое. Изначально заполнял свое расписание ручками, но потом стал все больше и больше автоматизировать этот процесс,
+              написал парсер на PHP (потом переписал на NodeJS) и выложил в Интернет, чтобы все могли пользоваться.
+            </p>
+            <p>А еще там можно сформировать настоящую картинку с расписанием, доступна кастомизация.</p>
+            <p>
+              <a href="https://schedule-ispu.herokuapp.com/" class="link" target="_blank">Посмотреть в действии</a>
+            </p>
+            <p>
+              <a href="https://github.com/obscurya/schedule-parser/blob/master/2020/app.js" class="link" target="_blank"
+                >Исходный код парсера на гитхабе</a
+              >
+            </p>
+          </div>
+          <div class="right">
+            <img src="images/Screenshot_1127.png" alt="" />
+            <p>Скриншот веб-приложения</p>
+            <img src="images/Screenshot_1128.png" alt="" />
+            <p>Редактор изображения с расписанием (я использовал для установки на экран блокировки телефона)</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="block block-image block-project">
+        <div class="block-content">
+          <div class="left">
+            <h2>
+              Прототип клиента на основе Яндекс.Маршрутизации
+            </h2>
+            <p>
+              По просьбе знакомых участвовал во фронт-разработке клиента, который использует API Яндекс.Маршрутизации.
+            </p>
+            <p>
+              Это был мой первый опыт работы с картами: загрузка тайлов с OpenStreetMap, отображение пунктов, соединение их путями, приближения и
+              отдаление по кликам...
+            </p>
+          </div>
+          <div class="right">
+            <img src="images/65.png" alt="" />
+            <p>Скриншот веб-приложения</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="block">
+        <h2>
+          А также было еще несколько проектов, которые неактуальны сейчас, и большое множество эксперементов с различными технологиями (особенно с
+          канвасом)
+        </h2>
+      </div>
+
+      <div class="gallery">
+        <div class="img" style="background-image: url(images/etc/1.png);"></div>
+        <div class="img" style="background-image: url(images/etc/2.png);"></div>
+        <div class="img" style="background-image: url(images/etc/3.png);"></div>
+        <div class="img" style="background-image: url(images/etc/4.png);"></div>
+        <div class="img" style="background-image: url(images/etc/5.png);"></div>
+        <div class="img" style="background-image: url(images/etc/6.png);"></div>
+        <div class="img" style="background-image: url(images/etc/7.png);"></div>
+        <div class="img" style="background-image: url(images/etc/8.png);"></div>
+        <div class="img" style="background-image: url(images/etc/9.png);"></div>
+        <div class="img" style="background-image: url(images/etc/10.png);"></div>
+        <div class="img" style="background-image: url(images/etc/11.jpg);"></div>
+        <div class="img" style="background-image: url(images/etc/12.jpg);"></div>
       </div>
     </div>
-    <script>
-      document.ontouchmove = e => {
-        e.preventDefault();
-      };
-
-      document.ontouchend = e => {
-        e.preventDefault();
-      };
-    </script>
   </body>
 </html>
