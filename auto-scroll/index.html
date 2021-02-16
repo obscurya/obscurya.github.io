@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="test"></div>
+    <div class="container">
+      <div class="content">
+        <div class="text"></div>
+      </div>
+    </div>
+    <script src="split-text.js"></script>
+    <script src="text.js"></script>
+    <script>
+      const contentBlock = document.querySelector('.content');
+      // const contentBlockRect = contentBlock.getBoundingClientRect();
+      const textBlock = document.querySelector('.text');
+
+      const rowsNumber = 24;
+      const focusRowIndex = 6;
+
+      const modularGrid = {
+        rowsNumber,
+        columnsNumber: 8,
+        rowHeight: 0,
+        columnWidth: 0,
+        focusRowIndex,
+        currentRowIndex: focusRowIndex,
+        scrollStep: 0,
+        scrollTimeMin: 100,
+        scrollTimeMax: 1000,
+        scrollInterval: null,
+        isScrollBlocked: false,
+        scrollContent: function () {
+          if (this.currentRowIndex === null || this.isScrollBlocked) return;
+
+          let time = this.scrollTimeMax;
+          let scrollTimeStep = 0;
+
+          this.scrollStep = 0;
+
+          if (this.currentRowIndex < this.focusRowIndex) {
+            time =
+              this.scrollTimeMin +
+              (this.scrollTimeMax - this.scrollTimeMin) * (this.currentRowIndex / (this.focusRowIndex - 1));
+            this.scrollStep = -this.rowHeight;
+          } else if (this.currentRowIndex > this.focusRowIndex) {
+            time =
+              this.scrollTimeMax -
+              (this.scrollTimeMax - this.scrollTimeMin) * (this.currentRowIndex / (this.rowsNumber - 1));
+            this.scrollStep = this.rowHeight;
+          }
+
+          contentBlock.style.transition = `${time}ms linear`;
+
+          contentBlock.style.top = contentBlock.style.top
+            ? `${parseFloat(contentBlock.style.top) - this.scrollStep}px`
+            : `${-this.scrollStep}px`;
+
+          this.isScrollBlocked = true;
+
+          setTimeout(() => {
+            this.isScrollBlocked = false;
+          }, time);
+        },
+        render: function () {
+          const gridElement = document.createElement('div');
+          const gridRowsElement = document.createElement('div');
+          const gridColumnsElement = document.createElement('div');
+
+          gridElement.classList.add('grid');
+          gridRowsElement.classList.add('grid-rows');
+          gridColumnsElement.classList.add('grid-columns');
+
+          for (let i = 0; i < this.rowsNumber; i++) {
+            const rowElement = document.createElement('div');
+
+            rowElement.classList.add('grid-row');
+
+            gridRowsElement.appendChild(rowElement);
+          }
+
+          for (let i = 0; i < this.columnsNumber; i++) {
+            const columnElement = document.createElement('div');
+
+            columnElement.classList.add('grid-column');
+
+            gridColumnsElement.appendChild(columnElement);
+          }
+
+          gridElement.appendChild(gridColumnsElement);
+          gridElement.appendChild(gridRowsElement);
+          document.body.appendChild(gridElement);
+        },
+      };
+
+      const fields = [
+        {
+          rowsNumber: 2,
+          weight: 1,
+        },
+        {
+          rowsNumber: 3,
+          weight: 0.5,
+        },
+        {
+          rowsNumber: 6,
+          weight: 0,
+        },
+        {
+          rowsNumber: 3,
+          weight: 0.5,
+        },
+        {
+          rowsNumber: 2,
+          weight: 1,
+        },
+      ];
+      const lineHeightInRows = 1;
+      const fontSizeInRows = 0.5;
+
+      window.onresize = () => {
+        modularGrid.rowHeight = Math.round(window.innerHeight / modularGrid.rowsNumber);
+        modularGrid.columnWidth = Math.round(window.innerWidth / modularGrid.columnsNumber);
+
+        const lineHeight = `${modularGrid.rowHeight * lineHeightInRows}px`;
+        const fontSize = `${modularGrid.rowHeight * fontSizeInRows}px`;
+
+        document.documentElement.style.setProperty('--gridRowsNumber', modularGrid.rowsNumber);
+        document.documentElement.style.setProperty('--gridColumnsNumber', modularGrid.columnsNumber);
+
+        document.documentElement.style.setProperty('--gridRowSize', `${modularGrid.rowHeight}px`);
+        document.documentElement.style.setProperty('--gridColumnSize', `${modularGrid.columnWidth}px`);
+
+        document.documentElement.style.setProperty('--fontSize', fontSize);
+        document.documentElement.style.setProperty('--lineHeight', lineHeight);
+      };
+
+      window.onload = () => {
+        window.onresize();
+        modularGrid.render();
+
+        contentBlock.style.top = `${modularGrid.rowHeight * (modularGrid.focusRowIndex - 1)}px`;
+
+        contentBlock.onmousemove = e => {
+          for (let i = 0; i < modularGrid.rowsNumber; i++) {
+            const y1 = i * modularGrid.rowHeight;
+            const y2 = y1 + modularGrid.rowHeight;
+
+            if (e.clientY >= y1 && e.clientY < y2) {
+              modularGrid.currentRowIndex = i;
+              return;
+            }
+          }
+        };
+
+        contentBlock.onmouseleave = () => {
+          modularGrid.currentRowIndex = null;
+        };
+
+        text.forEach(p => {
+          const textContainer = createTextContainer(p);
+
+          textBlock.appendChild(textContainer);
+        });
+
+        setInterval(() => modularGrid.scrollContent(), 1000 / 30);
+      };
+    </script>
+  </body>
+</html>
