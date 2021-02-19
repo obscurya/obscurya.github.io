@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="node_modules/joint.min.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="shapes">
+        <button onclick="createShape1()">Shape 1</button>
+        <button onclick="createShape2()">Shape 2</button>
+      </div>
+      <div class="workspace">
+        <div id="joint"></div>
+      </div>
+      <div class="options">
+        <p>Выбран элемент: <span class="active-element-id">null</span></p>
+        <button onclick="rotateActiveElement()">Повернуть</button>
+        <button onclick="removeActiveElement()">Удалить</button>
+      </div>
+    </div>
+    <div id="myholder"></div>
+
+    <!-- dependencies -->
+    <script src="node_modules/jquery.min.js"></script>
+    <script src="node_modules/lodash.min.js"></script>
+    <script src="node_modules/backbone-min.js"></script>
+    <script src="node_modules/joint.min.js"></script>
+
+    <script src="joint-init.js"></script>
+    <script src="functions.js"></script>
+  </body>
+</html>

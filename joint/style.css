@@ -1,0 +1,46 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font: 14px sans-serif;
+}
+
+.container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+
+.shapes {
+  width: 200px;
+  padding: 15px;
+  background: grey;
+}
+
+.shapes button {
+  width: 100%;
+}
+
+.options {
+  width: 200px;
+  padding: 15px;
+  background: lightgrey;
+}
+
+.options button {
+  width: 100%;
+}
+
+.workspace {
+  position: relative;
+  width: calc(100vw - 200px - 200px);
+}
+
+/* Joint styles */
+
+.available-magnet {
+  fill: yellow;
+}
