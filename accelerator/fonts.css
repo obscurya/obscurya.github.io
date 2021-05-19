@@ -1,0 +1,17 @@
+@font-face {
+  font-family: Gilroy;
+  font-weight: 400;
+  src: url('fonts/Gilroy/Gilroy-Regular.otf') format('opentype');
+}
+
+@font-face {
+  font-family: Gilroy;
+  font-weight: 500;
+  src: url('fonts/Gilroy/Gilroy-Medium.otf') format('opentype');
+}
+
+@font-face {
+  font-family: Elektra;
+  font-weight: 400;
+  src: url('fonts/Elektra/Elektra Light Pro.otf') format('opentype');
+}
