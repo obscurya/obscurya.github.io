@@ -155,9 +155,8 @@ footer {
   position: absolute;
   width: 100%;
   height: 100%;
-  background-image: url(images/kolyma2.jpg);
-  background-image: url(images/_KRL5770_auto_x2.jpg);
-  background-image: url(images/_KRL5770_photos_v2_x4.jpg);
+  /* background-image: url(images/kolyma2.jpg); */
+  background-image: url(images/_KRL5770_auto_x2_compressed.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   /* background-position: center bottom 0; */
@@ -584,7 +583,7 @@ footer {
 } */
 
 .footer-container-right {
-  width: var(--column-5);
+  width: var(--column-6);
   display: flex;
   justify-content: space-between;
   align-items: center;

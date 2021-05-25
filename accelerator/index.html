@@ -319,8 +319,10 @@
           if (menuOpen) {
             links.classList.add('open');
 
-            if (document.documentElement.scrollTop === 0) {
+            if (window.innerWidth <= 1640) {
               header.classList.add('black');
+            } else {
+              header.classList.remove('black');
             }
           } else {
             links.classList.remove('open');
@@ -329,6 +331,7 @@
         };
 
         window.onresize = () => {
+          console.log(window.innerWidth);
           if (window.innerWidth > 1640) {
             toggleMenu(true);
           } else {
