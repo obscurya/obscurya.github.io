@@ -548,6 +548,11 @@ footer {
   align-items: center;
 }
 
+.partners-category-right a {
+  display: inline-block;
+  height: 100%;
+}
+
 .partners-category-right img {
   padding: 24px;
   height: 100%;
