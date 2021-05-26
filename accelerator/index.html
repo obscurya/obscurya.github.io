@@ -250,32 +250,43 @@
         </section>
 
         <a id="form"></a>
-        <section class="form">
+        <form class="form" action="https://sheetdb.io/api/v1/6yvpm143s6wcu" method="POST">
           <div class="form-container">
             <div class="form-title">Как подать заявку</div>
             <div class="form-">
               <div class="form-left">
-                <input type="text" placeholder="Укажите Ваше ФИО" />
-                <input type="text" placeholder="Название компании / проекта" />
-                <input type="text" placeholder="Ваша должность / роль в проекте" />
-                <input type="text" placeholder="Ваш телефон" />
-                <input type="text" placeholder="Ваш e-mail" />
-                <input type="text" placeholder="Ваш сайт" />
+                <input name="data[fio]" type="text" placeholder="Укажите Ваше ФИО*" required />
+                <input
+                  name="data[company_project_name]"
+                  type="text"
+                  placeholder="Название компании / проекта*"
+                  required
+                />
+                <input name="data[duty_role]" type="text" placeholder="Ваша должность / роль в проекте*" required />
+                <input name="data[phone]" type="text" placeholder="Ваш телефон*" required />
+                <input name="data[email]" type="text" placeholder="Ваш e-mail*" required />
+                <input name="data[site]" type="text" placeholder="Ваш сайт" />
               </div>
               <div class="form-right">
-                <input type="text" placeholder="Ссылки на соц. сети проекта" />
-                <input type="text" placeholder="Откуда узнали об акселераторе?" />
-                <input type="text" placeholder="К какой сфере относится ваш проект?" />
+                <input name="data[social_networks_links]" type="text" placeholder="Ссылки на соц. сети проекта" />
+                <input name="data[from_where]" type="text" placeholder="Откуда узнали об акселераторе?" />
+                <input name="data[project_scope]" type="text" placeholder="К какой сфере относится ваш проект?" />
                 <textarea
+                  name="data[problems_and_solutions]"
                   type="text"
                   placeholder="Расскажите, какие проблемы бизнеса решает Ваш проект и какие показатели поможет улучшить? "
                 ></textarea>
-                <textarea type="text" placeholder="Рынок, на который вы ориентируетесь? "></textarea>
-                <input class="button" type="button" value="Подать заявку на участие" />
+                <select name="data[market]">
+                  <option value="" selected disabled>Рынок, на который вы ориентируетесь?</option>
+                  <option value="Внутри региона">Внутри региона</option>
+                  <option value="По всей России">По всей России</option>
+                  <option value="Международный рынок">Международный рынок</option>
+                </select>
+                <input class="button" type="submit" value="Подать заявку на участие" />
               </div>
             </div>
           </div>
-        </section>
+        </form>
 
         <a id="partners"></a>
         <section class="partners">
@@ -370,7 +381,6 @@
           menuButton.querySelector('#menu-button-open'),
           menuButton.querySelector('#menu-button-close'),
         ];
-        console.log(menuButtonIcons);
         const links = document.querySelector('.links');
         let menuOpen = false;
 
@@ -416,6 +426,22 @@
         } else {
           toggleMenu(false);
         }
+
+        const form = document.querySelector('.form');
+        const { action, method } = form;
+
+        form.onsubmit = e => {
+          e.preventDefault();
+
+          fetch(action, {
+            method,
+            body: new FormData(form),
+          })
+            .then(response => response.json())
+            .then(html => {
+              alert('Спасибо, Ваша заявка принята!');
+            });
+        };
       };
     </script>
   </body>
