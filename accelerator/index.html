@@ -4,30 +4,53 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
     <link rel="stylesheet" href="fonts.css" />
     <link rel="stylesheet" href="style.css" />
-    <title>Document</title>
+    <title>Акселератор Капитаны</title>
   </head>
   <body>
     <header>
       <div class="header-container">
         <div class="logos big">
-          <img class="bigger" src="images/magadan.png" alt="" />
-          <img class="bigger" src="images/my_business.png" alt="" />
-          <img class="bigger" src="images/fond.png" alt="" />
-          <img class="bigger" src="images/nac_project.png" alt="" />
-          <img src="images/logo_white.png" alt="" />
+          <a href="https://www.49gov.ru/" target="_blank">
+            <img class="bigger" src="images/magadan.png" alt="" />
+          </a>
+          <a href="https://мойбизнес.рф/" target="_blank">
+            <img class="bigger" src="images/my_business.png" alt="" />
+          </a>
+          <a href="https://фондмагадан.рф/" target="_blank">
+            <img class="bigger" src="images/fond.png" alt="" />
+          </a>
+          <a href="https://национальныепроекты.рф/" target="_blank">
+            <img class="bigger" src="images/nac_project.png" alt="" />
+          </a>
+          <a href="https://develop-pro.ru/" target="_blank">
+            <img src="images/logo_white.png" alt="" />
+          </a>
         </div>
         <div class="logos small">
           <div>
-            <img class="bigger" src="images/magadan_.png" alt="" />
-            <img class="bigger" src="images/my_business.png" alt="" />
-            <img class="bigger" src="images/fond_.png" alt="" />
-            <img class="bigger" src="images/nac_project.png" alt="" />
-            <img class="bigger" src="images/logo_white_.png" alt="" />
+            <a href="https://www.49gov.ru/" target="_blank">
+              <img class="bigger" src="images/magadan_.png" alt="" />
+            </a>
+            <a href="https://мойбизнес.рф/" target="_blank">
+              <img class="bigger" src="images/my_business.png" alt="" />
+            </a>
+            <a href="https://фондмагадан.рф/" target="_blank">
+              <img class="bigger" src="images/fond_.png" alt="" />
+            </a>
+            <a href="https://национальныепроекты.рф/" target="_blank">
+              <img class="bigger" src="images/nac_project.png" alt="" />
+            </a>
+            <a href="https://develop-pro.ru/" target="_blank">
+              <img class="bigger" src="images/logo_white_.png" alt="" />
+            </a>
           </div>
           <div class="menu-button">
-            <img src="icons/menu_black_24dp.svg" alt="" />
+            <img id="menu-button-open" src="icons/menu_black_24dp.svg" alt="" />
+            <img id="menu-button-close" src="icons/close_black_24dp.svg" alt="" />
           </div>
         </div>
         <div class="links">
@@ -35,6 +58,7 @@
           <a href="#tracks">Треки</a>
           <a href="#form">Подать заявку</a>
           <a href="#partners">Партнеры</a>
+          <a href="#contacts">Контакты</a>
         </div>
       </div>
     </header>
@@ -59,7 +83,7 @@
         </div>
 
         <section class="main">
-          <a class="action-button" href="#form">Подать заявку</a>
+          <a class="action-button" id="action-button-1" href="#form">Подать заявку</a>
           <div class="main-background"></div>
           <div class="main-container">
             <div class="main-container-captains-container">
@@ -72,7 +96,7 @@
               </div>
               <div class="main-container-captains-desc">АКСЕЛЕРАЦИОННАЯ ПРОГРАММА</div>
             </div>
-            <div class="start">Старт 15 июня 2021 г</div>
+            <div class="start">Старт 12 июня 2021 г</div>
             <div class="author"><a href="https://alkrylov.ru/">Автор фото &mdash; Александр Крылов</a></div>
           </div>
         </section>
@@ -128,9 +152,32 @@
           </div>
         </section>
 
+        <a id="possibilities"></a>
+        <section class="possibilities">
+          <a class="action-button" href="#form">Подать заявку</a>
+          <div class="possibilities-container">
+            <div class="possibilities-title">Возможности для участников</div>
+            <div class="possibilities-info">
+              <div class="possibilities-block">
+                <p>&mdash; Расширить имеющийся бизнес в городе и за его пределами;</p>
+                <p>&mdash; Развить сеть и франшизу;</p>
+                <p>&mdash; Получить корпоративный заказ.</p>
+              </div>
+              <div class="possibilities-block">
+                <p>&mdash; Подготовиться к участию в федеральных акселераторах от крупнейших компаний;</p>
+                <p>&mdash; Получить поддержку на R&D и маркетинг для развития проекта;</p>
+                <p>
+                  &mdash; Пройти успешно акселерационную программу, защитить собственный проект, получить узнаваемость.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <a id="tracks"></a>
         <section class="tracks">
           <a class="action-button" href="#form">Подать заявку</a>
+          <div class="tracks-title">Основные треки акселератора</div>
           <div class="track-container">
             <div class="track">
               <div class="track-left">
@@ -237,13 +284,25 @@
             <div class="partners-category">
               <div class="partners-category-left">Организатор</div>
               <div class="partners-category-right">
-                <a href="https://фондмагадан.рф/" target="_blank"><img src="images/fond_colored.png" alt="" /></a>
+                <a href="https://фондмагадан.рф/" target="_blank">
+                  <img src="images/fond_colored.png" alt="" />
+                </a>
               </div>
             </div>
             <div class="partners-category">
-              <div class="partners-category-left">Генеральный партнёр</div>
+              <div class="partners-category-left">Оператор</div>
               <div class="partners-category-right">
-                <a href="https://economy.49gov.ru/" target="_blank"><img src="images/minek.png" alt="" style="max-height: 114px" /></a>
+                <a href="https://develop-pro.ru/" target="_blank">
+                  <img src="images/logo.png" alt="" />
+                </a>
+              </div>
+            </div>
+            <div class="partners-category">
+              <div class="partners-category-left">Генеральные партнёры</div>
+              <div class="partners-category-right">
+                <a href="https://economy.49gov.ru/" target="_blank">
+                  <img src="images/minek.png" alt="" />
+                </a>
               </div>
             </div>
             <!-- <div class="partners-category">
@@ -261,10 +320,11 @@
           </div>
         </section>
 
+        <a id="contacts"></a>
         <footer>
           <div class="footer-container">
             <div class="footer-container-left">
-              <img src="images/logo_white.png" alt="" />
+              <img src="images/logo_white_.png" alt="" />
             </div>
             <div class="footer-container-right">
               <div class="footer-container-right-1">
@@ -306,6 +366,11 @@
         });
 
         const menuButton = document.querySelector('.menu-button');
+        const menuButtonIcons = [
+          menuButton.querySelector('#menu-button-open'),
+          menuButton.querySelector('#menu-button-close'),
+        ];
+        console.log(menuButtonIcons);
         const links = document.querySelector('.links');
         let menuOpen = false;
 
@@ -317,6 +382,9 @@
           }
 
           if (menuOpen) {
+            menuButtonIcons[0].style.display = 'none';
+            menuButtonIcons[1].style.display = 'block';
+
             links.classList.add('open');
 
             if (window.innerWidth <= 1640) {
@@ -325,13 +393,15 @@
               header.classList.remove('black');
             }
           } else {
+            menuButtonIcons[0].style.display = 'block';
+            menuButtonIcons[1].style.display = 'none';
+
             links.classList.remove('open');
             header.classList.remove('black');
           }
         };
 
         window.onresize = () => {
-          console.log(window.innerWidth);
           if (window.innerWidth > 1640) {
             toggleMenu(true);
           } else {
@@ -343,6 +413,8 @@
 
         if (window.innerWidth > 1640) {
           toggleMenu(true);
+        } else {
+          toggleMenu(false);
         }
       };
     </script>
