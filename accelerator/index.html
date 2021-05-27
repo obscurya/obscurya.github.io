@@ -86,15 +86,9 @@
           <a class="action-button" id="action-button-1" href="#form">Подать заявку</a>
           <div class="main-background"></div>
           <div class="main-container">
-            <div class="main-container-captains-container">
-              <div class="main-container-captains">
-                <div class="main-container-captains-">
-                  <p>КАПИТАНЫ</p>
-                  <div class="border-bottom"></div>
-                </div>
-                <div class="main-container-captains--"></div>
-              </div>
-              <div class="main-container-captains-desc">АКСЕЛЕРАЦИОННАЯ ПРОГРАММА</div>
+            <div class="main-container-captains">
+              <img src="images/captains_text_.png" alt="" />
+              <p>АКСЕЛЕРАЦИОННАЯ ПРОГРАММА</p>
             </div>
             <div class="start">Старт 12 июня 2021 г</div>
             <div class="author"><a href="https://alkrylov.ru/">Автор фото &mdash; Александр Крылов</a></div>
@@ -103,7 +97,6 @@
 
         <a id="about"></a>
         <section class="about">
-          <a class="action-button" href="#form">Подать заявку</a>
           <div class="about-container">
             <div class="about-first">
               <div class="about-first-left">
@@ -149,34 +142,66 @@
                 </div>
               </div>
             </div>
+            <div style="height: auto; text-align: center">
+              <a class="action-button" href="#form">Подать заявку</a>
+            </div>
           </div>
         </section>
 
         <a id="possibilities"></a>
         <section class="possibilities">
-          <a class="action-button" href="#form">Подать заявку</a>
           <div class="possibilities-container">
             <div class="possibilities-title">Возможности для участников</div>
             <div class="possibilities-info">
-              <div class="possibilities-block">
-                <p>&mdash; Расширить имеющийся бизнес в городе и за его пределами;</p>
-                <p>&mdash; Развить сеть и франшизу;</p>
-                <p>&mdash; Получить корпоративный заказ.</p>
+              <div class="possibility">
+                <div class="possibility-icon">
+                  <img src="icons/buildings.svg" alt="" />
+                </div>
+                <div class="possibility-text">Расширить имеющийся бизнес в городе и за его пределами</div>
               </div>
-              <div class="possibilities-block">
-                <p>&mdash; Подготовиться к участию в федеральных акселераторах от крупнейших компаний;</p>
-                <p>&mdash; Получить поддержку на R&D и маркетинг для развития проекта;</p>
-                <p>
-                  &mdash; Пройти успешно акселерационную программу, защитить собственный проект, получить узнаваемость.
-                </p>
+              <div class="possibility">
+                <div class="possibility-icon">
+                  <img src="icons/franchise.svg" alt="" />
+                </div>
+                <div class="possibility-text">Развить сеть и франшизу</div>
               </div>
+              <div class="possibility">
+                <div class="possibility-icon">
+                  <img src="icons/fish.svg" alt="" />
+                </div>
+                <div class="possibility-text">Получить корпоративный заказ</div>
+              </div>
+              <div class="possibility">
+                <div class="possibility-icon">
+                  <img src="icons/enterprise.svg" alt="" />
+                </div>
+                <div class="possibility-text">
+                  Подготовиться к участию в федеральных акселераторах от крупнейших компаний
+                </div>
+              </div>
+              <div class="possibility">
+                <div class="possibility-icon">
+                  <img src="icons/progress.svg" alt="" />
+                </div>
+                <div class="possibility-text">Получить поддержку на R&D и маркетинг для развития проекта</div>
+              </div>
+              <div class="possibility">
+                <div class="possibility-icon">
+                  <img src="icons/certificate.svg" alt="" />
+                </div>
+                <div class="possibility-text">
+                  Пройти успешно акселерационную программу, защитить собственный проект, получить узнаваемость
+                </div>
+              </div>
+            </div>
+            <div style="height: auto; text-align: center">
+              <a class="action-button" href="#form">Подать заявку</a>
             </div>
           </div>
         </section>
 
         <a id="tracks"></a>
         <section class="tracks">
-          <a class="action-button" href="#form">Подать заявку</a>
           <div class="tracks-title">Основные треки акселератора</div>
           <div class="track-container">
             <div class="track">
@@ -247,6 +272,9 @@
               </div>
             </div>
           </div>
+          <div class="track-container" style="height: auto; text-align: center; margin-top: calc(8px * 8)">
+            <a class="action-button" href="#form">Подать заявку</a>
+          </div>
         </section>
 
         <a id="form"></a>
@@ -255,16 +283,23 @@
             <div class="form-title">Как подать заявку</div>
             <div class="form-">
               <div class="form-left">
-                <input name="data[fio]" type="text" placeholder="Укажите Ваше ФИО*" required />
+                <input class="required" name="data[fio]" type="text" placeholder="Укажите Ваше ФИО*" required />
                 <input
+                  class="required"
                   name="data[company_project_name]"
                   type="text"
                   placeholder="Название компании / проекта*"
                   required
                 />
-                <input name="data[duty_role]" type="text" placeholder="Ваша должность / роль в проекте*" required />
-                <input name="data[phone]" type="text" placeholder="Ваш телефон*" required />
-                <input name="data[email]" type="text" placeholder="Ваш e-mail*" required />
+                <input
+                  class="required"
+                  name="data[duty_role]"
+                  type="text"
+                  placeholder="Ваша должность / роль в проекте*"
+                  required
+                />
+                <input class="required" name="data[phone]" type="text" placeholder="Ваш телефон*" required />
+                <input class="required" name="data[email]" type="text" placeholder="Ваш e-mail*" required />
                 <input name="data[site]" type="text" placeholder="Ваш сайт" />
               </div>
               <div class="form-right">
@@ -303,7 +338,7 @@
             <div class="partners-category">
               <div class="partners-category-left">Оператор</div>
               <div class="partners-category-right">
-                <a href="https://develop-pro.ru/" target="_blank">
+                <a href="https://develop-pro.ru/" target="_blank" style="height: 80px">
                   <img src="images/logo.png" alt="" />
                 </a>
               </div>
@@ -313,6 +348,9 @@
               <div class="partners-category-right">
                 <a href="https://economy.49gov.ru/" target="_blank">
                   <img src="images/minek.png" alt="" />
+                </a>
+                <a href="https://minobr.49gov.ru/" target="_blank">
+                  <img src="images/minobr.png" alt="" />
                 </a>
               </div>
             </div>
@@ -339,7 +377,7 @@
             </div>
             <div class="footer-container-right">
               <div class="footer-container-right-1">
-                <div>&copy; 2016 &mdash; 2021, Технологии развития</div>
+                <div>&copy; 2012 &mdash; 2021, Технологии развития</div>
                 <div>Все права защищены.</div>
               </div>
               <div class="footer-container-right-2">
@@ -349,6 +387,13 @@
             </div>
           </div>
         </footer>
+      </div>
+    </div>
+
+    <div class="form-success-container">
+      <div class="form-success">
+        <p>Спасибо, Ваша заявка принята!</p>
+        <span>Нажмите в любое место, чтобы закрыть сообщение.</span>
       </div>
     </div>
 
@@ -427,6 +472,12 @@
           toggleMenu(false);
         }
 
+        const formSuccess = document.querySelector('.form-success-container');
+
+        formSuccess.onclick = () => {
+          formSuccess.style.display = 'none';
+        };
+
         const form = document.querySelector('.form');
         const { action, method } = form;
 
@@ -439,7 +490,7 @@
           })
             .then(response => response.json())
             .then(html => {
-              alert('Спасибо, Ваша заявка принята!');
+              formSuccess.style.display = 'flex';
             });
         };
       };
