@@ -1,0 +1,345 @@
+@media screen and (max-width: 1770px) {
+  .header-container .logos.big {
+    display: none;
+  }
+
+  .header-container .logos.small {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .header-container .logos.small > div:first-child {
+    display: flex;
+  }
+
+  .links {
+    width: var(--column-8);
+  }
+}
+
+@media screen and (max-width: 1640px) {
+  .header-container {
+    flex-direction: column;
+  }
+
+  .header-container .logos {
+    width: var(--column-12);
+  }
+
+  .menu-button {
+    display: block;
+    height: calc(73px - 15px);
+    border-radius: 50%;
+    transition: 0.3s;
+  }
+
+  .menu-button:hover {
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .menu-button img {
+    height: 100%;
+    padding: 10px;
+  }
+
+  .links {
+    display: none;
+    width: 100vw;
+    flex-direction: column;
+    padding: 30px var(--container-padding);
+  }
+
+  .links a {
+    margin: 8px 0 !important;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  :root {
+    --columns-number: 6;
+    --gutter: calc(8px * 1);
+    --container-padding: 30px;
+    --column-1: calc(var(--column-width) / 2);
+    --column-2: var(--column-1);
+    --column-3: calc(var(--column-width) * 2 + var(--gutter));
+    --column-4: var(--column-3);
+    --column-5: calc(var(--column-width) * 3 + var(--gutter) * 2);
+    --column-6: var(--column-5);
+    --column-7: calc(var(--column-width) * 4 + var(--gutter) * 3);
+    --column-8: var(--column-7);
+    --column-9: calc(var(--column-width) * 5 + var(--gutter) * 4);
+    --column-10: var(--column-9);
+    --column-11: calc(var(--column-width) * 6 + var(--gutter) * 5);
+    --column-12: var(--column-11);
+    --section-height: auto;
+  }
+
+  .main p,
+  .main .start {
+    font-size: 24px;
+    letter-spacing: normal;
+  }
+
+  .about-first {
+    display: block;
+  }
+
+  .about-first > div {
+    width: 100%;
+    margin: 0;
+  }
+
+  .track-container {
+    margin-top: calc(8px * 8);
+    height: auto !important;
+  }
+
+  .track {
+    flex-direction: column;
+  }
+
+  .track-left,
+  .track-right {
+    width: 100%;
+    margin-bottom: calc(8px * 4);
+  }
+
+  .track-left- {
+    width: var(--column-10);
+  }
+
+  .track-right-motivation {
+    width: var(--column-10);
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .about-first-left p:last-child {
+    font-size: 64px;
+  }
+
+  .about-second {
+    height: auto !important;
+    align-items: center;
+  }
+
+  .time-line {
+    width: 2px;
+    height: 800px;
+    flex-direction: column;
+    align-content: space-between;
+    align-items: center;
+    margin: calc(8px * 4) 0;
+  }
+
+  .time-line .point {
+    width: calc(100vw - var(--container-padding) * 2);
+    height: calc(800px / 6);
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .time-line .point > div {
+    position: relative !important;
+    top: auto !important;
+    margin: 0 !important;
+    font-size: 18px !important;
+    text-align: unset !important;
+    line-height: 1.5;
+  }
+
+  .time-line .point .date {
+    width: calc(100% / 2 - 24px * 2);
+    justify-content: flex-end;
+    font-size: 24px !important;
+    text-align: right !important;
+  }
+
+  .time-line .point .text {
+    width: calc(100% / 2 - 24px * 2);
+    justify-content: flex-start;
+  }
+
+  .footer-container-right {
+    width: var(--column-10);
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .possibility {
+    width: var(--column-6) !important;
+  }
+
+  .possibility-icon {
+    width: calc(var(--column-4) / 2) !important;
+    height: calc(var(--column-4) / 2) !important;
+  }
+
+  .form- {
+    flex-direction: column;
+  }
+
+  .form- > div {
+    width: 100% !important;
+  }
+
+  .form- > div > * {
+    width: 100%;
+    height: calc(24px * 3);
+  }
+
+  .form-right {
+    margin-top: 24px !important;
+  }
+
+  .partners-title,
+  .form-title,
+  .tracks-title,
+  .possibilities-title {
+    font-size: 36px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  body {
+    font-size: 16px;
+  }
+
+  .bigger {
+    height: 50px;
+  }
+
+  #action-button-1 {
+    bottom: calc(24px * 6);
+  }
+
+  .main p,
+  .main .start {
+    font-size: 18px;
+  }
+
+  .about-first-left p:first-child {
+    font-size: 24px;
+  }
+
+  .about-first-left p:last-child {
+    font-size: 42px;
+  }
+
+  .time-line {
+    height: 600px;
+  }
+
+  .time-line .point {
+    height: calc(600px / 6);
+  }
+
+  .time-line .point > div {
+    line-height: 1.2 !important;
+  }
+
+  .time-line .point .date {
+    width: calc(100% / 2 - 24px);
+    font-size: 16px !important;
+  }
+
+  .time-line .point .text {
+    width: calc(100% / 2 - 24px);
+    font-size: 16px !important;
+  }
+
+  .possibilities-info {
+    flex-direction: column;
+  }
+
+  .possibility {
+    width: 100% !important;
+    margin: 24px 0;
+  }
+
+  .possibility-icon {
+    width: 80px !important;
+    height: 80px !important;
+  }
+
+  .possibility-text {
+    width: 100%;
+  }
+
+  .track-left,
+  .track-right {
+    flex-direction: column;
+  }
+
+  .track-left-icon,
+  .track-right-icon {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 24px;
+  }
+
+  .track-left-,
+  .track-right-motivation {
+    width: 100%;
+  }
+
+  li {
+    margin-left: 16px;
+  }
+
+  .partners-container > div:first-child {
+    height: auto !important;
+    min-height: auto;
+  }
+
+  .partners-category {
+    flex-direction: column;
+    margin-top: 24px;
+    border-top: none !important;
+  }
+
+  .partners-category > div {
+    width: 100%;
+  }
+
+  .partners-category-left {
+    border-right: none !important;
+  }
+
+  .partners-category-right a:first-child {
+    margin-left: -24px;
+  }
+
+  footer {
+    padding: calc(24px * 2) 0;
+  }
+
+  .footer-container-right {
+    flex-direction: column;
+  }
+
+  .footer-container-right-1,
+  .footer-container-right-2 {
+    width: 100%;
+  }
+
+  .footer-container-right-2 {
+    margin-top: 24px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .logos.small > div:first-child {
+    width: calc(100% - 60px);
+    flex-wrap: wrap;
+  }
+
+  .point .text {
+    word-break: break-all;
+  }
+
+  .footer-container-right {
+    width: var(--column-8);
+  }
+}
