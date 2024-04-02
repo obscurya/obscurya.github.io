@@ -13,8 +13,8 @@ const FIREBASE_CONFIG = {
 const app = initializeApp(FIREBASE_CONFIG)
 const db = getDatabase(app)
 
-const form = document.querySelector('form')
-const button = form.querySelector('button')
+const formContainer = document.querySelector('#formContainer')
+const form = formContainer.querySelector('form')
 const params = new URLSearchParams(window.location.search)
 
 form.querySelector('input').value = params.get('name')
@@ -22,15 +22,21 @@ form.querySelector('input').value = params.get('name')
 form.onsubmit = (e) => {
   e.preventDefault()
 
-  button.disabled = true
+  formContainer.classList.add('loading')
 
   const data = new FormData(form)
   const date = Date.now()
 
   set(ref(db, `records/${date}`), Object.fromEntries(data))
-    .then(() => alert('Ваши ответы записаны, Спасибо!'))
+    .then(() => {
+      formContainer.innerHTML =
+        '<h2 class="center">Спасибо, Ваша анкета принята!</h2>'
+    })
+    .catch(() => {
+      alert('Что-то пошло не так, попробуйте еще раз')
+    })
     .finally(() => {
-      button.disabled = false
+      formContainer.classList.remove('loading')
     })
 
   return 0
