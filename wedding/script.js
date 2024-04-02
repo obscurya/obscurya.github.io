@@ -16,8 +16,9 @@ const db = getDatabase(app)
 const formContainer = document.querySelector('#formContainer')
 const form = formContainer.querySelector('form')
 const params = new URLSearchParams(window.location.search)
+const name = params.get('name') || ''
 
-form.querySelector('input').value = params.get('name')
+form.querySelector('input').value = name.replaceAll('%20', ' ')
 
 form.onsubmit = (e) => {
   e.preventDefault()
